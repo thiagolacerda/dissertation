@@ -1,0 +1,6 @@
+out/
+*converted-to.pdf
+.DS_Store
+.project
+.texlipse
+*.bbl

@@ -1,0 +1,28 @@
+\chapter{Technical Concepts}
+\label{chp:techconcepts}
+For the datasets that we use in our experiments, we assume that they are composed by a set of tuples $\{O_{id}, \phi,
+\lambda, t\}$.  Where: $O_{id}$ uniquely identifies a Moving Object (MO); $t$ corresponds to the time stamp that the GPS
+position was extracted; $\phi$ and $\lambda$ corresponds to the latitude and longitude of the MO respectively, at a
+given time stamp $t$. Each MO represented by a $O_{id}$ has a trajectory $T_{id}$ associated with it.
+
+\noindent
+\textit{\textbf{Definition 1 (Trajectory)}: Given an $O_{id}$, an trajectory $T_{id}$ consists of a sequence of 3-D
+points in the form of $<\hspace{-0.2cm}(\phi_0, \lambda_0, t_0), (\phi_1, \lambda_1, t_1), ..., (\phi_n, \lambda_n, t_n)
+\hspace{-0.2cm}>$, with $n \in \mathbb{N}$ and $t_0 < t_1 < ... < t_n$.}
+
+It is worth noting that real world datasets do not guarantee that all points of all trajectories are sampled in the same
+rate. Therefore, we divide the time extent that the points appear in buckets of size $\sigma$ where $\sigma$ should be
+chosen accordingly to the dataset being analyzed, based on the sampling rate of points. Hence, when we refer to any time
+instance $t_i$ we are actually talking about a time bucket (or time slot) of size $\sigma$.
+
+We use the same definition of flock from Vieira et al. \cite{bib:vieira}:
+
+\noindent
+\textit{\textbf{Definition 2 (Flock)}: Given a set of trajectories $\mathcal{T}$, a minimum number of trajectories $\mu
+> 1$ ($\mu \in \mathbb{N}$), a maximum distance $\epsilon > 0$ defined over the distance function $d$, and a minimum
+time duration $\delta > 1$ ($\delta \in \mathbb{N}$). A flock pattern $Flock (\mu, \epsilon, \delta)$ reports all
+maximal size collections $\mathcal{F}$ of trajectories where: for each $f_k$ in $\mathcal{F}$, the number of
+trajectories in $f_k$ is greater or equal than $\mu$ ($|f_k| \ge \mu$) and there exist $\delta$ consecutive timestamps
+such that for every $t_i \in [f_k^{t_1}...f_k^{t_1 + \delta}]$, there is a disk with center $c_k^{t_i}$ and radius
+$\epsilon/2$ covering all points in $f_k^{t_i}$. That is: $\forall f_k \in \mathcal{F}, \forall t_i \in
+[f_k^{t_1}...f_k^{t_1 + \delta}], \forall T_j \in f_k: |f_k | \ge \mu, d(p_j^{t_i},c_k^{t_i}) \le \epsilon/2$.}
