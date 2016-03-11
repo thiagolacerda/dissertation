@@ -28,7 +28,7 @@ disks are generated. This scenario is where BitDF will achieve less improvements
 
 \section{Trucks Dataset}
 \label{subsec:trucks}
-The authors of BFE, modified the dataset in \cite{bib:trucksdataset}. In their modification, every time interval is of
+The authors of BFE, modified the dataset in \citep{trucksdataset}. In their modification, every time interval is of
 one second, the GPS coordinates were mapped to a $\mathbb{R}^2$ coordinate system (ranging from 0 to 1000) and most of
 the points are present in each time interval. The modified dataset resulted in 112203 entries and 276 unique $O_{id}$
 (instead of 50 in the original dataset).
@@ -70,8 +70,8 @@ also very influenced by dataset modifications.
 
 \section{BerlinMOD Dataset}
 \label{subsec:berlinmod}
-BerlinMOD consists in a traffic generation model \cite{bib:berlinmodpaper} and some synthetic datasets are available in
-\cite{bib:berlinmod}. The dataset being analyzed here consists of 56,127,943 entries and 2000 unique $O_{id}$.
+BerlinMOD consists in a traffic generation model \citep{berlinmodpaper} and some synthetic datasets are available in
+\citep{berlinmod}. The dataset being analyzed here consists of 56,127,943 entries and 2000 unique $O_{id}$.
 
 As we can see by the results presented in Fig. \ref{fig:berlinmod_results}, BitDF was able to achieve great performance
 gains over BFE, in some cases being 57\% faster (Fig. \ref{fig:berlinmod_vary_l}). In \ref{fig:berlinmod_disks} it is
@@ -109,7 +109,7 @@ improvements over BFE, ranging from 20\% to 48\%.
 \section{TDrive Dataset}
 \label{subsec:tdrive}
 This is a real dataset, having spatio-temporal data describing trajectories of taxis in Beijing, China, available in
-\cite{bib:tdrive}. It has 17,762,489 entries with 10336 $O_{id}$.
+\citep{tdrive}. It has 17,762,489 entries with 10336 $O_{id}$.
 
 As reported in Fig. \ref{fig:tdrive_results}, BitDF was able to dramatically reduce the execution time when varying the
 $\delta$ parameter, reaching almost 90\% of improvement. Likewise, BitDF reduced the execution time up to 74\% when
@@ -146,8 +146,8 @@ of 96\%.
 
 \section{Brinkkhoff Dataset}
 \label{subsec:brinkhoff}
-Likewise BerlinMOD, Brinkhoff is also a city traffic generation model \cite{bib:brinkhoffpaper}. We generated a
-synthetic dataset using the Minnesota Web-based Traffic Generator \cite{bib:mntg}, having 2000 as the "Starting
+Likewise BerlinMOD, Brinkhoff is also a city traffic generation model \citep{brinkhoffpaper}. We generated a
+synthetic dataset using the Minnesota Web-based Traffic Generator \citep{mntg}, having 2000 as the "Starting
 Vehicles" and 100 as the "Simulation Time" parameters. The result dataset has 314,523 entries and 7000 unique $O_{id}$.
 
 Fig. \ref{fig:brinkhoff_results} shows how good BitDF performed against this dataset, having improvements up to 99\% for
