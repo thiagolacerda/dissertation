@@ -1,11 +1,36 @@
 \chapter{Related Work}
 \label{chp:relatedwork}
-In the past years, many research studies have been focusing on trajectory data mining, specially in flock pattern
-recognition. Laube et al. \citep{remo} proposed the REMO concept, which analyzes motion attributes of entities
+This is a research field that has a lot of attention in both academy and industry in past and present years. Hence, the
+related work in this area and related fields is quite extensive and broad. With that in mind, we will split this section
+in groups: (1) Moving patterns mining; (2) Flock pattern mining; (3) Miscellaneous.
+
+It is worth noting that the only set of research works that are pertinent to this thesis, are those at
+\secref{sec:rel_flock}. Hence, those will be the only research works that we will point out flaws that are solved by
+this thesis.
+
+%\section{General trajectory data mining}
+%\label{sec:rel_general}
+\section{Moving patterns mining}
+\label{sec:rel_moving}
+Laube et al. \citep{remo} proposed the REMO concept, which analyzes motion attributes of entities
 (speed, azimuth and location) and relate to the motion of other entities that are close to them. They also introduced
 some moving patterns, such as flock, convergence, encounter, and leadership. In the end the authors went through some
 data structures and algorithms that can be used in order to detect those patterns. However, only high level abstract
 algorithms were presented, but neither concrete implementation nor evaluation was shown.
+
+An interesting approach for finding patterns that are frequently repeated by MOs was presented by Huiping et al.
+\citep{frequentpatterns}. The authors presented an algorihtm that focused on approximinting the spation-temporal series
+of a MO to a line, where the distance of each trajectory point of that MO to the line would be no greater than a
+pre-defined threshold. After that, bounding boxes were created based on those approximated lines and then lines that
+belong to the same box are declared as similar sequential patterns.
+
+Algorithms aiming at finding moving clusters, with MOs coming in and out of the cluster, is presented by Kalnis et al.
+\citep{movingclusters}. In that research paper, the authors consider a cluster as a moving region, despite the identity
+of the objects that are part of it. They presented three different approaches to find moving clusters (with one of them
+being an approximation method), being supported by a density function. They claim that their proposal are applicable for
+large-temporal datasets, but the largets dataset that they analyzed had only 50K entries. Yet on clusters, Christian et
+al. \citep{clusters3} added velocity as a parameter in order to help finding moving clusters (using dissimilarity
+functions), achieving some improvements in processing time.
 
 Gudmundsson et al. in \citep{gudefficient} and \citep{gudlongest} extended and formalized the flock concept
 proposed by \citep{remo}. They also introduced the concept that the flock pattern must contain a disk of radius $R$
@@ -15,7 +40,7 @@ the algorithms are efficient or not. Later on, the same authors \citep{gudlonges
 definition by adding the temporal length variable: the entities must stay together during some time interval $\delta$ to
 be claimed as a flock. To this end, they presented some approximation algorithms what work on approximating the radius
 $R$ of the disk used to cluster the flock, based on a defined $\epsilon$. The evaluations performed in
-\citep{gudlongest} varied only the $\delta$ parameter leaving all other parameters variation out of the the
+\citep{gudlongest} varied only the $\delta$ parameter leaving all other parameters variation out of the
 experiments. Additionally, the performance results were not good, having scenarios where the algorithms took more than
 1.5K seconds to analyze a dataset of 1 million entries. It is important to say that all algorithms did waste time by
 analysing disks that will not form a flock pattern in the future, thus having a degradation in performance.
@@ -73,3 +98,12 @@ is very efficient to analyze dataset in an on-line fashion and provide results i
 achieved substantial improvements in execution time and also in the number of disks that are generated in each time
 step. We provide evidences by performing comparison with the state-of-the-art algorithm using both real and synthetic
 datasets.
+
+\section{Moving patterns mining}
+\label{sec:rel_moving}
+
+\section{Flock pattern mining}
+\label{sec:rel_flock}
+
+\section{Miscellaneous}
+\label{sec:rel_miscellaneous}
