@@ -4,19 +4,22 @@ For the datasets that we use in our experiments, we assume that they are compose
 \lambda, t\}$.  Where: $O_{id}$ uniquely identifies a Moving Object (MO); $t$ corresponds to the time stamp that the GPS
 position was extracted; $\phi$ and $\lambda$ corresponds to the latitude and longitude of the MO respectively, at a
 given time stamp $t$. Each MO represented by a $O_{id}$ has a trajectory $T_{id}$ associated with it.
-
+\newline
+\newline
 \noindent
 \textit{\textbf{Definition 1 (Trajectory)}: Given an $O_{id}$, an trajectory $T_{id}$ consists of a sequence of 3-D
 points in the form of $<\hspace{-0.2cm}(\phi_0, \lambda_0, t_0), (\phi_1, \lambda_1, t_1), ..., (\phi_n, \lambda_n, t_n)
 \hspace{-0.2cm}>$, with $n \in \mathbb{N}$ and $t_0 < t_1 < ... < t_n$.}
-
+\newline
+\par
 It is worth noting that real world datasets do not guarantee that all points of all trajectories are sampled in the same
 rate. Therefore, we divide the time extent that the points appear in buckets of size $\sigma$ where $\sigma$ should be
 chosen accordingly to the dataset being analyzed, based on the sampling rate of points. Hence, when we refer to any time
 instance $t_i$ we are actually talking about a time bucket (or time slot) of size $\sigma$.
 
 We use the same definition of flock from Vieira et al. \citep{vieira}:
-
+\newline
+\newline
 \noindent
 \textit{\textbf{Definition 2 (Flock)}: Given a set of trajectories $\mathcal{T}$, a minimum number of trajectories $\mu
 > 1$ ($\mu \in \mathbb{N}$), a maximum distance $\epsilon > 0$ defined over the distance function $d$, and a minimum
