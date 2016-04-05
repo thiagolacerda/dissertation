@@ -26,5 +26,5 @@ out:
 	mkdir -p $(OUTDIR)
 
 clean:
-	rm *.pdf
+	rm -rf *.pdf
 	rm -rf out
