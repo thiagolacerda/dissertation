@@ -2,16 +2,17 @@
 \label{chp:relatedwork}
 This is a research field that has a lot of attention in both academy and industry in past and present years. Hence, the
 related work in this area and related fields is quite extensive and broad. With that in mind, we will split this section
-in groups: (1) Moving patterns mining; (2) Flock pattern mining; (3) General trajectory data mining.
+in (1) General trajectory data and pattern mining and (2) Flock pattern mining
 
 It is worth noting that the only set of research works that are pertinent to this work, are those at
-\secref{sec:rel_flock}. Hence, those will be the only research works that we will point out flaws that are solved by
+\secref{sec:rel_flocks}. Hence, those will be the only research works that we will point out flaws that are solved by
 this thesis.
 
-%\section{General trajectory data mining}
-%\label{sec:rel_general}
-\section{Moving patterns mining}
-\label{sec:rel_moving}
+\section{General trajectory data and pattern mining}
+\label{sec:rel_general}
+Here we present the broader scope of Trajectory data mining that were useful to gather some understanding in the field
+and insightful ideas for this thesis.
+
 Laube et al. \citep{remo} proposed the REMO concept, which analyzes motion attributes of entities
 (speed, azimuth and location) and relate to the motion of other entities that are close to them. They also introduced
 some moving patterns, such as flock, convergence, encounter, and leadership. In the end the authors went through some
@@ -30,10 +31,13 @@ of the objects that are part of it. They presented three different approaches to
 being an approximation method), being supported by a density function. They claim that their proposal are applicable for
 large-temporal datasets, but that large dataset that they analyzed had only 50K entries. Yet on clusters, Jensen et
 al. \citep{clusters3} added velocity as a parameter in order to help finding moving clusters (using dissimilarity
-functions), achieving some improvements in processing time. A more recent research \citep{clusters1} proposes a novel
-type of cluster classification: Influence-based Moving Clusters (IBMC). The author states that an IBMC consists in a set
-of moving clusters where each MO, in each cluster, influences at least another MO in the next immediate cluster. It is
-shown that space for discoring IBMC is very big and algorithm for finding the maximal answer is proposed.
+functions), achieving some improvements in processing time. An approach using a trajectory similarity measure based on
+the Hausdorff distance is proposed by Atev et al. \citep{clusters2}, where the sequential order of trajectories is
+preserved over time. The authors also present a method aiming at clustering trajectories taking advantage of some
+spectral clustering methods. A more recent research \citep{clusters1} proposes a novel type of cluster classification:
+Influence-based Moving Clusters (IBMC). The author states that an IBMC consists in a set of moving clusters where each
+MO, in each cluster, influences at least another MO in the next immediate cluster. It is shown that space for
+discovering IBMC is very extensive and an algorithm for finding the maximal answer is proposed.
 
 Jeung et al. proposes the convoy pattern \citep{convoy2}\citep{convoy}. They first point out the key difference between
 flock and convoy patterns: Flock pattern relies on all trajectories being present in a disk of pre-defined radius, while
@@ -53,10 +57,34 @@ timestamps, it is not required also that a trajectory stays all the time with th
 that work, formalize the swarm concept and present algorithms to find the pattern. The algorithms effectiveness is
 compared against convoy pattern algorithms and it is shown that, for some datasets, the swarm pattern is better suited.
 
+An algorithm to find patterns in Origin-Destination databases, meaning that only the origin and destination points of a
+Trajectory are recorded in the analyzed data set, is proposed by Guo et al. \citep{discovering_orig_dest}. They propose
+a way to model points of interest, since moving objects going to the same place (e.g. airport) will report different GPS
+coordinates. The proposed algorithm has a preprocessing phase that makes a Delaunay Triangulation of the points,
+followed by clustering them based two parameters: (k) number of points to build a cluster and ($\theta$) minimum number
+of points (or weight) of a cluster. After building the clusters, they derive some mobility measures, in order to extract
+spatial and temporal mobility patterns, presenting an useful way of understanding traffic loads in a given city.
+
+Baratchi et al. propose a way to find frequently visited paths between two points of interests. The authors present an
+algorithm that deals with trajectory uncertainty and use cluster based techniques to map uncertain trajectories to
+actual paths in a map that were most likely to be followed by the moving object. First they gather points of interests
+(those where the moving object stayed at least 30 minutes with its speed close to 0) and goup all subtrajectories that
+has the same start and end points of interest. They then apply their algorithm, which consists in dividing the space in
+grids and assign each point to a grid, and partition those subtrajectories in even small subtrajectories based on
+breakpoints. After that partition they use a score mechanism to decide which set of subtrajctories are more likely to be
+frequent path. Their algorithm is mainly for offline analysis and uses a map matching algorithm in order to match GPS
+points to actual map segments. They did not present the used database nor the numbers of such database. His evaluation
+is somewhat shallow and does not present any take away results.
+
+A comprehensive state of the art review in Trajectory Data Mining is presented by Zheng \citep{survey}. He covers
+relevant research topics, such as Trajectory data preprocessing, Trajectory data management, Uncertainty of trajectory,
+Trajectory pattern mining, and Trajectory classification. He points out some public trajectory datasets that can be used
+to evaluate pattern detection algorithms, like the dataset in \citep{tdrive} used in this thesis.
+
 \section{Flock pattern mining}
-\label{sec:rel_flock}
+\label{sec:rel_flocks}
 Gudmundsson et al. \citep{gudefficient} \citep{gudlongest} extended and formalized the flock concept proposed by the
-REMO Frameowkr \citep{remo}. They also introduced the concept that the flock pattern must contain a disk of radius $R$
+REMO Framework \citep{remo}. They also introduced the concept that the flock pattern must contain a disk of radius $R$
 in each time step that encloses all trajectories. They proposed approximation and exact algorithms for flock pattern
 detection, but no performance evaluations were made and only theoretical analysis were presented, which does not show if
 the algorithms are efficient or not. Later on, the same authors \citep{gudlongest} extended the flock pattern definition
@@ -105,7 +133,7 @@ requirements for both a data model and a visual interface that their system must
 information for users, in order to extract conclusions from the analysis. Their algorithm is bound to a map network,
 which means that one part of data preprocessing will be to map the data points to the respective roads in a map. They
 claim to be able to detect traffic jams with high accuracy, however they do not have any ground truth data to validate
-the assumptions. It is also worth noting that only one dataset is used to evalute the proposed system, which does not
+the assumptions. It is also worth noting that only one dataset is used to evaluate the proposed system, which does not
 show that the solution is ready for multiple scenarios.
 
 There are also some work focusing on indoor flock detection using mobile phone sensors, in which Wi-Fi signal strengths
@@ -113,33 +141,9 @@ are mapped into coordinates \citep{mobile1}, or a variety of mobile phone sensor
 Wi-Fi) are used to detect flock patterns \citep{mobile2}. However, those works only address flock detection in indoor
 environments, not using GPS coordinates, which are not in the scope of the problem addressed by this thesis.
 
-\section{General Trajectory Data Mining}
-\label{sec:rel_general}
-A comprehensive state of the art review in Trajectory Data Mining is presented by Zheng \citep{survey}. He addresses
-relevant research topics, such as Trajectory data preprocessing, Trajectory data management, Uncertainty of trajectory,
-Trajectory pattern mining, and Trajectory classification. He points out some public trajectory datasets that can be used
-to evaluate pattern detection algorithms, like the dataset in \citep{tdrive} used in this paper.
-
-Baratchi et al. propose a way to find frequently visited paths between two points of interests. The authors present an
-algorithm that deals with trajectory uncertainty and use cluster based techniques to map uncertain trajectories to
-actual paths in a map that were most likely to be followed by the moving object. First they gather points of interests
-(those where the moving object stayed at least 30 minutes with its speed close to 0) and goup all subtrajectories that
-has the same start and end points of interest. They then apply their algorithm, which consists in dividing the space in
-grids and assign each point to a grid, and partition those subtrajectories in even small subtrajectories based on
-breakpoints. After that partition they use a score mechanism to decide which set of subtrajctories are more likely to be
-frequent path. Their algorithm is mainly for offline analysis and uses a map matching algorithm in order to match GPS
-points to actual map segments. They did not present the used database nor the numbers of such database. His evaluation
-is somewhat shallow and does not present any take away results.
-
-In a broader scope, many researches were conducted in the field of motion patterns recognition and trajectory data
-mining, namely (1) cluster based algorithms
-\citep{clusters2}; (2) convoy pattern detection
-; and (3) data mining in uncertain
-trajectories \citep{uncertain1}\citep{uncertain2}\citep{uncertain3}\citep{uncertain4}, to name a few.
-
-The work presented in this paper fills the gaps that were not fulfilled specifically by the algorithms mentioned in
-\secref{sec:rel_flocks}: efficient flock detection with no change in the final number of found flocks. We will also show
-that our implementation is very efficient to analyze dataset in an on-line fashion and provide results in real-time. Our
-proposed algorithm achieved substantial improvements in execution time and also in the number of disks that are
-generated in each time step. We provide evidences by performing comparison with the state-of-the-art algorithm using
-both real and synthetic datasets.
+The work presented in this paper thesis fills the gaps that were not fulfilled specifically by the algorithms mentioned
+in \secref{sec:rel_flocks}: efficient flock detection with no change in the final number of found flocks. We will also
+show that our implementation is very efficient to analyze dataset in an on-line fashion and provide results in
+real-time. Our proposed algorithm achieved substantial improvements in execution time and also in the number of disks
+that are generated in each time step. We provide evidences by performing comparison with the state-of-the-art algorithm
+using both real and synthetic datasets.
