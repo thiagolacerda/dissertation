@@ -150,27 +150,28 @@ $\forall f_k \in \mathcal{F}, \forall t_i \in [f_k^{t_1}...f_k^{t_1 + \delta}], 
 d(p_j^{t_i},c_k^{t_i}) \le \epsilon/2$.
 \end{Def}
 
-In other words, what \defref{def:flock} states is that a flock pattern basically consists in a set of trajectories
-(where each trajectory $T_{id}$ belongs the MO represented by $O_{id}$) that stay together for a minimum time extent.
-Additionally, in order to be considered a flock, there must exist a disk that encloses all points of all trajectories
-for each time slot. Hence, we have a Flock pattern relying on three key parameters:
+\begin{figure}[h!]
+    \label{fig:flock2}
+    \centering
+    \includegraphics[width=\textwidth]{images/flock_2.png}
+    \caption{T1, T2 and T3 form a flock of size 3 with minimum length of three time slots, with a disk enclosing all
+        trajectories at each time slot \citep{vieira}}
+    \label{fig:flock2}
+\end{figure}
+
+In other words, what \defref{def:flock} states is that a flock pattern basically consists in a set of at least $\mu$
+trajectories (where each trajectory $T_{id}$ belongs the MO represented by $O_{id}$) that stay together for a minimum
+time extent $\delta$.  Additionally, in order to be considered a flock, there must exist a disk, with radius
+$\epsilon/2$, that encloses all points of all trajectories for each time slot. Hence, we have a Flock pattern relying on
+three key parameters:
 \begin{enumerate}
     \item $\mu$: the minimum number of trajectories, in order to be considered a flock
     \item $\epsilon$: diameter of the disk that needs to enclose the trajectories for each time slot
     \item $\delta$: the minimum number of time slot units that the trajectories need to stay together
 \end{enumerate}
 
-\begin{figure}[h!]
-    \label{fig:flock2}
-    \centering
-    \includegraphics[width=\textwidth]{images/flock_2.png}
-    \caption{T1, T2 and T3 form a flock of size 3 with minimum length of three time steps, with a disk enclosing all
-        trajectories at each time step (\hspace{-0.005cm}\citep{vieira})}
-    \label{fig:flock2}
-\end{figure}
-
-    This definition is well depicted in \figref{fig:flock2}, where you can see for each time slot $t_i$ a disk of
-diameter $\epsilon = d$ exists enclosing the points of trajectories $T_1$, $T_2$ and $T_3$. Hence, if we have set our
-flock parameters to $\mu = 3$, $\epsilon = d$ and $\delta = 3$, we would have found the flock pattern shown in
+This definition is well depicted in \figref{fig:flock2}, where you can see for each time slot $t_i$ it exists a disk of
+diameter $\epsilon = d$ enclosing the points of trajectories $T_1$, $T_2$ and $T_3$. Hence, if we have set our flock
+parameters to $\mu = 3$, $\epsilon = d$ and $\delta = 3$, we would have found the flock pattern shown in
 \figref{fig:flock2}. It is worth noting that trajectory $T_4$ could not be part of the flock pattern because it was not
 possible to find a disk of diameter $d$ that would enclose 2 more trajectories with $T_4$ in each time slot $t_i$.
