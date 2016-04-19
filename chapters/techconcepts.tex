@@ -185,6 +185,14 @@ dataset, there can be infinite places to look for disk in the dataset space. Vie
 to reduce that search space to a finite number of locations, which we will explain in the remaining of this section and
 will be used in the work proposed in this thesis.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/disks_discovery.png}
+    \caption{Two disks with radius $\epsilon/2$ that are found based on points $p_1$ and $p_2$. $c_1$ and $c_2$ stands
+        for the disks centers and $m$ represents the midpoint of $p_1$ and $p_2$.}
+    \label{fig:disks_discovery}
+\end{figure}
+
 We can easily find two circles that intersect two points using some vectorial operations as shown in Algorithm 3.1
 below.
 
@@ -196,7 +204,8 @@ those same points. After calculating $mid$ (lines 6 and 7) we convert those same
 10) and take its length (line 12), which will be used later to normalize $v$. Line 13 calculates the distance $c_d$ the
 centers are from the $mid$ whereas lines 15 and 16 calculates the orthogonal vector $o$ for $v$, which will guide the
 direction for the disks centers. The algorithm ends by find the centers of the disks $c_1$ and $c_2$ by adding and
-subtracting the multiplication of normalized $o$ by $c_d$ to $mid$.
+subtracting the multiplication of normalized $o$ by $c_d$ to $mid$. The circles that we can find are well depicted in
+\figref{fig:disks_discovery}.
 
 \begin{algorithm}
 \caption{Disks Discovery}
