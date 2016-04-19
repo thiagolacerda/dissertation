@@ -172,6 +172,15 @@ three key parameters:
 
 This definition is well depicted in \figref{fig:flock2}, where you can see for each time slot $t_i$ it exists a disk of
 diameter $\epsilon = d$ enclosing the points of trajectories $T_1$, $T_2$ and $T_3$. Hence, if we have set our flock
-parameters to $\mu = 3$, $\epsilon = d$ and $\delta = 3$, we would have found the flock pattern shown in
-\figref{fig:flock2}. It is worth noting that trajectory $T_4$ could not be part of the flock pattern because it was not
-possible to find a disk of diameter $d$ that would enclose 2 more trajectories with $T_4$ in each time slot $t_i$.
+parameters to $\mu = 3$, $\epsilon = d$ and $\delta = 3$, we would have found the flock pattern $f = \{T_1, T_2, T_3\}$
+shown in \figref{fig:flock2}. It is worth noting that trajectory $T_4$ could not be part of the flock pattern because it
+was not possible to find a disk of diameter $d$ that would enclose 2 more trajectories with $T_4$ in each time slot
+$t_i$.
+
+\subsection{Disk discovery}
+
+One of the most important part that enables the flock pattern identification is how to efficiently discover the disks
+that can enclose potential flock patterns. Since the disk does not need to have its center in any of the points in the
+dataset, there can be infinite places to look for disk in the dataset space. Vieira et al. \citep{vieira} propose a way
+to reduce that search space to a finite number of locations, which we will explain in the remaining of this section and
+will be used in the work proposed in this thesis.
