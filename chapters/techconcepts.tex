@@ -237,6 +237,12 @@ subtracting the multiplication of normalized $o$ by $c_d$ to $mid$. The circles 
 \end{algorithmic}
 \end{algorithm}
 
+In order to avoid running Algorithm 1 through all the points found in a time slot $t_i$, Vieira et al. \citep{vieira}
+proposed a grid structure to reduce the search space for a set of points. In that approach, all points that belong to
+time slot $t_i$ will be arranged into a grid with cells of size $\epsilon$. After that, we will go through each cell
+$g_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each other. That search, however, will
+be restricted to the cells $g_{i - 1, j - 1} ... g_{i + 1, j + 1}$, as depicted in \figref{fig:grid}.
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\textwidth]{images/grid.png}
