@@ -236,3 +236,12 @@ subtracting the multiplication of normalized $o$ by $c_d$ to $mid$. The circles 
     \State $c2Y \gets midY - (centerDistFromMidPoint * normalizedOrtVectorY)$
 \end{algorithmic}
 \end{algorithm}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/grid.png}
+    \caption{Point grid for time slot $t_i$. The dark grey is the grid that is currently being processed and the light
+        grey grids around, are the grids that will be in the search space of the dark grid. Each small circle inside the
+        grid, represents a GPS point that was collected in time slot $t_i$}
+    \label{fig:grid}
+\end{figure}
