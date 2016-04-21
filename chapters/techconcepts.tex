@@ -238,10 +238,13 @@ subtracting the multiplication of normalized $o$ by $c_d$ to $mid$. The circles 
 \end{algorithm}
 
 In order to avoid running Algorithm 1 through all the points found in a time slot $t_i$, Vieira et al. \citep{vieira}
-proposed a grid structure to reduce the search space for a set of points. In that approach, all points that belong to
+proposed a grid structure to reduce the search space for the set of points. In that approach, all points that belong to
 time slot $t_i$ will be arranged into a grid with cells of size $\epsilon$. After that, we will go through each cell
-$g_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each other. That search, however, will
-be restricted to the cells $g_{i - 1, j - 1} ... g_{i + 1, j + 1}$, as depicted in \figref{fig:grid}.
+$g_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each other. That search
+can be restricted to the cells $g_{i - 1, j - 1} ... g_{i + 1, j + 1}$, as depicted in \figref{fig:grid}. It is
+important to note that the size of $\epsilon$ directly impacts in the number of cells and the number of points in each
+cell. For example, for a very small $\epsilon$ more cells will be created and less points will be present in each cell.
+O the other hand, large $\epsilon$ will create less but more populated cells.
 
 \begin{figure}[h!]
     \centering
@@ -251,3 +254,27 @@ be restricted to the cells $g_{i - 1, j - 1} ... g_{i + 1, j + 1}$, as depicted 
         grid, represents a GPS point that was collected in time slot $t_i$}
     \label{fig:grid}
 \end{figure}
+
+Algorithm 2 shows how we will construct the grid structure for a set of points from a specific time slot $t_i$. In order
+to represent a grid structure, we will use a map of indexes to a list of points, which will then be populated as
+follows. For each point $p$ in the point set, we will \textit{bucketize} the longitude and the latitude of the point
+(both converted to meters, using \eqnref{eq:timeslot}) by dividing them by the cell size $\epsilon$ (lines 5 and 6).
+Once we have the division results, we will convert them to string and concatenate them, forming a cell index (line 8).
+With the cell index in hand, we need only to add the point to the corresponding cell (line 9). It is worth noting that
+this proposed approach will not create empty cells, saving memory and unnecessary processing time.
+
+\begin{algorithm}
+\caption{Construct Grid}
+\begin{algorithmic}[1]
+    \State $grid \gets map\{index, [...]\}$ \Comment map of cell index to list of points that belong to that cell
+    \State $points \gets \Call{GetPointsOfTimeSlot}{t_i}$
+    \State
+    \For{each point $p$ in $points$}
+        \State $xIndex \gets \floor*{\frac{p.longitudeMeters}{\epsilon}}$
+        \State $yIndex \gets \floor*{\frac{p.latitudeMeters}{\epsilon}}$
+        \State
+        \State $index \gets \Call{ToString}{xIndex} + "\_" + \Call{ToString}{yIndex}$
+        \State $grid[index].add(p)$
+    \EndFor
+\end{algorithmic}
+\end{algorithm}
