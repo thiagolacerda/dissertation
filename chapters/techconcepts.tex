@@ -279,3 +279,8 @@ this proposed approach will not create empty cells, saving memory and unnecessar
     \EndFor
 \end{algorithmic}
 \end{algorithm}
+
+Another important concept to keep in mind is that we are only interested in the maximum disks. Once we have found the
+disks with the points that belong to them, we will check if any disk $d_i$ is a subset of another disk $d_j$. By saying
+that $d_i$ is a subset of $d_j$ we mean that $d_j$ has all the points that $d_i$ has. This was identified as being a
+tremendous processing bottleneck for an algorithm that aims at finding flock patterns.
