@@ -11,20 +11,19 @@ how the algorithm behaves. For (b), we analyzed the cumulative number of disks g
 
 Before showing the results, there are some analysis outcomes that will hold for any dataset analyzed here:
 
-\subsubsection{$\delta$ variation}
-\label{sssec:lvariation}
-The longer flocks patterns we try to find (long $\delta$), the more disks will stay cached being analyzed and trying to
-be merged with new disks from following time slots. This can have a big impact in running time.
+\begin{enumerate}
+    \item \textbf{$\delta$ variation}: The longer flocks patterns we try to find (long $\delta$), the more disks will
+        stay cached being analyzed and trying to be merged with new disks from following time slots. This can have a big
+        impact in running time.\label{sssec:lvariation}
 
-\subsubsection{$\epsilon$ variation}
-\label{sssec:gvariation}
-When the disk radius ($\epsilon$) gets bigger, the more disks will be generated since will be easier to find points that
-are "together". And again, the more disks, the more time spent in processing.
+    \item \textbf{$\epsilon$ variation}: When the disk radius ($\epsilon$) gets bigger, the more disks will be generated
+        since will be easier to find points that are "together". And again, the more disks, the more time spent in
+        processing. \label{sssec:gvariation}
 
-\subsubsection{$\mu$ variation}
-\label{sssec:nvariation}
-By increasing $\mu$, it gets more and more difficult to find disks that are flock candidates ($|D| \ge \mu$), so less
-disks are generated. This scenario is where BitDF will achieve less improvements.
+    \item \textbf{$\mu$ variation}: By increasing $\mu$, it gets more and more difficult to find disks that are flock
+        candidates ($|D| \ge \mu$), so less disks are generated. This scenario is where BitDF will achieve less
+        improvements. \label{sssec:nvariation}
+\end{enumerate}
 
 \section{Trucks Dataset}
 \label{subsec:trucks}
@@ -35,22 +34,22 @@ the points are present in each time interval. The modified dataset resulted in 1
 
 \begin{figure*}
     \centering
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Trucks_n_4_g_1_5_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 1.5$ and $\delta$ varying}
         \label{fig:trucks_vary_l}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Trucks_n_4_l_20_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 20$ and $\epsilon$ varying}
         \label{fig:trucks_vary_g}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Trucks_l_20_g_1_5_varying_n.eps}
         \caption{$\delta = 20$, $\epsilon = 1.5$ and $\mu$ varying}
         \label{fig:trucks_vary_n}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Trucks_d.eps}
         \caption{Cumulative disks by time}
         \label{fig:trucks_disks}
@@ -82,22 +81,22 @@ improvements over BFE, ranging from 20\% to 48\%.
 
 \begin{figure*}
     \centering
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/BerlinMOD_n_4_g_100_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
         \label{fig:berlinmod_vary_l}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/BerlinMOD_n_4_l_8_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
         \label{fig:berlinmod_vary_g}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/BerlinMOD_l_8_g_100_varying_n.eps}
         \caption{$\delta = 8$, $\epsilon = 100$ and $\mu$ varying}
         \label{fig:berlinmod_vary_n}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/BerlinMOD_d.eps}
         \caption{Cumulative disks by time}
         \label{fig:berlinmod_disks}
@@ -120,22 +119,22 @@ of 96\%.
 
 \begin{figure*}
     \centering
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/TDrive_n_4_g_100_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
         \label{fig:tdrive_vary_l}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/TDrive_n_4_l_8_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
         \label{fig:tdrive_vary_g}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/TDrive_l_8_g_100_varying_n.eps}
         \caption{$\delta = 8$, $\epsilon = 100$ and $\mu$ varying}
         \label{fig:tdrive_vary_n}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/TDrive_d.eps}
         \caption{Cumulative disks by time}
         \label{fig:tdrive_disks}
@@ -158,22 +157,22 @@ reflecting directly in the running time of BitDF.
 
 \begin{figure*}
     \centering
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Brinkhoff_n_4_g_200_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
         \label{fig:brinkhoff_vary_l}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Brinkhoff_n_4_l_8_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
         \label{fig:brinkhoff_vary_g}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Brinkhoff_l_8_g_200_varying_n.eps}
         \caption{$\delta = 8$, $\epsilon = 100$ and $\mu$ varying}
         \label{fig:brinkhoff_vary_n}
     \end{subfigure}
-    \begin{subfigure}[t]{0.25\textwidth}
+    \begin{subfigure}[t]{0.48\textwidth}
         \includegraphics[width=\textwidth]{images/Brinkhoff_d.eps}
         \caption{Cumulative disks by time}
         \label{fig:brinkhoff_disks}
