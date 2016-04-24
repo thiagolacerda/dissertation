@@ -45,6 +45,44 @@ the overall processing time of the algorithm.
 \end{figure}
 
 \section{Proposed Solution}
+\subsection{Generic System Architecture}
+We first tried to approach this problem in a more generic fashion, since all moving pattern mining problem has the same
+workflow:
+
+\begin{enumerate}
+    \item Connect to a spatio-temporal data source
+    \item Retrieve and aggregate spatio-temporal data
+    \item Process and mine that data in order to find the desired pattern or extract the desired information
+\end{enumerate}
+
+With that in mind, we designed a modular and easily extensible architecture that can fit for almost all spatio-temporal
+data mining problem, which is depicted by \figref{fig:architecture}. One can notice that we focus on 4 key building
+blocks, that can easily registered/unregistered accoording to the targeting problem: (1) Data source connectors; (2)
+Data decoders; (3) Data listeners (Data aggregators); (4) Data processor.
+
+In layer (1) we are concerned on how to retrieve the data, meaning how to communicate properly to the data source in
+order to be able to extract each record of spatio-temporal data that the data source can provide. Thus, each "Data
+Source Connector" (DSC) depicted in the \textit{Data Connectors' Module} in \figref{fig:architecture} represents a
+logical piece that knows how to connect to and extract data from a specific data source. We can have a DSC that knows
+how to connect to a MySQL database, or another one that can connect to a cloud based storage system like AWS DynamoDB
+and extract data from those places, or even a DSC that simply connects to an online data stream and listen for incoming
+data.
+
+After connecting and retrieving data from a data source, we need to clean, decode and translate the incoming raw data to
+a format that is simple and understandable to our system. To achieve that we will have a Data Decoder (DD) component,
+which comprehends the raw data format that comes from a DSC and translate that a format that layer 3 can understand. We
+can see in \figref{fig:architecture} that a DD can register itself to a DSC in order to receive each data record that a
+DSC gathers from a data source. It is important to note that a DD can register to only one DSC, but a DSC can have
+multiple DD registered to it.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{images/architecture.png}
+    \caption{BitDF system architecture overview}
+    \label{fig:architecture}
+\end{figure}
+
+\subsection{Aggregation and data processing efficiency}
 Our solution consist on using \textbf{Bit}maps for \textbf{D}isk \textbf{F}iltering (BitDF), based on the BFE algorithm.
 BitDF splits the algorithm in two logical modules, namely GPS Stream Buffering (GSB) and Flock Processor (FP), and have
 each of them keep track of the history of every $O_{id}$ in time.
