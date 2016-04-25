@@ -468,7 +468,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \newenvironment{references}
 {
 	\backmatter
-	\bibliographystyle{abnt}
+	\bibliographystyle{risethesis/abnt}
 	\setlength{\bibhang}{0pt}
 	\singlespacing % Change to singlespacing for the references
 	\begingroup
