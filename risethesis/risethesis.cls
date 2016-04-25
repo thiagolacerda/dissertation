@@ -97,7 +97,6 @@
 \RequirePackage{setspace}
 \RequirePackage[top=3.00cm,left=3.00cm,bottom=2.00cm,right=2.00cm]{geometry}
 \RequirePackage[calcwidth]{titlesec}
-\RequirePackage{psboxit}
 \RequirePackage[avantgarde]{quotchap}
 \RequirePackage[nottoc, notlof, notlot]{tocbibind}
 \RequirePackage{indentfirst}
