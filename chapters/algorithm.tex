@@ -57,7 +57,7 @@ workflow:
 
 With that in mind, we designed a modular and easily extensible architecture that can fit for almost all spatio-temporal
 data mining problem, which is depicted by \figref{fig:architecture}. One can notice that we focus on 4 key building
-blocks, that can easily registered/unregistered accoording to the targeting problem: (1) Data source connectors; (2)
+blocks, that can easily registered/unregistered according to the targeting problem: (1) Data source connectors; (2)
 Data decoders; (3) Data listeners (Data aggregators); (4) Data processor.
 
 In layer (1) we are concerned on how to retrieve the data, meaning how to communicate properly to the data source in
@@ -70,7 +70,7 @@ data.
 
 After connecting and retrieving data from a data source, we need to clean, decode and translate the incoming raw data to
 a format that is simple and understandable to our system. To achieve that we will have a Data Decoder (DD) component,
-which comprehends the raw data format that comes from a DSC and translate that a format that layer 3 can understand. We
+which comprehends the raw data format that comes from a DSC and translate it to a format that layer 3 can understand. We
 can see in \figref{fig:architecture} that a DD can register itself to a DSC in order to receive each data record that a
 DSC gathers from a data source. It is important to note that a DD can register to only one DSC, but a DSC can have
 multiple DD registered to it.
