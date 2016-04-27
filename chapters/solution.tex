@@ -142,7 +142,7 @@ of $\delta$ bits set to 1 is found, we can state with confidence that that point
 pattern. Later on, if a potential flock is found in a time slot $t_i$ and $p$ is part of it, we need to update the FP's
 bitmap of that point so when we process points of time slot $t_{i+1}$ we have the correct bitmap representation of $p$
 and that is where \textsc{MapPointFlock} (line 20) comes to play. \textsc{MapPointFlock} does that by prepending 1 to
-$p$'s bitmap in FP module by perforing an OR bitwise operation.
+$p$'s bitmap in FP module by performing an OR bitwise operation.
 
 \begin{table}
     \renewcommand{\arraystretch}{1.3}
@@ -300,7 +300,7 @@ $t_0$). Since FP has not processed any points so far, its bitmaps structures are
 bitmaps from both modules will end up as being the same value as in GSB. By the end of $t_0$ processing, one disk is
 generated, containing only $p_1$, $p_2$ and $p_4$, having $p_3$ being ignored due to its bitmap telling that it cannot
 form a flock starting from $t_0$. The flow then continues repeating the same steps that we mentioned above, until a
-flock contaning points $p_1$, $p_2$ and $p_4$ is found.
+flock containing points $p_1$, $p_2$ and $p_4$ is found.
 
 \begin{figure}
     \centering
