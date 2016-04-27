@@ -1,21 +1,84 @@
-\chapter{\textbf{Bit}maps for \textbf{D}isk \textbf{F}iltering (BitDF)}
-\label{chp:algorithm}
-\section{Problem Statement}
+\chapter{Modular and efficient Flock Pattern identification}
+\label{chp:solution}
+\section{Generic System Architecture}
+\label{sec:architecture}
+After the related work research that was performed, we noticed a lack of system architecture in order to solve data
+mining problems. So far, no previous work has provide an architecture that could be easily extensible and reusable for
+the myriad of the data mining problems in the academy.
+
+We first tried to approach this problem in a more generic fashion, since all moving pattern mining problem has the same
+workflow:
+
+\begin{enumerate}
+    \item Connect to a spatio-temporal data source
+    \item Retrieve and aggregate spatio-temporal data
+    \item Process and mine that data in order to find the desired pattern or extract the desired information
+\end{enumerate}
+
+With that in mind, we designed a modular and easily extensible architecture that can fit for almost all spatio-temporal
+data mining problem, which is depicted by \figref{fig:architecture}. One can notice that we focus on 4 key building
+blocks, that can be easily registered/unregistered according to the targeting problem: (1) Data Source Connectors; (2)
+Data Decoders; (3) Data Listeners (Data aggregators); (4) Data Processor.
+
+In layer (1) we are concerned on how to retrieve the data, meaning how to communicate properly to the data source in
+order to be able to extract each record of spatio-temporal data that the data source can provide. Thus, each "Data
+Source Connector" (DSC) depicted in the \textit{Data Connectors' Module} in \figref{fig:architecture} represents a
+logical piece that knows how to connect to and extract data from a specific data source. We can have a DSC that knows
+how to connect to a MySQL database, or another one that can connect to a cloud based storage system like AWS DynamoDB,
+or even a DSC that simply connects to an online data stream and listen for incoming data.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/architecture.png}
+    \caption{BitDF system architecture overview}
+    \label{fig:architecture}
+\end{figure}
+
+After connecting and retrieving data from a data source, we need to clean, decode and translate the incoming raw data to
+a format that is simple and understandable to our system. To achieve that we will have a Data Decoder (DD) component,
+which knows how to interpret the raw data format that comes from a DSC and translate it to a format that layer 3 can
+understand. We can see in \figref{fig:architecture} that a DD can register itself to a DSC in order to receive each data
+record that a DSC gathers from a data source. It is important to note that a DD can register to only one DSC, but a DSC
+can have multiple DD registered to it.
+
+In any problem of data mining, aggregation is one of the most important phases, since it is there that the data
+gathering happens and necessary arrangements are made in order to get the data ready for processing. In our system that
+is represented by layer (4), which we call the Data Listeners' Module. We can have multiple types of Data Listeners (DL)
+in that module, and each of them can perform different types of aggregation and pre-processing depending on the final
+goal.  For example, we could have an aggregator that bucketize the GPS points by their timestamp and filter out
+outliers, before sending to processing, or another one that performs point interpolation in order to reduce trajectory
+uncertainty. Similarly to the DD module, we can a DL can only register to one DD, but a DD can have multiple DL
+registered to it. Later on we will see a DL proposed as one of the contributions by this thesis, which will perform a
+\textit{bufferized} aggregation of points.
+
+The last, but not least, remaining piece is the Data Processors' Module, in layer (5). Is there that we will have the
+intelligence to perform a data mining task that will generate insights for decision making, detect moving patterns and
+the forth. We can have a Data Processor (DP) that detects flock patterns, other that detects convergence patterns and
+other that provide traffic information in real time, to name a few. Following the pattern of the aforementioned modules,
+each DP can only register to a single DL, but a DL can have multiple DPs registered to it. This thesis will present a
+novel DP for detecting flock patterns, based on the BFE algorithm proposed by Vieira et al. \citep{vieira}.
+
+Researchers and data analysts can leverage from the proposed architecture in order to tackle multiple problems at once,
+reusing components that can serve other data mining problems.
+
+\section{Aggregation and data processing efficiency}
+\label{sec:bitdf}
 By analyzing some of the algorithms proposed in \secref{sec:rel_flocks} and their respective running times, we noticed
-that most of the CPU cycles were spent by analyzing disks that will not generate flock patterns, due to the points no
-being present in $\delta$ consecutive time slots. In all algorithms, disks generated in time slot $t_i$ are compared
-with those generated in $t_{i+1}$ in order to check if an extension to a potential flock pattern is found. This
-operation has $O(nm)$ complexity, with $n$ being the number of disks and $m$ the number of potential flocks from
-previous time slots.  Additionally, for each comparison between a disk and a potential flock, an intersection operation
-between them needs to be made.
+that most of the CPU cycles were spent by analyzing disks that will not generate flock patterns, due to the points not
+being present in $\delta$ consecutive time slots. In all algorithms, disks generated in time slot $t_{i+1}$ are compared
+with those generated in $t_{i}$ in order to check if an extension to a potential flock pattern is found. This operation
+has $O(nm)$ complexity, with $n$ being the number of disks and $m$ the number of potential flocks from previous time
+slots.  Additionally, for each comparison between a disk and a potential flock, an intersection operation between them
+needs to be made.
 
 Things get even worse in algorithms like BFE, where a new created disk $D$ is checked if it is either subset or a
 duplicate of a previously found disk (as already mentioned in \secref{subsec:disk_discovery}). The running time of this
 step can result in a $O(n^2)$ time complexity in the worst case (with $n$ being the number of disks generated by that
 time slot) requiring an intersection operation between each pair of disks that are being compared. We can reduce
 significantly that number of disks by only creating disks with points that can potentially form a flock, i.e. with
-points that appears in the dataset for $\delta$ consecutive time slots. Such problem is well depicted in
-\figref{fig:time_consumption}, where we can see that the disk and flock related operations can reach 99\% of the overall
+points that appears in the dataset for $\delta$ consecutive time slots. We measured the time spent in those disk related
+operations, using the datasets that we will use in our experiments, and showed the results in
+\figref{fig:time_consumption}. There we can see that the disk and flock related operations can reach 99\% of the overall
 processing time of the algorithm.
 
 Consider the example depicted in Fig. \ref{fig:disks}, where we are looking for flocks with $\mu=4$ and $\delta=4$. As
@@ -44,93 +107,42 @@ the overall processing time of the algorithm.
     \label{fig:disks}
 \end{figure}
 
-\section{Proposed Solution}
-\subsection{Generic System Architecture}
-We first tried to approach this problem in a more generic fashion, since all moving pattern mining problem has the same
-workflow:
+Our solution consists on using \textbf{Bit}maps for \textbf{D}isk \textbf{F}iltering (BitDF), based on the BFE
+algorithm. BitDF is basically a Data Listener and a Data Processor component, as those in the architecture presented in
+\secref{sec:architecture}. We call them GPS Stream Buffering (GSB) and Flock Processor (FP) the DL and DP respectively,
+and will have each of them keep track of the history of every $O_{id}$ in time.
 
-\begin{enumerate}
-    \item Connect to a spatio-temporal data source
-    \item Retrieve and aggregate spatio-temporal data
-    \item Process and mine that data in order to find the desired pattern or extract the desired information
-\end{enumerate}
-
-With that in mind, we designed a modular and easily extensible architecture that can fit for almost all spatio-temporal
-data mining problem, which is depicted by \figref{fig:architecture}. One can notice that we focus on 4 key building
-blocks, that can easily registered/unregistered according to the targeting problem: (1) Data source connectors; (2)
-Data decoders; (3) Data listeners (Data aggregators); (4) Data processor.
-
-In layer (1) we are concerned on how to retrieve the data, meaning how to communicate properly to the data source in
-order to be able to extract each record of spatio-temporal data that the data source can provide. Thus, each "Data
-Source Connector" (DSC) depicted in the \textit{Data Connectors' Module} in \figref{fig:architecture} represents a
-logical piece that knows how to connect to and extract data from a specific data source. We can have a DSC that knows
-how to connect to a MySQL database, or another one that can connect to a cloud based storage system like AWS DynamoDB
-and extract data from those places, or even a DSC that simply connects to an online data stream and listen for incoming
-data.
-
-After connecting and retrieving data from a data source, we need to clean, decode and translate the incoming raw data to
-a format that is simple and understandable to our system. To achieve that we will have a Data Decoder (DD) component,
-which comprehends the raw data format that comes from a DSC and translate it to a format that layer 3 can understand. We
-can see in \figref{fig:architecture} that a DD can register itself to a DSC in order to receive each data record that a
-DSC gathers from a data source. It is important to note that a DD can register to only one DSC, but a DSC can have
-multiple DD registered to it.
-
-In any problem of data mining, aggregation is one of the most important phases, since it will gather the data together
-and do the necessary arrangements in order to get it ready for processing. In our system that is represented by layer
-(4), which we call the Data Listeners' Module. We can have multiple types of Data Listeners (DL) in that module, and
-each them can perform different types of aggregation and pre-processing depending on the final goal. For example, we
-could have an aggregator that bucketize the GPS points by their timestamp and filter out outliers, before sending to
-processing, or another one that perform point interpolation in order to reduce trajectory uncertainty. Later on we will
-see a DL proposed as one of the contributions by this thesis, which will perform a \textit{bufferized} aggregation of
-points. Similarly to the DD module, we can a DL can only register to one DD, but a DD can have multiple DL registered to
-it.
-
-The last, but not least, remaining piece is the Data Processors' Module (layer (5)). Is there that we will have the
-intelligence to perform a data mining task that will generate insights for decision making, detect moving patterns and
-the forth. We can have a Data Processor (DP) that detects flock patterns, other that detects convergence patterns and
-other that provide traffic information in real time, to name a few. Following the pattern of the aforementioned modules,
-each DP can only register to a single DL, but a DL can have multiple DPs registered to it. This thesis will present a
-novel DP for detecting flock patterns, based on the BFE algorithm proposed by Vieira et al. \citep{vieira}.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{images/architecture.png}
-    \caption{BitDF system architecture overview}
-    \label{fig:architecture}
-\end{figure}
-
-\subsection{Aggregation and data processing efficiency}
-Our solution consist on using \textbf{Bit}maps for \textbf{D}isk \textbf{F}iltering (BitDF), based on the BFE algorithm.
-BitDF splits the algorithm in two logical modules, namely GPS Stream Buffering (GSB) and Flock Processor (FP), and have
-each of them keep track of the history of every $O_{id}$ in time.
-
-Algorithm~\ref{alg:gpsb} shows that GSB will listen to the on-line GPS point stream, in the procedure
-\textsc{ReceivePoints}, add each point to the \textit{pointBuffer} structure (which is a hash map of points by time
-slot) and map each $O_{id}$ presence in time by calling \textsc{AddPointPresence}. When GSB has buffered $\delta$ time
-slots (line 23) it will then send the points of $timeSlot - \delta$ to FP. After FP is done with its processing, GSB
-will discard the first position of the presence maps, by calling \textsc{ShiftPresenceMaps}, and also discard the points
-collected in $timeSlot - \delta$, which were already processed by FP. The flow continues indefinitely by buffering the
-points from the next time slot $t_i$ and send the points from $t_{i - \delta}$ to FP for processing. It is worth noting
+Algorithm~\ref{alg:gpsb} shows a big picture of how GSB will work once it receives the point from a DD. It will listen
+to the incoming GPS point stream in the procedure \textsc{ReceivePoints}, add each point to the \textit{pointBuffer}
+structure (which is a hash map of points by time slot) and map each $O_{id}$ presence in time by calling
+\textsc{AddPointPresence}. When GSB has buffered $\delta$ time slots (line 23) it will then send the points of $timeSlot
+- \delta$ to FP. After FP is done with its processing, GSB will discard the first position of the presence maps (whic
+corresponds to the points sent to FP), by calling \textsc{ShiftPresenceMaps}, and also discard the points collected in
+$timeSlot - \delta$, which were already processed by FP. The flow continues indefinitely by buffering the points from
+the next time slot $t_i$ and send the points from $t_{i - \delta}$ to FP for processing. It is worth noting
 \textit{timeSlotSize} (line 21) refers to the time slot $\sigma$ introduced in \secref{sec:tech_data}.
 
 Using Fig. \ref{fig:disks} as an example, we can see in Table \ref{tab:bitmaps} the state of the GSB bitmaps for each
 $O_{id}$ after receiving the points in $t_3$. With those bitmaps, we can easily look up for a specific point occurrence
-in time and check if that point in that specific time slot can potentially form a flock pattern or not. The bitmaps in
-GSB will always refer to the "future" of a specific $O_{id}$.
+in time and check if that point in that specific time slot can potentially form a flock pattern or not (if that $O_{id}$
+appears for $\delta$ consecutive time slots in the dataset). The bitmaps in GSB will always refer to the "future" of a
+specific $O_{id}$.
 
-In Algorithm~\ref{alg:fp_helpers} we start by first listing the procedures that will help the core procedure of FP (the
-\textsc{Process}, in Algorithm~\ref{alg:fp}). It is also in Algorithm~\ref{alg:fp_helpers} that we list the most
-important piece of this system that allows us to achieve such good optimizations, in both CPU cycles and memory
-consumption, which is the \textsc{IsPointEligible} procedure. Such procedure is responsible to put together what
+Our DP is explained in more detail by Algorithms~\ref{alg:fp_helpers} and~\ref{alg:fp} as follows. In
+Algorithm~\ref{alg:fp_helpers} we start by first listing the procedures that will help the core procedure of FP (the
+\textsc{Process} procedure, in Algorithm~\ref{alg:fp}). It is also in Algorithm~\ref{alg:fp_helpers} that we list the
+most important piece of this DP that allows us to achieve such good optimizations, in both CPU cycles and number of
+disks generated, which is the \textsc{IsPointEligible} procedure. Such procedure is responsible to put together what
 happened in the \textit{past} and what is going to happen in the \textit{future} for a given point $p$, in order to
 decide whether $p$ can be part of a potential flock pattern or not. It does that by concatenating, for a given $O_{id}$,
 the bitmap from FP with the bitmap from GSB (line 5 of Algorithm~\ref{alg:fp_helpers}) and searching for a sequence of
 $\delta$ bits set to 1 (lines 6 to 15 of Algorithm~\ref{alg:fp_helpers}). That search is performed by combining AND and
-XOR bitwise operations against the presence bitmap assembled in line 5 of Algorithm~\ref{alg:fp_helpers}. Whenever a
-potential flock is found in a time slot $t_i$ and $p$ is part of it, we need to update its bitmap so when we process
-points of time slot $t_{i+1}$ we have the correct bitmap representation of $p$ and that is where \textsc{MapPointFlock}
-(line 20) comes to play. \textsc{MapPointFlock} does that by prepending 1 to $p$'s bitmap in FP module by perforing an
-OR bitwise operation.
+XOR bitwise operations against the presence bitmap assembled in line 5 of Algorithm~\ref{alg:fp_helpers}. If a sequence
+of $\delta$ bits set to 1 is found, we can state with confidence that that point can potentially be part of a flock
+pattern. Later on, if a potential flock is found in a time slot $t_i$ and $p$ is part of it, we need to update the FP's
+bitmap of that point so when we process points of time slot $t_{i+1}$ we have the correct bitmap representation of $p$
+and that is where \textsc{MapPointFlock} (line 20) comes to play. \textsc{MapPointFlock} does that by prepending 1 to
+$p$'s bitmap in FP module by perforing an OR bitwise operation.
 
 \begin{table}
     \renewcommand{\arraystretch}{1.3}
@@ -293,7 +305,7 @@ flock contaning points $p_1$, $p_2$ and $p_4$ is found.
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{images/flow.png}
-    \caption{Find flock without creating unnecessary disks. Bitmap buffers from both GSB and FP, in an example where
+    \caption{Finding flocks without creating unnecessary disks. Bitmap buffers from both GSB and FP, in an example where
         $\delta = 3$}
     \label{fig:flow}
 \end{figure}
