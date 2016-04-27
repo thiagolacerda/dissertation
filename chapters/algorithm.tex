@@ -75,6 +75,23 @@ can see in \figref{fig:architecture} that a DD can register itself to a DSC in o
 DSC gathers from a data source. It is important to note that a DD can register to only one DSC, but a DSC can have
 multiple DD registered to it.
 
+In any problem of data mining, aggregation is one of the most important phases, since it will gather the data together
+and do the necessary arrangements in order to get it ready for processing. In our system that is represented by layer
+(4), which we call the Data Listeners' Module. We can have multiple types of Data Listeners (DL) in that module, and
+each them can perform different types of aggregation and pre-processing depending on the final goal. For example, we
+could have an aggregator that bucketize the GPS points by their timestamp and filter out outliers, before sending to
+processing, or another one that perform point interpolation in order to reduce trajectory uncertainty. Later on we will
+see a DL proposed as one of the contributions by this thesis, which will perform a \textit{bufferized} aggregation of
+points. Similarly to the DD module, we can a DL can only register to one DD, but a DD can have multiple DL registered to
+it.
+
+The last, but not least, remaining piece is the Data Processors' Module (layer (5)). Is there that we will have the
+intelligence to perform a data mining task that will generate insights for decision making, detect moving patterns and
+the forth. We can have a Data Processor (DP) that detects flock patterns, other that detects convergence patterns and
+other that provide traffic information in real time, to name a few. Following the pattern of the aforementioned modules,
+each DP can only register to a single DL, but a DL can have multiple DPs registered to it. This thesis will present a
+novel DP for detecting flock patterns, based on the BFE algorithm proposed by Vieira et al. \citep{vieira}.
+
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{images/architecture.png}
