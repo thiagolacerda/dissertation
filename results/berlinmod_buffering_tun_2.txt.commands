@@ -1,0 +1,1800 @@
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 4
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 579
+Total time: 462.315
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 4
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 595
+Total time: 582.194
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 4
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 625
+Total time: 755.747
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 4
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 634
+Total time: 973.486
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 4
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 691
+Total time: 1822.44
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 6
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 54
+Total time: 373.288
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 6
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 56
+Total time: 456.435
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 6
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 61
+Total time: 581.898
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 6
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 59
+Total time: 737.655
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 6
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 64
+Total time: 1382.91
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 8
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 5
+Total time: 327.527
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 8
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 5
+Total time: 391.172
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 8
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 7
+Total time: 486.874
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 8
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 6
+Total time: 611.21
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 8
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 6
+Total time: 1117.43
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 10
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 304.297
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 10
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 357.32
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 10
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 438.887
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 10
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 545.755
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 10
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 984.081
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 20
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 283.799
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 20
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 322.248
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 20
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 391.57
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 20
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 478.615
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 20
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 850.801
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 30
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 283.721
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 30
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 325.974
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 30
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 390.264
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 30
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 477.156
+******** Parameters ********
+* Number of trajectories per flock: 4
+* Length of flocks (time slot units): 30
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 845.834
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 4
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 10
+Total time: 415.026
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 4
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 10
+Total time: 515.656
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 4
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 12
+Total time: 662.523
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 4
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 13
+Total time: 843.397
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 4
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 17
+Total time: 1585.76
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 6
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 1
+Total time: 366.888
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 6
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 1
+Total time: 446.904
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 6
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 1
+Total time: 575.311
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 6
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 2
+Total time: 718.866
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 6
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 2
+Total time: 1325.33
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 8
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 335.033
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 8
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 397.737
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 8
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 497.548
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 8
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 621.258
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 8
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1127.13
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 10
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 313.547
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 10
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 365.538
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 10
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 450.238
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 10
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 556.376
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 10
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1005.64
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 20
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 291.399
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 20
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 333.475
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 20
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 401.975
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 20
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 490.738
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 20
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 871.679
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 30
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 290.986
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 30
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 334.265
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 30
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 404.128
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 30
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 493.492
+******** Parameters ********
+* Number of trajectories per flock: 6
+* Length of flocks (time slot units): 30
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 873.616
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 4
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 421.964
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 4
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 520.558
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 4
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 673.339
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 4
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 847.292
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 4
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1597.88
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 6
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 372.769
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 6
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 455.071
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 6
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 574.211
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 6
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 723.423
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 6
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1333.27
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 8
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 340.194
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 8
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 405.79
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 8
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 509.396
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 8
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 642.813
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 8
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1153.16
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 10
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 318.877
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 10
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 373.141
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 10
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 463.389
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 10
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 572.021
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 10
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1032.22
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 20
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 295.48
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 20
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 341.008
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 20
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 408.999
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 20
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 500.923
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 20
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 892.476
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 30
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 297.174
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 30
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 338.206
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 30
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 407.198
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 30
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 507.218
+******** Parameters ********
+* Number of trajectories per flock: 8
+* Length of flocks (time slot units): 30
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 886.722
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 4
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 386.372
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 4
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 484.14
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 4
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 624.823
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 4
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 798.147
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 4
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1501.87
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 6
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 347.862
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 6
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 431.098
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 6
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 542.333
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 6
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 685.695
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 6
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1272.17
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 8
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 317.595
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 8
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 381.581
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 8
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 478.549
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 8
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 598.261
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 8
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1093.97
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 10
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 298.85
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 10
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 353.819
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 10
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 434.961
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 10
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 537.985
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 10
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 985.71
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 20
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 278.354
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 20
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 322.905
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 20
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 397.509
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 20
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 478.083
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 20
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 851.451
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 30
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 279.899
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 30
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 323.432
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 30
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 390.852
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 30
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 478.696
+******** Parameters ********
+* Number of trajectories per flock: 10
+* Length of flocks (time slot units): 30
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 856.298
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 4
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 328.574
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 4
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 441.741
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 4
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 595.355
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 4
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 791.075
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 4
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1546.02
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 6
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 301.406
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 6
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 394.401
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 6
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 516.421
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 6
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 709.188
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 6
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1389.65
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 8
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 280.626
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 8
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 349.379
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 8
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 449.085
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 8
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 584.191
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 8
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 1103.29
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 10
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 260.232
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 10
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 323.025
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 10
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 409.469
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 10
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 523.934
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 10
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 989.276
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 20
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 247.406
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 20
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 298.11
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 20
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 366.518
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 20
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 461.689
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 20
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 851.718
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 30
+* Grid size (meters): 80
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 245.165
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 30
+* Grid size (meters): 100
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 295.537
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 30
+* Grid size (meters): 120
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 364.477
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 30
+* Grid size (meters): 140
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 462.84
+******** Parameters ********
+* Number of trajectories per flock: 20
+* Length of flocks (time slot units): 30
+* Grid size (meters): 200
+* Time slot size (seconds): 120
+* Used Coordinate System: WSG84 GPS System
+* Interpolate: false
+* Outlier speed cutoff: No
+* Online processing: true
+* Buffering: true
+Flocks found: 0
+Total time: 849.448
