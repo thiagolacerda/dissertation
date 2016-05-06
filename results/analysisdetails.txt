@@ -1,0 +1,8 @@
+BerlinMOD
+    timeslot size: 120
+
+TDrive
+    timeslot size: 295
+
+Brinkhoff
+    timeslot size: 10
