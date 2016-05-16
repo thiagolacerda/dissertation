@@ -320,3 +320,63 @@ which points can potentially form a flock and can be places in a disk.
 
 In time slot $t_4$, when FP receives the points from time slot $t_2$, a flock pattern will be found, since we could find
 3 disks containing the same set of $O_{id}$ and containing at least $\mu = 3$ unique $O_{id}$.
+
+\section{Taking advantage of Multi-core Architectures}
+Is well known that Multi-core Architectures are the current trend in technology. There is a myriad of multi-core
+processors in the market and many chipset companies taking advantages of multi processor architectures too (even small
+devices, like smartphones, are being shipped with multicore processors). Given that current scenario, there is sense in
+not taking advantage of that and parallelize the number of tasks that our algorithm is doing, in order to make it more
+responsive and fast so it can empower decision makers to act faster.
+
+One can see that the FP component, that we described in the previous section, is doing a lot of work in order to
+discover the flock patterns, whenever it receives the set of points from the listener:
+
+\begin{enumerate}
+    \item Build the point grid
+    \item For each grid cell:
+    \begin{enumerate}
+        \item Get the Extended Grid Cell (EGC) (e.g. for cell $c_{x,y}$ it will get cells
+            $c_{x - 1, y - 1}...c_{x + 1, y+ 1}$)
+        \item Process the EGC, trying to cluster the points in disks
+    \end{enumerate}
+    \item Get the resulting disks and assure that there are no duplicates nor subsets of other disks
+    \item Try to merge the disks with potential flocks from previous time slots
+    \item Report new found flocks
+\end{enumerate}
+
+It can be easily perceived that the EGC processing (steps (a) and (b)) can be done in parallel for the multiple cells
+that will be processed, since it is a very independent task. Another step that is very CPU heavy is the one described in
+step 3, but it is very difficult to parallelize, as we could see Algorithm~\ref{alg:fp}. We start with an empty set of
+disks in the beginning of the \textsc{Process} procedure and add disks to that set as we go finding them. However,
+before adding a disk $d$ we check, amongst the other disks that were previously there, if $d$ is neither a subset nor a
+superset of an existing disk. If $d$ is a subset, than it is not added, but if $d$ is superset of an existing disk
+$d_2$, $d_2$ is then removed from the set and $d$ is added instead (the superset check is done inside the procedure
+\textsc{AddDisk}). Thus, if we try to parallelize that disk check procedure we would need to have synchronizing
+primitives to protect the concurrent modification to the shared disk set, which would end being more slow and executing
+it sequentially. Even without being able to fully parallelize the disk check steps we can still take advantage of other
+techniques to gain some speed in processing, like using the divide and conquer approach. The idea would be to have
+multiple disks sets (one per independent processing unit) and have each independent thread add disks (and thus check for
+subsets/supersets) to its own set. When each thread has finished its processing we would have each thread's set being
+merged with the global disk set in FP.
+
+\subsection{Multi-thread Design}
+The multi processing idea described in this section can be modeled as Producer-Multiple Consumers problem, where we
+would have a single producer assembling the EGCs and multiple consumers taking a EGC from a shared queue and clustering
+the points in the disks that it might find. On a step further, each consumer thread $c_t$ can also spawn another thread
+$d_t$ that will process disks that $c_t$ has found and will check for subsets and supersets in its own private disk set.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{images/multithread.png}
+    \caption{Modeling the FP in a Producer-Multiple Consumers architecture}
+    \label{fig:multithread}
+\end{figure}
+
+\figref{fig:multithread} illustrates how the FP will be rearchitected in order to take advantage of parallel processing.
+We can see that the main thread will collect the EGC for each cell grid and enqueue it in a shared queue that will be
+acessed for $N$ consumers. Whenever a consumer ($c_t$ thread) dequeues an EGC, it will then try to find a pair of disks
+for each pair of points in the EGC, cluster the remaining points in those disks and then enqueue those disks in another
+shared queue. Such shared queue will only be shared with the disk thread $d_t$ belonging to the $c_t$ thread that
+created it. Each $d_t$ will be responsible to check for subsets and supersets in its own set of disks, saving a lot
+of processing time when those disks will be merged (and also checked for subsets and supersets) with the global disk set
+in the \textsc{Process} procedure.
