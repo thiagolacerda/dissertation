@@ -4,3 +4,11 @@ out/
 .project
 .texlipse
 *.bbl
+*.log
+*.aux
+*.blg
+*.lof
+*.lot
+*.out
+*.pdf
+*.toc
