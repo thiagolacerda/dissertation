@@ -199,7 +199,7 @@ generateAllTdrive <- function() {
 generateAllThreads <- function() {
     threadEval("results/tdrive_thread_eval.txt", c("l", "g"), c("4", "100"), "TDrive")
     threadEval("results/berlinmod_thread_eval.txt", c("l", "g"), c("8", "200"), "BerlinMOD")
-    threadEval("results/trucks_thread_eval.txt", c("l", "g"), c("4", "1.5"), "Trucks")
+    threadEval("results/trucks_thread_eval.txt", c("l", "g"), c("4", "0.8"), "Trucks")
     threadEval("results/brinkhoff_thread_eval.txt", c("l", "g"), c("4", "200"), "Brinkhoff")
 }
 
