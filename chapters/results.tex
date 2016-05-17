@@ -219,3 +219,32 @@ droping from 13,141 seconds to 125 seconds. We can see in \figref{fig:brinkhoff_
 $\mu$, BitDF was able to show huge improvement, with results ranging from 98\% to 99\% of CPU time reduction.
 Additionally, we can see in \figref{fig:brinkhoff_disks} that we were able to reduce the number of disks by 95\%, what
 is a huge improvement and is reflecting directly in the running time improvements that we could see with this dataset.
+
+\section{Multi-thread evaluation}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/Trucks_thread.eps}
+    \caption{Execution time reduction by number of threads for the Trucks dataset}
+    \label{fig:trucks_thredas}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/TDrive_thread.eps}
+    \caption{Execution time reduction by number of threads for the TDrive dataset}
+    \label{fig:tdrive_thredas}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/BerlinMOD_thread.eps}
+    \caption{Execution time reduction by number of threads for the BerlinMOD dataset}
+    \label{fig:berlinmod_thredas}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/Brinkhoff_thread.eps}
+    \caption{Execution time reduction by number of threads for the Brinkhof dataset}
+    \label{fig:brinkhoff_thredas}
+\end{figure}
