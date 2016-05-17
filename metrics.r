@@ -8,6 +8,24 @@ getGreekLetter <- function(p) {
     return("\U03B5")
 }
 
+threadEval <- function(file, params, values, dataSetName) {
+    table = read.table(file, header=TRUE, sep=";", col.names=c("t", "n", "l", "g", "t", "p", "f"))
+
+    filterExpr = paste(params, values, sep="==", collapse=" & ")
+
+    subSet = subset(table, eval(parse(text=filterExpr)))
+
+    fName = sprintf("%s_thread.eps", dataSetName)
+    title = sprintf("%s dataset", dataSetName)
+    cairo_ps(fName, family="Helvetica", width=10, height=10)
+    # clip the margins (bottom, left, top, right) number of lines
+    par(mar=c(4, 4.5, 1.3, 0))
+    mids = barplot(subSet$p, cex.axis=1.48, xlab="Threads", ylab="% of total time", cex.lab=1.5, border="NA",
+        main=title, col=c("tomato", rep("skyblue3", length(subSet$p) - 1)))
+    axis(side=1, at=mids, labels=subSet$t, cex.axis=1.48)
+    dev.off()
+}
+
 cpuComparison <- function(bfeFile, bbfFile, variableParam, params, values, dataSetName, legendPosition = "topleft") {
     # read files into tables
     bfeTable = read.table(bfeFile, header=TRUE, sep=";", col.names=c("n", "l", "g", "t", "f"))
@@ -176,6 +194,13 @@ generateAllTdrive <- function() {
 
     cpuComparison("../../analysis/new/tdrive_online_tun_2.txt",
         "../../analysis/new/tdrive_buffering_tun_2.txt", "g", c("n", "l"), c(4, 8), "TDrive")
+}
+
+generateAllThreads <- function() {
+    threadEval("results/tdrive_thread_eval.txt", c("l", "g"), c("4", "100"), "TDrive")
+    threadEval("results/berlinmod_thread_eval.txt", c("l", "g"), c("8", "200"), "BerlinMOD")
+    threadEval("results/trucks_thread_eval.txt", c("l", "g"), c("4", "1.5"), "Trucks")
+    threadEval("results/brinkhoff_thread_eval.txt", c("l", "g"), c("4", "200"), "Brinkhoff")
 }
 
 genAll <- function() {
