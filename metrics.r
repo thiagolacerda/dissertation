@@ -141,59 +141,59 @@ timeConsumption <- function(filePath) {
 }
 
 generateAllTrucks <- function() {
-    resourceComparison("../../analysis/new/performance_log_trucks_o_n4l20g1_5.txt",
-        "../../analysis/new/performance_log_trucks_b_n4l20g1_5.txt", "d", "Trucks")
+    resourceComparison("results/performance_log_trucks_o_n4l20g1_5.txt",
+        "results/performance_log_trucks_b_n4l20g1_5.txt", "d", "Trucks")
 
-    cpuComparison("../../analysis/new/truckspaper_online_tun_2.txt",
-        "../../analysis/new/truckspaper_buffering_tun_2.txt", "n", c("l", "g"), c(20, 1.5), "Trucks", "topright")
+    cpuComparison("results/truckspaper_online_tun_2.txt", "results/truckspaper_buffering_tun_2.txt", "n", c("l", "g"),
+        c(20, 1.5), "Trucks", "topright")
 
-    cpuComparison("../../analysis/new/truckspaper_online_tun_2.txt",
-        "../../analysis/new/truckspaper_buffering_tun_2.txt", "l", c("n", "g"), c(4, 1.5), "Trucks")
+    cpuComparison("results/truckspaper_online_tun_2.txt", "results/truckspaper_buffering_tun_2.txt", "l", c("n", "g"),
+        c(4, 1.5), "Trucks")
 
-    cpuComparison("../../analysis/new/truckspaper_online_tun_2.txt",
-        "../../analysis/new/truckspaper_buffering_tun_2.txt", "g", c("n", "l"), c(4, 20), "Trucks")
+    cpuComparison("results/truckspaper_online_tun_2.txt", "results/truckspaper_buffering_tun_2.txt", "g", c("n", "l"),
+        c(4, 20), "Trucks")
 }
 
 generateAllBerlinMOD <- function() {
-    resourceComparison("../../analysis/new/performance_log_berlinmod_o_n4l8g200t120_tun_2.txt",
-        "../../analysis/new/performance_log_berlinmod_b_n4l8g200t120_tun_2.txt", "d", "BerlinMOD", extraTop = 1.2)
+    resourceComparison("results/performance_log_berlinmod_o_n4l8g200t120_tun_2.txt",
+        "results/performance_log_berlinmod_b_n4l8g200t120_tun_2.txt", "d", "BerlinMOD", extraTop = 1.2)
 
-    cpuComparison("../../analysis/new/berlinmod_online_tun_2.txt",
-        "../../analysis/new/berlinmod_buffering_tun_2.txt", "n", c("l", "g"), c(8, 100), "BerlinMOD", "topright")
+    cpuComparison("results/berlinmod_online_tun_2.txt", "results/berlinmod_buffering_tun_2.txt", "n", c("l", "g"),
+        c(8, 100), "BerlinMOD", "topright")
 
-    cpuComparison("../../analysis/new/berlinmod_online_tun_2.txt",
-        "../../analysis/new/berlinmod_buffering_tun_2.txt", "l", c("n", "g"), c(4, 100), "BerlinMOD", "center")
+    cpuComparison("results/berlinmod_online_tun_2.txt", "results/berlinmod_buffering_tun_2.txt", "l", c("n", "g"),
+        c(4, 100), "BerlinMOD", "center")
 
-    cpuComparison("../../analysis/new/berlinmod_online_tun_2.txt",
-        "../../analysis/new/berlinmod_buffering_tun_2.txt", "g", c("n", "l"), c(4, 8), "BerlinMOD")
+    cpuComparison("results/berlinmod_online_tun_2.txt", "results/berlinmod_buffering_tun_2.txt", "g", c("n", "l"),
+        c(4, 8), "BerlinMOD")
 }
 
 generateAllBrinkhoff <- function() {
-    resourceComparison("../../analysis/new/performance_log_brinkhoff_o_n4l8g200t10.txt",
-        "../../analysis/new/performance_log_brinkhoff_b_n4l8g200t10.txt", "d", "Brinkhoff")
+    resourceComparison("results/performance_log_brinkhoff_o_n4l8g200t10.txt",
+        "results/performance_log_brinkhoff_b_n4l8g200t10.txt", "d", "Brinkhoff")
 
-    cpuComparison("../../analysis/new/brinkhoff_online_tun_2.txt",
-        "../../analysis/new/brinkhoff_buffering_tun_2.txt", "n", c("l", "g"), c(8, 200), "Brinkhoff", "topright")
+    cpuComparison("results/brinkhoff_online_tun_2.txt", "results/brinkhoff_buffering_tun_2.txt", "n", c("l", "g"),
+        c(8, 200), "Brinkhoff", "topright")
 
-    cpuComparison("../../analysis/new/brinkhoff_online_tun_2.txt",
-        "../../analysis/new/brinkhoff_buffering_tun_2.txt", "l", c("n", "g"), c(4, 200), "Brinkhoff", "center")
+    cpuComparison("results/brinkhoff_online_tun_2.txt", "results/brinkhoff_buffering_tun_2.txt", "l", c("n", "g"),
+        c(4, 200), "Brinkhoff", "center")
 
-    cpuComparison("../../analysis/new/brinkhoff_online_tun_2.txt",
-        "../../analysis/new/brinkhoff_buffering_tun_2.txt", "g", c("n", "l"), c(4, 8), "Brinkhoff")
+    cpuComparison("results/brinkhoff_online_tun_2.txt", "results/brinkhoff_buffering_tun_2.txt", "g", c("n", "l"),
+        c(4, 8), "Brinkhoff")
 }
 
 generateAllTdrive <- function() {
-    resourceComparison("../../analysis/new/performance_log_tdrive_o_n4l20g100t295_tun_2.txt",
-        "../../analysis/new/performance_log_tdrive_b_n4l20g100t295_tun_2.txt", "d", "TDrive")
+    resourceComparison("results/performance_log_tdrive_o_n4l20g100t295_tun_2.txt",
+        "results/performance_log_tdrive_b_n4l20g100t295_tun_2.txt", "d", "TDrive")
 
-    cpuComparison("../../analysis/new/tdrive_online_tun_2.txt",
-        "../../analysis/new/tdrive_buffering_tun_2.txt", "n", c("l", "g"), c(8, 100), "TDrive", "topright")
+    cpuComparison("results/tdrive_online_tun_2.txt", "results/tdrive_buffering_tun_2.txt", "n", c("l", "g"), c(8, 100),
+        "TDrive", "topright")
 
-    cpuComparison("../../analysis/new/tdrive_online_tun_2.txt",
-        "../../analysis/new/tdrive_buffering_tun_2.txt", "l", c("n", "g"), c(4, 100), "TDrive", "center")
+    cpuComparison("results/tdrive_online_tun_2.txt", "results/tdrive_buffering_tun_2.txt", "l", c("n", "g"), c(4, 100),
+        "TDrive", "center")
 
-    cpuComparison("../../analysis/new/tdrive_online_tun_2.txt",
-        "../../analysis/new/tdrive_buffering_tun_2.txt", "g", c("n", "l"), c(4, 8), "TDrive")
+    cpuComparison("results/tdrive_online_tun_2.txt", "results/tdrive_buffering_tun_2.txt", "g", c("n", "l"), c(4, 8),
+        "TDrive")
 }
 
 generateAllThreads <- function() {
