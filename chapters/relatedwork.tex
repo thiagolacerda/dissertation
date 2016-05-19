@@ -141,9 +141,41 @@ are mapped into coordinates \citep{mobile1}, or a variety of mobile phone sensor
 Wi-Fi) are used to detect flock patterns \citep{mobile2}. However, those works only address flock detection in indoor
 environments, not using GPS coordinates, which are not in the scope of the problem addressed by this thesis.
 
-The work presented in this paper thesis fills the gaps that were not fulfilled specifically by the algorithms mentioned
-in \secref{sec:rel_flocks}: efficient flock detection with no change in the final number of found flocks. We will also
-show that our implementation is very efficient to analyze dataset in an on-line fashion and provide results in
-real-time. Our proposed algorithm achieved substantial improvements in execution time and also in the number of disks
-that are generated in each time step. We provide evidences by performing comparison with the state-of-the-art algorithm
-using both real and synthetic datasets.
+\section{Academic Contribution}
+It was notorious, from the related work presented in \secref{sec:rel_general} and \secref{sec:rel_flocks}, that there is
+a lot to cover in order to provide efficient flock pattern detection as well as an elegant and comprehensive system
+architecture to the pattern detection problem (which was not seen in any of the presented works). All of that is a
+subject to care about due to the extensive number of scenarios that data pattern mining, as well as flock patterns, can
+help and be applied to. We can have flock pattern detection helping, to name a few \citep{applications}:
+
+\begin{enumerate}
+    \item \textbf{Traffic Management}: Unusual grouping of vehicles, or abnormal traffic volume in certain regions can
+        be detected with help of flock pattern detection algorithms. That information can help the accountable entities
+        to better plan cities or traffic spaces.
+    \item \textbf{Surveillance and Security}: Suspicious movements of groups of people or vehicles can indicate a
+        security threat and automatic pattern detection systems can aid to detect abnormal behavior in a group of moving
+        objects.
+    \item \textbf{Human Movement}: Governmental organizations can study how people are moving from one part of the
+        city/country/state to another with the help of flock pattern detection, for example. They also can gain insights
+        about the habits of the population and provide resources to enhance life quality of those involved.
+\end{enumerate}
+
+In \secref{sec:architecture} we will propose an elegant and extensible System Architecture that will be able address
+almost any pattern detection problem. Such architecture will be divided in logic modules and components, each one with a
+very specific and self-contained goal, making then reusable and extensible to address other data analysis problems. We
+will also show that by modifying a single component in that architecture will enable the usage of a different software
+paradigm, thus proving its modularity, extensibility and ease to use.
+
+We could notice that the presented algorithms suffer from CPU cycles waste by processing data that will not generate any
+pattern, like the flock disks that contain points that are not present in subsequent time steps. Avoiding such
+unnecessary processing can boost the running time of a flock pattern detection algorithm and then provide information in
+a real time fashion for decision takers. With that in mind, we will present an efficient algorithm, based on bitmaps,
+that will only be concerned with data that can really generate flock patterns, saving a considerable amount of time and
+being able to provide information way faster than other algorithms about the datasets being analyzed. We will prove that
+by showing benchmarks comparing the running time of our solution against the state of the art algorithm and also show
+how our implementation generates way less unimportant data that dramatically affect the running time of the state of the
+art algorithm. Last, but not least, we will provide a multi-core aware implementation of our algorithm, taking advantage
+with the system architecture mentioned in the previous paragraph, which will achieve even more savings in running time,
+without affecting the number of flocks that are found. Aiming at showing that our solution is ready for multiple types
+of data, we will perform experiments with 4 different datasets, being them real and synthetic generated and with a large
+amount of data entries, with some of them having more then 50 million entries.
