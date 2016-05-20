@@ -315,3 +315,78 @@ In this section we could show that a somewhat simple remodeling in a system's ar
 running time improvements, by taking advantage of the multi-core paradigm. Our results show that we could reduce the
 running time by as much as 96\%, when choosing the correct number of worker threads and the correct separation of work
 that can be parallelized.
+
+\begin{figure*}[h!]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{images/Trucks_complete_varying_l.eps}
+        \caption{$\mu = 4$, $\epsilon = 1.5$ and $\delta$ varying}
+        \label{fig:trucks_complete_vary_l}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{images/Trucks_complete_varying_g.eps}
+        \caption{$\mu = 4$, $\delta = 20$ and $\epsilon$ varying}
+        \label{fig:trucks_complete_vary_g}
+    \end{subfigure}
+    \caption{Results varying $\delta$ and $\epsilon$ for Trucks dataset}
+    \label{fig:trucks_complete_results}
+\end{figure*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.48\textwidth]{images/Trucks_complete_varying_n.eps}
+    \caption{$\delta = 20$, $\epsilon = 1.5$ and $\mu$ varying}
+    \label{fig:trucks_complete_vary_n}
+    \caption{Results varying $\mu$ and number of disks generated over time for Trucks dataset}
+    \label{fig:trucks_complete_results2}
+\end{figure}
+
+\begin{figure*}[h!]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_complete_varying_l.eps}
+        \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
+        \label{fig:berlinmod_complete_vary_l}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_complete_varying_g.eps}
+        \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \label{fig:berlinmod_complete_vary_g}
+    \end{subfigure}
+    \caption{Results varying $\delta$ and $\epsilon$ for BerlinMOD dataset}
+    \label{fig:berlinmod_complete_results}
+\end{figure*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.48\textwidth]{images/BerlinMOD_complete_varying_n.eps}
+    \caption{$\delta = 8$, $\epsilon = 100$ and $\mu$ varying}
+    \label{fig:berlinmod_complete_vary_n}
+    \caption{Results varying $\mu$ and number of disks generated over time for BerlinMOD dataset}
+    \label{fig:berlinmod_complete_results2}
+\end{figure}
+
+\begin{figure*}[h!]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{images/TDrive_complete_varying_l.eps}
+        \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
+        \label{fig:tdrive_complete_vary_l}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \includegraphics[width=\textwidth]{images/TDrive_complete_varying_g.eps}
+        \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \label{fig:tdrive_complete_vary_g}
+    \end{subfigure}
+    \caption{Results varying $\delta$ and $\epsilon$ for TDrive dataset}
+    \label{fig:tdrive_complete_results}
+\end{figure*}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.48\textwidth]{images/TDrive_complete_varying_n.eps}
+    \caption{$\delta = 8$, $\epsilon = 100$ and $\mu$ varying}
+    \label{fig:tdrive_complete_vary_n}
+    \caption{Results varying $\mu$ and number of disks generated over time for TDrive dataset}
+    \label{fig:tdrive_complete_results2}
+\end{figure}
