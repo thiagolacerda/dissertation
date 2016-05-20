@@ -8,12 +8,16 @@ getGreekLetter <- function(p) {
     return("\U03B5")
 }
 
+filterTable <- function(params, values, t) {
+    filterExpr = paste(params, values, sep="==", collapse=" & ")
+    subSet = subset(t, eval(parse(text=filterExpr)))
+    return(subSet)
+}
+
 threadEval <- function(file, params, values, dataSetName) {
     table = read.table(file, header=TRUE, sep=";", col.names=c("t", "n", "l", "g", "t", "p", "f"))
 
-    filterExpr = paste(params, values, sep="==", collapse=" & ")
-
-    subSet = subset(table, eval(parse(text=filterExpr)))
+    subSet = filterTable(params, values, table)
 
     fName = sprintf("%s_thread.eps", dataSetName)
     title = sprintf("%s dataset", dataSetName)
@@ -26,23 +30,19 @@ threadEval <- function(file, params, values, dataSetName) {
     dev.off()
 }
 
-cpuComparison <- function(bfeFile, bbfFile, variableParam, params, values, dataSetName, legendPosition = "topleft") {
-    # read files into tables
-    bfeTable = read.table(bfeFile, header=TRUE, sep=";", col.names=c("n", "l", "g", "t", "f"))
-    bbfTable = read.table(bbfFile, header=TRUE, sep=";", col.names=c("n", "l", "g", "t", "f"))
+plotCPUComparison <- function(tables, vParam, params, values, legendNames, legendColors, legendMarkers, dataSetName,
+    fileName, legendPosition = "topleft")
+{
+    valuesForRange = vector()
+    for (t in tables)
+        valuesForRange = append(valuesForRange, t$t)
+
+    # set the chart ranges, so we can show all points
+    xrange = range(tables[[1]][, vParam])
+    yrange = range(valuesForRange)
 
     # get unicode representation of greek letters for each parameter
     greeks = as.vector(sapply(params, getGreekLetter))
-
-    # create sting expression for filtering the table
-    subSetExpr = paste(params, values, sep="==", collapse=" & ")
-    # extract the values that we want by using the expression above
-    bfeSubSet = subset(bfeTable, eval(parse(text=subSetExpr)))
-    bbfSubSet = subset(bbfTable, eval(parse(text=subSetExpr)))
-
-    # set the chart ranges, so we can show all points
-    xrange = range(bfeSubSet[, variableParam])
-    yrange = range(bfeSubSet$t, bbfSubSet$t)
 
     # temporarily create string containing part of the chart title
     paramsStr = paste(greeks[1:length(greeks) - 1], values[1:length(values) - 1], sep="=", collapse=", ")
@@ -50,29 +50,61 @@ cpuComparison <- function(bfeFile, bbfFile, variableParam, params, values, dataS
     title = sprintf("%s dataset. With %s and %s", dataSetName, paramsStr, paste(greeks[length(greeks)],
         values[length(values)], sep="="))
 
-    paramsString = paste(params, values, sep="_", collapse="_")
-    paramsString = gsub(".", "_", paramsString, fixed=TRUE)
-    fName = sprintf("%s_%s_varying_%s.eps", dataSetName, paramsString , variableParam)
-    cairo_ps(fName, family="Helvetica")
+    cairo_ps(fileName, family="Helvetica")
     # clip the margins (bottom, left, top, right) number of lines
     par(mar=c(4, 4.5, 0, 2) + 0.1)
     # set the plot, type="n" means that we don't want anything plotted. xaxt="n" means that we don't want anything in
     # the x axis
-    plot(xrange, yrange, type="n", xlab=parse(text=getGreekLetter(variableParam)), ylab="Time (secs)", xaxt="n",
-         cex.axis=2, cex.lab=2)
+    plot(xrange, yrange, type="n", xlab=parse(text=getGreekLetter(vParam)), ylab="Time (secs)", xaxt="n",
+        cex.axis=2, cex.lab=2)
 
     # make sure we draw all values for the x axis (values that are in the fixed param)
-    axis(1, at=bfeSubSet[, variableParam], cex.axis=2)
+    axis(1, at=tables[[1]][, vParam], cex.axis=2)
 
     # plot the lines! pch=0 means circles and 2 means triangles
-    lines(bfeSubSet[, variableParam], bfeSubSet$t, type="o", col="blue", pch=15, cex=2)
-    lines(bbfSubSet[, variableParam], bbfSubSet$t, type="o", col="red", pch=17, cex=2)
+    i = 1
+    for (t in tables) {
+        lines(t[, vParam], t$t, type="o", col=legendColors[i], pch=legendMarkers[i], cex=2)
+        i = i + 1
+    }
 
-    legend(legendPosition, inset=.02, c("BFE", "BitDF"), col=c("blue", "red"), pch=c(15, 17), cex=2, bty="n")
+    legend(legendPosition, inset=.02, legendNames, col=legendColors, pch=legendMarkers, cex=2, bty="n")
 
-    #pngName = sprintf("%s_%s_varying_%s.png", dataSetName, paste(params, values, sep="_", collapse="_"), variableParam)
-    #dev.copy(png, filename=pngName);
     dev.off()
+}
+
+completeEval <- function(file, variableParam, params, values, dataSetName, legendPosition = "topleft") {
+    table = read.table(file, header=TRUE, sep=";", col.names=c("th", "ty", "n", "l", "g", "t", "f"))
+
+    filtered = filterTable(params, values, table)
+    bfeTable = filterTable(c("ty"), c("\"o\""), filtered)
+    bitdfTable = filterTable(c("ty"), c("\"b\""), filtered)
+
+    threadsTable = filterTable(append(params, "ty"), append(values, "\"t\""), filtered)
+    t5Table = filterTable(append(params, "th"), append(values, 5), threadsTable)
+    t7Table = filterTable(append(params, "th"), append(values, 7), threadsTable)
+
+    fName = sprintf("%s_complete_varying_%s.eps", dataSetName, variableParam)
+
+    plotCPUComparison(c(list(bfeTable), list(bitdfTable), list(t5Table), list(t7Table)), variableParam, params,
+        values, c("BFE", "BitDF", "BitDF 5 Threads", "BitDF 7 Threads"), c("blue", "red", "green", "orange"), c(15, 17,
+        16, 18), dataSetName, fName, legendPosition)
+}
+
+cpuComparison <- function(bfeFile, bbfFile, variableParam, params, values, dataSetName, legendPosition = "topleft") {
+    # read files into tables
+    bfeTable = read.table(bfeFile, header=TRUE, sep=";", col.names=c("n", "l", "g", "t", "f"))
+    bbfTable = read.table(bbfFile, header=TRUE, sep=";", col.names=c("n", "l", "g", "t", "f"))
+
+    # extract the values that we want by using the expression above
+    bfeSubSet = filterTable(params, values, bfeTable)
+    bbfSubSet = filterTable(params, values, bbfTable)
+
+    paramsString = paste(params, values, sep="_", collapse="_")
+    paramsString = gsub(".", "_", paramsString, fixed=TRUE)
+    fName = sprintf("%s_%s_varying_%s.eps", dataSetName, paramsString , variableParam)
+    plotCPUComparison(c(list(bfeSubSet), list(bbfSubSet)), variableParam, params, values, c("BFE", "BitDF"), c("blue",
+        "red"), c(15, 17), dataSetName, fName, legendPosition)
 }
 
 columnLetterToYAxisName <- function(column) {
@@ -201,6 +233,20 @@ generateAllThreads <- function() {
     threadEval("results/berlinmod_thread_eval.txt", c("l", "g"), c("8", "200"), "BerlinMOD")
     threadEval("results/trucks_thread_eval.txt", c("l", "g"), c("4", "0.8"), "Trucks")
     threadEval("results/brinkhoff_thread_eval.txt", c("l", "g"), c("4", "200"), "Brinkhoff")
+}
+
+generateAllComplete <- function() {
+    completeEval("results/trucks_complete_eval.txt", "n", c("l", "g"), c(20, 1.5), "Trucks", "topright")
+    completeEval("results/trucks_complete_eval.txt", "l", c("n", "g"), c(4, 1.5), "Trucks", "bottomright")
+    completeEval("results/trucks_complete_eval.txt", "g", c("n", "l"), c(4, 20), "Trucks")
+
+    completeEval("results/berlinmod_complete_eval.txt", "n", c("l", "g"), c(8, 100), "BerlinMOD", "topright")
+    completeEval("results/berlinmod_complete_eval.txt", "l", c("n", "g"), c(4, 100), "BerlinMOD", "right")
+    completeEval("results/berlinmod_complete_eval.txt", "g", c("n", "l"), c(4, 8), "BerlinMOD")
+
+    completeEval("results/tdrive_complete_eval.txt", "n", c("l", "g"), c(8, 100), "TDrive", "topright")
+    completeEval("results/tdrive_complete_eval.txt", "l", c("n", "g"), c(4, 100), "TDrive", "right")
+    completeEval("results/tdrive_complete_eval.txt", "g", c("n", "l"), c(4, 8), "TDrive")
 }
 
 genAll <- function() {
