@@ -1,5 +1,15 @@
 \chapter{Experimental Results}
 \label{chp:results}
+As explained in \chapref{chp:techbackground}, the flock pattern detection relies mainly in 3 parameters, namely
+\textit{number of trajectories} ({$\mu$), \textit{flock extension (or length)} ($\delta$) and \textit{disk radius}
+($\epsilon/2$). Those parameters impact significantly in the number of patterns found as well as the time taken to find
+those patterns, depending on the dataset being analyzed. Before evaluating our proposed algorithm in the target
+datasets, we first gathered some metadata information about them, in order to choose wisely the value for the
+aforementioned parameters, so we can indeed find a good number of flocks. We collected that metadata by running the
+algorithm multiple times with values for the parameters based on the dataset description and them increased or
+decreased the values according the number of flocks that we were able to find. After finding at least 100 flock
+patterns, we then setle on a range of values for those parameters and used them to evaluate each dataset.
+
 We implemented the system architecture proposed in \secref{sec:architecture} in C++, using g++ 4.8.4 and the C++11
 \citep{cpp11spec} features. With the system architecture in place, we then implemented the GSB data listener and the FP
 data processor.
