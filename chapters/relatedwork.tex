@@ -25,12 +25,15 @@ of a MO to a line, where the distance of each trajectory point of that MO to the
 pre-defined threshold. After that, bounding boxes were created based on those approximated lines and then lines that
 belong to the same box are declared as similar sequential patterns.
 
-Algorithms aiming at finding moving clusters, with MOs coming in and out of the cluster, is presented by Kalnis et al.
-\citep{movingclusters}. In that research paper, the authors consider a cluster as a moving region, despite the identity
-of the objects that are part of it. They presented three different approaches to find moving clusters (with one of them
-being an approximation method), being supported by a density function. They claim that their proposal are applicable for
-large-temporal datasets, but that large dataset that they analyzed had only 50K entries. Yet on clusters, Jensen et
-al. \citep{clusters3} added velocity as a parameter in order to help finding moving clusters (using dissimilarity
+Algorithms aiming at finding moving clusters, with MOs coming in and out of the cluster, are presented by Kalnis et al.
+\citep{movingclusters}. In that research paper, the authors consider a moving cluster as a moving region despite the
+identity of the objects that are part of it, but for each time stamp the intersection of points between subsequent
+clusters needs to be above a certain threshold $\theta$. In \figref{fig:clusters} one can see a moving cluster composed
+by clusters $S_0$, $S_1$ and $S_2$, having $\theta=0.5$, meaning that $\dfrac{|c_i \cap c_{i+1}|}{|c_i \cup c_{i+1}|}
+\geq 0.5$. They presented three different approaches to find moving clusters (with one of them being an approximation
+method), being supported by a density function. They claim that their proposal are applicable for large-temporal
+datasets, but that large dataset that they analyzed had only 50K entries. Yet on clusters, Jensen et al.
+\citep{clusters3} added velocity as a parameter in order to help finding moving clusters (using dissimilarity
 functions), achieving some improvements in processing time. An approach using a trajectory similarity measure based on
 the Hausdorff distance is proposed by Atev et al. \citep{clusters2}, where the sequential order of trajectories is
 preserved over time. The authors also present a method aiming at clustering trajectories taking advantage of some
@@ -39,13 +42,29 @@ Influence-based Moving Clusters (IBMC). The author states that an IBMC consists 
 MO, in each cluster, influences at least another MO in the next immediate cluster. It is shown that space for
 discovering IBMC is very extensive and an algorithm for finding the maximal answer is proposed.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/clusters.png}
+    \caption{A moving cluster composed by clusters $S_0$, $S_1$ and $S_2$ and $\theta=0.5$ \citep{movingclusters}}
+    \label{fig:clusters}
+\end{figure}
+
 Jeung et al. proposes the convoy pattern \citep{convoy2}\citep{convoy}. They first point out the key difference between
 flock and convoy patterns: Flock pattern relies on all trajectories being present in a disk of pre-defined radius, while
-convoy does not rely on any kind of shape to cluster its trajectories. The authors propose three density based
+convoy does not rely on any kind of shape to cluster its trajectories. That difference is depicted in
+\figref{fig:convoy_pattern}, where the second disk is of different size of the other disks and not all trajectories are
+present in the consecutive clusters (another difference from the flock pattern). The authors propose three density based
 algorithms to find convoy patterns using line simplification techniques. Their work is inspired by the algorithms
 already proposed by \citep{movingclusters} and \textit{DBSCAN} \citep{dbscan}. More work on convoy patterns can be found
 by Aung et al. \citep{convoy3}, where they divide convoy patterns in two different groups, namely \textit{Dynamic
 Convoys} (DC) and \textit{Evolving Convoys} (EC). To this end, they present three algorithms to identify EC patterns.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/convoy.png}
+    \caption{A Convoy pattern \citep{convoy2}}
+    \label{fig:convoy_pattern}
+\end{figure}
 
 Gathering is another moving pattern that was analysed by the academy. Zheng et al. \citep{gathering} state that a
 gathering pattern consists in various group incidents such as celebrations, parades, protests, traffic jams, etc. They
