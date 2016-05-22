@@ -247,6 +247,10 @@ generateAllComplete <- function() {
     completeEval("results/tdrive_complete_eval.txt", "n", c("l", "g"), c(8, 100), "TDrive", "topright")
     completeEval("results/tdrive_complete_eval.txt", "l", c("n", "g"), c(4, 100), "TDrive", "right")
     completeEval("results/tdrive_complete_eval.txt", "g", c("n", "l"), c(4, 8), "TDrive")
+
+    completeEval("results/brinkhoff_complete_eval.txt", "n", c("l", "g"), c(8, 200), "Brinkhoff", "topright")
+    completeEval("results/brinkhoff_complete_eval.txt", "l", c("n", "g"), c(4, 200), "Brinkhoff", "right")
+    completeEval("results/brinkhoff_complete_eval.txt", "g", c("n", "l"), c(4, 8), "Brinkhoff")
 }
 
 genAll <- function() {
