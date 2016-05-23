@@ -73,6 +73,33 @@ plotCPUComparison <- function(tables, vParam, params, values, legendNames, legen
     dev.off()
 }
 
+dataThreads <- function(overallFile, threadFile, dataSetName) {
+    overrallTable = read.table(overallFile, header=TRUE, sep=";", col.names=c("t", "ad", "am", "f", "fa", "fr", "gc",
+        "dc", "te", "tp", "gt", "dt", "pt", "dp", "tt"))
+    threadsTable = read.table(threadFile, header=TRUE, sep=";", col.names=c("t", "ti", "d", "g", "p", "gc", "dc", "df",
+        "gt", "dt"))
+    ts = length(overrallTable$t)
+
+    disksSum = aggregate(df ~ t, threadsTable, function(x) max(cumsum(x)))
+
+    yRange = range(disksSum$df, overrallTable$am)
+    xRange = range(overrallTable$t)
+    print(xRange)
+    print(overrallTable$t)
+
+    colors = c("coral3", "cadetblue4")
+    markers = c(15, 17)
+    fName = sprintf("%s_disks_threads.eps", dataSetName)
+    cairo_ps(fName, family="Helvetica")
+    # clip the margins (bottom, left, top, right) number of lines
+    par(mar=c(4, 4.5, 1.5, 2) + 0.1)
+    plot(xRange, yRange, type="n", xlab="Time slot", ylab="Number of Disks", cex.axis=2, cex.lab=2)
+    lines(overrallTable$t, disksSum$df, type="o", col=colors[1], pch=markers[1])
+    lines(overrallTable$t, overrallTable$am, type="o", col=colors[2], pch=markers[2])
+    legend("topright", inset=.02, c("Disks from Threads", "Disks after Merge"), col=colors, pch=markers, cex=2, bty="n")
+    dev.off()
+}
+
 completeEval <- function(file, variableParam, params, values, dataSetName, legendPosition = "topleft") {
     table = read.table(file, header=TRUE, sep=";", col.names=c("th", "ty", "n", "l", "g", "t", "f"))
 
