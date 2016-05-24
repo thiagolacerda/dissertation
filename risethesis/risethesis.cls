@@ -675,28 +675,18 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \begin{center}
   
   -----------------------------------------------------------------------\\
-  Prof. André Luis de Medeiros Santos\\
+  João do Morro\\
   Centro de Informática/UFPE
   
-  \vspace{\baselineskip}
+  \vspace{2\baselineskip}
   -----------------------------------------------------------------------\\
-  Prof. Alexandre Marcos Lins de Vasconselos\\
+  Didi Mocó Sonrisal Novalgino Mufungo\\
   Centro de Informática/UFPE
   
-  \vspace{\baselineskip}
+  \vspace{2\baselineskip}
   -----------------------------------------------------------------------\\
-  Prof. Christina von Flach Garcia Chavez\\
+  Biff H. Tannen\\
   Departamento de Ciência da Computação/UFBA
-  
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. Leonardo Gresta Paulino Murta\\
-  Instituto de Computação/UFF
-  
-  \vspace{\baselineskip}
-  -----------------------------------------------------------------------\\
-  Prof. Jones Oliveira de Albuquerque\\
-  Departamento de Estatística e Informática/UFRPE
   
   \vfill
   \@address
