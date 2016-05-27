@@ -7,8 +7,8 @@ We now present some technical background that will be required to understand the
 \label{sec:tech_data}
 
 Spatio-temporal datasets usually come in the form of a set of tuples $\{O_{id}, \phi, \lambda, t\}$. Where: $O_{id}$
-uniquely identifies a Moving Object (MO); $t$ corresponds to the time stamp that the GPS position was extracted; $\phi$
-and $\lambda$ corresponds to the latitude and longitude of the MO respectively, at a given time stamp $t$. Each MO
+uniquely identifies a \ac{mo}; $t$ corresponds to the time stamp that the \ac{gps} position was extracted; $\phi$ and
+$\lambda$ corresponds to the latitude and longitude of the \ac{mo} respectively, at a given time stamp $t$. Each \ac{mo}
 represented by a $O_{id}$ has a trajectory $T_{id}$ associated with it, being a trajectory defined as follows.
 
 \begin{Def}
@@ -17,23 +17,23 @@ $<(\phi_0, \lambda_0, t_0), (\phi_1, \lambda_1, t_1), ..., (\phi_n, \lambda_n, t
 < t_1 < ... < t_n$.
 \end{Def}
 
-GPS coordinates are often represented using the World Geodetic System 1984 (WGS84) \citep{wgs84}, which can make some
-mathematical operations needed by the algorithm proposed in this dissertation (e.g. vectorial operations) harder to be
-performed. Given that limitation, once coordinates are read from a database, transformations from WGS84 to the
-$\mathbb{R}^2$ system are made. We use $0^\circ$ as both latitude and longitude coordinates for our origin point in the
-$\mathbb{R}^2$ system and execute the algorithm used by the Woods Hole Oceanographic Institution (WHOI) to perform the
-conversion from WGS84 to $\mathbb{R}^2$ on the fly \citep{latlogtoxy}.
+\ac{gps} coordinates are often represented using the \ac{wgs84} \citep{wgs84}, which can make some mathematical
+operations needed by the algorithm proposed in this dissertation (e.g. vectorial operations) harder to be performed.
+Given that limitation, once coordinates are read from a database, transformations from \ac{wgs84} to the $\mathbb{R}^2$
+system are made. We use $0^\circ$ as both latitude and longitude coordinates for our origin point in the $\mathbb{R}^2$
+system and execute the algorithm used by the \ac{whoi} to perform the conversion from \ac{wgs84} to $\mathbb{R}^2$ on
+the fly \citep{latlogtoxy}.
 
 It is worth noting that real world datasets do not guarantee that all points of all trajectories are sampled in the same
 rate. In a ideal world, a perfect spatio-temporal dataset would have entries as described in \tabref{tbl:ideal_rate},
 where one can see that each $O_{id}$ has its position sampled in intervals of 1 $t$ unit. However, that is not what
-happens in real world datasets. \tabref{tbl:real_rate} presents how MOs have their position sampled over time: no fixed
-rate interval due to transmission noises, precision issues and other problems that can make the sample rate varying a
-lot from $O_{id}$ to $O_{id}$. Therefore, we need to have a way to be able to compare and group points belong to the
-same logical time interval. With that in mind, we divided the time extent in buckets of size $\sigma$ where $\sigma$
-should be chosen accordingly to the dataset being analyzed, based on the sampling rate of points. Hence, from this point
-forward, every time when we refer to any time instance $t_i$ we are actually talking about the $i_{th}$ time bucket (or
-time slot) of size $\sigma$.
+happens in real world datasets. \tabref{tbl:real_rate} presents how \acp{mo} have their position sampled over time: no
+fixed rate interval due to transmission noises, precision issues and other problems that can make the sample rate
+varying a lot from $O_{id}$ to $O_{id}$. Therefore, we need to have a way to be able to compare and group points belong
+to the same logical time interval. With that in mind, we divided the time extent in buckets of size $\sigma$ where
+$\sigma$ should be chosen accordingly to the dataset being analyzed, based on the sampling rate of points. Hence, from
+this point forward, every time when we refer to any time instance $t_i$ we are actually talking about the $i_{th}$ time
+bucket (or time slot) of size $\sigma$.
 
 \begin{table}
     \centering
@@ -160,7 +160,7 @@ d(p_j^{t_i},c_k^{t_i}) \le \epsilon/2$.
 \end{figure}
 
 In other words, what \defref{def:flock} states is that a flock pattern basically consists in a set of at least $\mu$
-trajectories (where each trajectory $T_{id}$ belongs the MO represented by $O_{id}$) that stay together for a minimum
+trajectories (where each trajectory $T_{id}$ belongs the \ac{mo} represented by $O_{id}$) that stay together for a minimum
 time extent $\delta$.  Additionally, in order to be considered a flock, there must exist a disk, with radius
 $\epsilon/2$, that encloses all points of all trajectories for each time slot. Hence, we have a Flock pattern relying on
 three key parameters:
@@ -198,7 +198,7 @@ will be used in the work proposed in this dissertation.
 We can easily find two circles that intersect two points using some vectorial operations as shown in
 Algorithm~\ref{alg:disks} below.
 
-Given two GPS points $p_1$ and $p_2$, we get the values of $x1$ and $y1$, which will correspond to the longitude and
+Given two \ac{gps} points $p_1$ and $p_2$, we get the values of $x1$ and $y1$, which will correspond to the longitude and
 latitude in meters (such conversion is mentioned in \secref{sec:tech_data}) of $p_1$, and $x2$ and $y2$ being the
 equivalent of $p_2$ (lines 1 to 4). We know that the centers of the two disks $c_1$ and $c_2$ that can be generated by
 those two points, lie in the line that is orthogonal to points $p_1$ and $p_2$ and passes through the midpoint $mid$ of
@@ -255,7 +255,7 @@ less but more populated cells.
     \centering
     \caption{Point grid for time slot $t_i$. The dark grey is the grid that is currently being processed and the light
         grey grids around, are the grids that will be in the search space of the dark grid. Each small circle inside the
-        grid, represents a GPS point that was collected in time slot $t_i$}
+        grid, represents a \ac{gps} point that was collected in time slot $t_i$}
     \includegraphics[width=0.7\textwidth]{images/grid.png}
     \footnotesize{Source: Made by the author.}
     \label{fig:grid}

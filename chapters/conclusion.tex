@@ -25,9 +25,9 @@ multi-core processors in today's computers. With that in mind, we remodeled our 
 our proposed architecture was, to perform some critical and time consuming tasks in parallel, taking full advantage of
 the multi-core paradigm. Our performance benchmarks showed that we could outperform our own single threaded solution by
 96\% in some cases. So, to put that in numbers, we were able to reduce a running time of 15 thousand seconds
-(state-of-the-art techniques) to only 13 seconds (BitDF MT). It is also important to mention that our experiments were
-performed using various datasets, both synthetic generated and collected from real world experiments and all of them
-having a considerable number of entries.
+(state-of-the-art techniques) to only 13 seconds (\ac{bitdf} \ac{mt}). It is also important to mention that our
+experiments were performed using various datasets, both synthetic generated and collected from real world experiments
+and all of them having a considerable number of entries.
 
 \section{Future Work}
 Even though we ere able to present great contributions in this field, that are still some gaps that can be filled and
@@ -40,20 +40,20 @@ points that need more work and can lead to important results as well. Here is a 
     \item When investigating a grid cell, its extended grid might have cells that were previously processed by other
         extended grids. Thus, we could avoid paring the same points and generating the same disks again if we could keep
         some sort of disk cache and reuse those disks.
-    \item There is no study to see how different flocks relate to each other, like some MO that starts in one flock and
-        later moves to a different one.
+    \item There is no study to see how different flocks relate to each other, like some \ac{mo} that starts in one flock
+        and later moves to a different one.
     \item Make each module of the proposed architecture run in its own thread/process and then making it independent of
         the time spent in other modules.
 \end{enumerate}
 
-In this dissertation we showed how BitDF and BitDF MT behaves when applied to datasets collected from vehicle mobility
-in road networks, or datasets that simulate that same scenario. There are still other mobility scenarios that can also
-take advantage of flock pattern detection:
+In this dissertation we showed how \ac{bitdf} and \ac{bitdf} \ac{mt} behaves when applied to datasets collected from
+vehicle mobility in road networks, or datasets that simulate that same scenario. There are still other mobility
+scenarios that can also take advantage of flock pattern detection:
 
 \begin{enumerate}
-    \item See how BitDF performs in indoor flock detection.
-    \item Use BitDF in pedestrian mobility datasets.
-    \item Evaluate BitDF in animal mobility datasets, like those from Movebank Database \citep{movebank}.
+    \item See how \ac{bitdf} performs in indoor flock detection.
+    \item Use \ac{bitdf} in pedestrian mobility datasets.
+    \item Evaluate \ac{bitdf} in animal mobility datasets, like those from Movebank Database \citep{movebank}.
 \end{enumerate}
 
 Finally, some other data handling techniques can be used to help in the clustering process of points, like Voronoi
@@ -75,7 +75,7 @@ data to other components and that taking too long. Some evaluation would need to
 solutions would need to be proposed. Some possible solutions to avoid data drop could be: implement some buffering
 mechanism of incoming data, data sampling, data hashing, etc.
 
-GPS data is known to be very noisy and thus generate a lot of outliers. That said, it is very important to know how to
-deal with such problematic data without excluding good data entries. More importantly, when filtering bad data entries,
-such pre-processing should be done in a way that does not compromise the accuracy nor the effiency of the solution
-proposed in this dissertation.
+\ac{gps} data is known to be very noisy and thus generate a lot of outliers. That said, it is very important to know how
+to deal with such problematic data without excluding good data entries. More importantly, when filtering bad data
+entries, such pre-processing should be done in a way that does not compromise the accuracy nor the effiency of the
+solution proposed in this dissertation.

@@ -58,29 +58,29 @@ can address all the scenarios and questions that were mentioned in this chapter 
 that is frequently seen in our daily routines. A seminal formal definition of that pattern was proposed by \citep{remo}
 and \citep{gudefficient} and since then, a lot of other studies has follow suit (we refer the reader to
 \chapref{chp:relatedwork} for some of them), mainly due to the interests in developing mechanisms to solve real-world
-problems in the scope of Internet of Things (IoT) \citep{iot} and Smart Cities \citep{smartcities}.  According to
-\citep{gudefficient}, a flock pattern consists of a minimum number of entities that are within a disk of radius
-\textit{r} at a given time. However, this definition only applies to one single time step and does not help on
-extracting some useful collective behavior information. Such initial definition was then extended by
-\citep{gudreportingflock}, introducing the minimum time interval $\delta$ that the entities should stay together in
-order to characterize a flock pattern, as depicted by \figref{fig:flocks}. The figure shows a flock pattern that lasts
-three time steps and is formed by trajectories $T_1$, $T_2$ and $T_3$. It is worth mentioning that trajectories $T_4$
-and $T_5$ are tno part of a flock pattern because there are no disks enclosing them in all three time steps.
+problems in the scope of \ac{iot} \citep{iot} and Smart Cities \citep{smartcities}.  According to \citep{gudefficient},
+a flock pattern consists of a minimum number of entities that are within a disk of radius \textit{r} at a given time.
+However, this definition only applies to one single time step and does not help on extracting some useful collective
+behavior information. Such initial definition was then extended by \citep{gudreportingflock}, introducing the minimum
+time interval $\delta$ that the entities should stay together in order to characterize a flock pattern, as depicted by
+\figref{fig:flocks}. The figure shows a flock pattern that lasts three time steps and is formed by trajectories $T_1$,
+$T_2$ and $T_3$. It is worth mentioning that trajectories $T_4$ and $T_5$ are tno part of a flock pattern because there
+are no disks enclosing them in all three time steps.
 
 When it comes to flock pattern detection efficiency and speed, one major problem on doing that is to find the disks that
 enclose the trajectories in each time step. Since the disks centers do not need to match any point in the dataset, there
 can be infinite possible disks. Vieira et al. \citep{vieira} proposed a way to limit the number of disks to generate and
 analyze, so a finite number of disks are in place to cluster the trajectories in them. He also proposed an algorithm to
-find the flock pattern, namely Basic Flock Evaluation (BFE). Even though BFE can find flock patterns in spatio-temporal
-datasets, it does suffer from some severe performance limitations, meaning that it is not able to scale properly when
-the dataset is really large. The main reason that we identified that makes it be so inefficient is that BFE it is not
-smart enough to predict what portions of the data can really generate a flock patterns, then it ends up wasting Central
-Processing Unit (CPU) cycles by processing data that is not important.
+find the flock pattern, namely \ac{bfe}. Even though \ac{bfe} can find flock patterns in spatio-temporal datasets, it
+does suffer from some severe performance limitations, meaning that it is not able to scale properly when the dataset is
+really large. The main reason that we identified that makes it be so inefficient is that \ac{bfe} it is not smart enough
+to predict what portions of the data can really generate a flock patterns, then it ends up wasting \ac{cpu} cycles by
+processing data that is not important.
 
 Despite the considerable number of research works in the academy regarding flock pattern detection, there is still a
 problem that remains open, besides the fast pattern detection that we already mentioned: A framework/system architecture
-for flock pattern detection that can be generalized to other data mining problems. In the systematic revision of the
-the literature that we made in this field, we could not find any work formalizing a Software Architecture that can be
+for flock pattern detection that can be generalized to other data mining problems. In the systematic revision of the the
+literature that we made in this field, we could not find any work formalizing a Software Architecture that can be
 extensible, easy to use and still simple to address the pattern detection problem. By creating such Architecture,
 researchers can take advantage of that as a starting point to develop their algorithms and can also have a common ground
 to compare and reuse work of others.
@@ -92,14 +92,14 @@ considerable gains in execution time, without compromising accuracy, thus target
 processing. With that algorithm, we could address Smart Cities scenarios, where decisions need to be made on the fly and
 rapidly enough in order to keep up with their development pace \citep{ieeesmartcities}\citep{springersmartcities}. Such
 gains were made possible by creating a filtering heuristic, based on bitmaps, in order to save processing time. Our
-proposal focuses on identifying Moving Objects (MO) that can actually form a flock, resulting in a huge reduction in the
-number of disks generated and thus resulting in less data to be processed. Our results indicate that our proposal
-outperforms the current state-of-the-art techniques, by achieving 99\% CPU time improvement and 96\% disks generation
-reduction in some relevant scenarios. Going even further, we also remodeled our proposed algorithm to take advantage of
-multi-core architectures, having some components executing in parallel resulting in impressive speed gains. With our
-Multi-threaded model, we were able to reduce the processing time of our proposed algorithm by 96\% in some cases. It is
-worth mentioning that the gains achieved with the Multi-threaded model are over the gains that we had already obtained
-over the state-of-the-art techniques.
+proposal focuses on identifying \acp{mo} that can actually form a flock, resulting in a huge reduction
+in the number of disks generated and thus resulting in less data to be processed. Our results indicate that our proposal
+outperforms the current state-of-the-art techniques, by achieving 99\% \ac{cpu} time improvement and 96\% disks
+generation reduction in some relevant scenarios. Going even further, we also remodeled our proposed algorithm to take
+advantage of multi-core architectures, having some components executing in parallel resulting in impressive speed gains.
+With our Multi-threaded model, we were able to reduce the processing time of our proposed algorithm by 96\% in some
+cases. It is worth mentioning that the gains achieved with the Multi-threaded model are over the gains that we had
+already obtained over the state-of-the-art techniques.
 
 Last, but not least, we also propose a Generic System Archicture that can be used to solve a great number of data mining
 problems. We validate our architecture by implementing our algorithm and our multi-threaded model using it as the
