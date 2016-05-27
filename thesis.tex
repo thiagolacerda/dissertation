@@ -79,14 +79,19 @@
 \usepackage{booktabs}
 \usepackage{pdfpages}
 \usepackage{caption}
-\usepackage{lipsum}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{subcaption}
+\usepackage{sectsty}
 
-\captionsetup[table]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=small}
-\captionsetup[lstlisting]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=small}
-\captionsetup[figure]{position=bottom,justification=centering,width=.85\textwidth,labelfont=bf,font=small}
+\captionsetup[table]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=footnotesize}
+\captionsetup[lstlisting]{position=top,justification=centering,width=.85\textwidth,labelfont=bf,font=footnotesize}
+\captionsetup[figure]{position=bottom,justification=centering,width=.85\textwidth,labelfont=bf,font=footnotesize}
+
+%% Chapter and (Sub)Section fonts must be same size as text (12)
+\sectionfont{\fontsize{12}{15}\selectfont}
+\subsectionfont{\fontsize{12}{15}\selectfont}
+\subsubsectionfont{\fontsize{12}{15}\selectfont}
 
 %% Change the following pdf author attribute name to your name.
 \usepackage[linkcolor=black,
@@ -95,7 +100,8 @@
             colorlinks,
             pdfpagelabels,
             pdftitle={Thiago Lacerda M.Sc. Thesis},
-            pdfauthor={Thiago de Barros Lacerda}]{hyperref}
+            pdfauthor={Thiago de Barros Lacerda}
+            breaklinks=true]{hyperref}
 
 \usepackage{mathtools}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}

@@ -149,6 +149,7 @@
 
 % Portuguese
 \if\@language0
+  \RequirePackage[portuguese]{babel}
   \gdef\@bachelordissertation{Trabalho de Graduação}
   \gdef\@mastersdissertation{Dissertação de Mestrado}
   \gdef\@phdqualifying{Monografia de Qualificação}
@@ -196,6 +197,7 @@
   \fi}
 % English
   \else\if\@language1
+  \RequirePackage[english]{babel}
   \gdef\@bachelordissertation{B.Sc. Dissertation}
   \gdef\@mastersdissertation{M.Sc. Dissertation}
   \gdef\@phdqualifying{Ph.D. Thesis Qualification}
@@ -385,10 +387,10 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \newcommand{\formatFrontmatterChapter}{
    \titlespacing*{\chapter}{0pt}{-34pt}{40pt}
    \titleformat{\chapter}[display]{
-     \centering\normalfont\huge
+     \centering\normalfont
    }{
      \chaptertitlename~\thechapter
-   }{20pt}{\Huge}
+   }{20pt}{\normalsize}
 }
 
 \renewcommand{\frontmatter}{\formatFrontmatterChapter}
@@ -407,7 +409,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
      {\bfseries}
      {\chapnumfont\textcolor{chapnumcol}{\thechapter}}
      {-24pt}
-     {\Huge}
+     {\normalsize}
 }
 
 \newcommand{\formatMainmatterChapter}{
@@ -507,14 +509,20 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \begin{center}
   \includegraphics[scale=0.65]{cinlogo} \\
   \vfill
-    \begin{center}
-      \Large \@author
-      \vskip4\baselineskip
-      {\large\bfseries{\MakeUppercase{\@title}}}
-      \vskip2\baselineskip
-      {{\large \@texttype}}\\
-    \end{center}
-  \vspace{1.4cm}
+  \begin{center}
+    {\normalsize\bfseries{\MakeUppercase{\@title}}}
+    \vskip1\baselineskip
+    \if\@language0
+        {\normalsize \bfseries{Por}}
+    \else
+        {\normalsize \bfseries{By}}
+    \fi
+    \vskip1\baselineskip
+    \normalsize \textit{\bfseries{\MakeUppercase{\@author}}}
+    \vskip1\baselineskip
+    {{\normalsize \bfseries{\@texttype}}}\\
+  \end{center}
+  \vspace{0.2cm}
   \includegraphics[width=1cm]{ufpelogo} \\
   \if\@language0
     {\fontfamily{times}\selectfont \tiny \@universitypt\\}
@@ -525,9 +533,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
   {\fontfamily{times}\selectfont \tiny \url{www.cin.ufpe.br/~posgraduacao}\\}
   \vskip\baselineskip
   \vskip\baselineskip
-  \@address
-  \\
-  \@date
+  \@address/\@date
   \end{center}
 }
 
@@ -548,11 +554,11 @@ requirements for the degree of \@degree\ in \@majorfielden.
 	\begin{minipage}[b]{16cm}
 	  {
 		  \if\@language0
-    		  \sf\Large
+    		  \sf\normalsize
     		  \@universitypt
     		  \vskip 0.1cm
     		  \if\@showinstitute1
-    		    \@institutept
+    		    \@instituteen
     		    \vskip 0.1cm
     		  \fi
     		  \if\@showdepartment1
@@ -561,7 +567,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
     		  \fi
     		  \@programpt
     	  \else
-    	      \sf\Large
+    	      \sf\normalsize
               \@universityen
               \vskip 0.1cm
               \if\@showinstitute1
@@ -580,9 +586,9 @@ requirements for the degree of \@degree\ in \@majorfielden.
 	\end{figure}
   \vskip 25mm
   \begin{center}
-  {\Large \@author}
+  {\normalsize \MakeUppercase{\@author}}
   \vskip3\baselineskip
-  {\large\bfseries{\MakeUppercase{\@title}}}\\
+  {\normalsize"\MakeUppercase{\@title}"}\\
   \vskip 38mm
   \begin{flushright}
     \begin{minipage}{100mm}
@@ -600,9 +606,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
     \end{minipage}
   \end{flushright}
   \vfill
-  \@address
-  \\
-  \@date
+  \@address, \@date
   \end{center}
   \setcounter{page}{1}
 }
@@ -763,6 +767,19 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %% Quotations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newenvironment{citationblock}%
+  {%
+  \begin{spacing}{1.}
+   \small
+   \begin{list}{}{%
+       \setlength{\listparindent}{0cm}%
+       \setlength{\itemindent}{\listparindent}%
+       \setlength{\rightmargin}{0cm}%
+       \setlength{\leftmargin}{4cm}%
+       \setlength{\parsep}{0pt}}%
+    \item\relax}%
+  {\end{list}\end{spacing}}
+
 \def\epigraph{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
@@ -803,10 +820,16 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \setcounter{tocdepth}{4}
 
 \renewcommand\tableofcontents{%
+
    \pagestyle{empty}
+
    \chapter*{\@tocname}
+
    \thispagestyle{empty}
-   \@starttoc{toc}}
+
+   \@starttoc{toc}
+
+   \thispagestyle{empty}}
  
 
 \renewcommand\listoffigures{%
