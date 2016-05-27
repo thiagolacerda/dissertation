@@ -1,0 +1,20 @@
+Detecção de padrões em dados espaço-temporais tem se mostrado um tema de muita relevância nos dias atuais, tanto na
+academia quanto na indústria, devido a sua vasta aplicabilidade em ajudar a solucionar problemas enfrentados na
+sociedade. Muitos desses problemas podem ser classificados no conexto de Cidades Inteligentes (\textit{Smart Cities}),
+como Gerenciamento de Tráfego, Segurança e Planejamento de Cidades. Dentre os vários padrões espaço-temporais que podem
+ser extraídos de uma base de dados, o padrão de \textit{Flock} é um que vem atraindo muita atenção, devido a sua relação
+intrínseca com os problemas mencionados anteriormente. Muita pesquisa vem sendo feita na academia, visando prover
+algoritmos capazes de identificar o padrão de \textit{Flock}. Porém, nenhum deles pode executar tal tarefa
+eficientemente, nem conseguiu escalar de maneira aceitável quando uma base de dados de grande tamanho foi analisada.
+Além disso, nós pudemos identificar que nenhuma arquitetura de \textit{software} que conseguisse ser simples e
+extensível o suficiente para ser usada nos vários problemas de detecção de padrões em dados espaço-temporais, foi
+proposta. Com isso em mente, essa dissertação propõe uma Arquitetura de \textit{Software} que pode ser usada como base
+para solucionar um grande número de problemas relacionados a mineração de padrões em dados espaço-temporais. Nós então
+usamos essa arquitetura como base e implementamos um algoritmo de detecção de \textit{Flock}, focando em alcançar
+grandes ganhos em tempo de processamento, sem comprometer a precisão, visando então cenários de aplicações de tempo real
+em Cidades Inteligentes. No fim, nós propomos uma remodelagem no nosso algoritmo para poder utilizar ao máximo o poder
+de processamento oferecido pelas atuais arquiteturas Multi-core dos processadores modernos. Nossos resultados mostraram
+que nossa solução conseguiu superar soluções do estado da arte, alcançando 99\% de redução no tempo de processamento
+total. Além disso, nossa remodelagem \textit{multi-thread} conseguiu melhorar os resultados da nossa solução em 96\% em
+alguns casos. A eficiência e performance da nossa proposta foi comprovada com avaliações feitas com bases de dados
+colectadas em experimentos reais e geradas sinteticamente.

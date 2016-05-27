@@ -1,0 +1,17 @@
+Pattern mining in spatio-temporal datasets is a really relevant subject in the academy and the industry nowadays, due to
+its wide applicability in helping to solve real world problems. Many of them can be found in the context of Smart
+Cities, like Traffic Management, Surveillance and Security and City Planning, to name a few. Among the various
+spatio-temporal patterns that one can extract from a spatio-temporal dataset, the Flock pattern is one that has gained a
+lot of attention, because of its intrinsic relation with the aforementioned real world problems. A lot of work has been
+done in the academy, in order to provide algorithms able to identify the Flock pattern. However, none of them could
+perform that task efficiently nor be able to scale well when a large dataset was the analysis target. Additionally, we
+found that there was no system architecture proposal that could be simple and extensible enough to be used in the
+various spatio-temporal pattern detection problems present today. Given that context, this dissertation proposes a
+Generic System Archicture that can be used to solve a great number of spatio-temporal pattern mining problems. We then
+validate such architecture by implementing on top of it an efficient flock detection algorithm aiming at achieving
+considerable gains in execution time, without compromising accuracy, thus targeting real-time deployment and online
+processing in Smart Cities. Last, but not least, we remodel our algorithm in order to take advantage of multi-core
+architectures present in modern computers. Our results indicate that our proposal outperforms the current
+state-of-the-art techniques, by achieving 99\% CPU time improvement and with our Multi-threaded model, we were able to
+reduce the processing time of our proposed algorithm by 96\% in some cases. We prove the efficiency of our solution by
+performing evaluation with both real and synthetic large datasets.
