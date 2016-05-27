@@ -44,10 +44,38 @@ points that need more work and can lead to important results as well. Here is a 
         later moves to a different one.
     \item Make each module of the proposed architecture run in its own thread/process and then making it independent of
         the time spent in other modules.
-    \item See how BitDF performs in indoor flock detection.
 \end{enumerate}
-% * <steniofernandes@gmail.com> 2016-05-26T15:15:43.547Z:
-%
-% add subsection or paragraph: deployment challenges in real-world scenarios... other prospective scenarios (e.g., emergency routes in case of evacuation , large crowds (indoor, outdoor), combination with voronoi diagram (google  'voronoi diagram escape evacuation' to get some ideas
-%
-% ^.
+
+In this dissertation we showed how BitDF and BitDF MT behaves when applied to datasets collected from vehicle mobility
+in road networks, or datasets that simulate that same scenario. There are still other mobility scenarios that can also
+take advantage of flock pattern detection:
+
+\begin{enumerate}
+    \item See how BitDF performs in indoor flock detection.
+    \item Use BitDF in pedestrian mobility datasets.
+    \item Evaluate BitDF in animal mobility datasets, like those from Movebank Database \citep{movebank}.
+\end{enumerate}
+
+Finally, some other data handling techniques can be used to help in the clustering process of points, like Voronoi
+Diagrams used in conjuntion with Delaunay Triangulation and data structures like K-D-Tress.
+
+\subsection{Deployment Challenges in Real World Scenarios}
+In order to be ready to be deployed and used as data mining solution, some work is still needed. In our experiments, we
+noticed that, due to the nature of real world datasets, one big challenge is still the time synchronization of the data
+stream, i.e. the discovery of the correct time slot size. As we said in \chapref{chp:techbackground}, we cannot assume
+that the data entries in a spatio-temporal dataset are sampled in a fixed time rate, so there is still work needed to
+synchronize and group the entries in buckets of a pre-defined size, like we did with our $\sigma$ parameter. So, for
+online analysis, there is a need for an automatic process to detect that $\sigma$ parameter accordingly to the dataset
+being analyzed and also recalibrate that if the data behavior changes. Additionally, such automatic process should be
+smart enough to deal with abnormalities, like outliers.
+
+Another scenario that needs to be evaluated is when we have a high speed online stream of data. With high speed incoming
+data, we can face some data drop, because of a Data Connector component being busy processing the data or forwarding the
+data to other components and that taking too long. Some evaluation would need to be done in that scenario and mitigation
+solutions would need to be proposed. Some possible solutions to avoid data drop could be: implement some buffering
+mechanism of incoming data, data sampling, data hashing, etc.
+
+GPS data is known to be very noisy and thus generate a lot of outliers. That said, it is very important to know how to
+deal with such problematic data without excluding good data entries. More importantly, when filtering bad data entries,
+such pre-processing should be done in a way that does not compromise the accuracy nor the effiency of the solution
+proposed in this dissertation.
