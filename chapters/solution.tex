@@ -151,10 +151,10 @@ the overall processing time of the algorithm.
 \end{algorithmic}
 \end{algorithm}
 
-Our solution consists on using \textbf{Bit}maps for \textbf{D}isk \textbf{F}iltering (\acsu{bitdf}), based on the
-\ac{bfe} algorithm. \ac{bitdf} is basically a Data Listener and a Data Processor component, as those in the architecture
-presented in \secref{sec:architecture}. We call them \ac{gsb} and \ac{fp} the \ac{dl} and \ac{dp} respectively, and will
-have each of them keep track of the history of every $O_{id}$ in time.
+Our solution consists on using \textbf{Bit}maps for \textbf{D}isk \textbf{F}iltering (\acsu{bitdf}\label{acro:bitdf}),
+based on the \ac{bfe} algorithm. \ac{bitdf} is basically a Data Listener and a Data Processor component, as those in the
+architecture presented in \secref{sec:architecture}. We call them \ac{gsb} and \ac{fp} the \ac{dl} and \ac{dp}
+respectively, and will have each of them keep track of the history of every $O_{id}$ in time.
 
 Algorithm~\ref{alg:gpsb} shows a big picture of how \ac{gsb} will work once it receives the point from a \ac{dd}. It
 will listen to the incoming \ac{gps} point stream in the procedure \textsc{ReceivePoints}, add each point to the
