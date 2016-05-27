@@ -291,17 +291,17 @@ $p$'s bitmap in FP module by performing an OR bitwise operation.
 \end{algorithmic}
 \end{algorithm}
 
-\figref{fig:gsb_fp_flow} shows how GSB (red) and FP (gray) will interact in a scenario where $\mu = 3$ and $\delta = 3$. In the
-first line we can see GSB receiving points $p_1$, $p_2$, $p_3$, $p_4$ and $p_5$ at time slot $t_0$ and then updating the
-bitmap for each of the points (red grid). Later on, at time slot $t_1$, GSB receives points $p_2$, $p_3$, $p_4$, $p_5$
-and $p_6$ and again updates the presence bitmaps for each point. After the bitmap updates, one can notice that now $p_1$
-has $01$ as its presence bitmap value, meaning that it was present at time slot $t_0$ but not at $t_1$, and GSB now has
-a buffer of points for time slot $t_0$ (red dashed box). When the points from time slot $t_2$ are received, and the
-presence bitmaps are updated, GSB send the points buffered from time slot $t_0$ to FP for processing. At this time, FP
-hasn't received any set of points for processing, so its bitmaps are clean (rightmost gray grid) and the concatenation
-of the bitmaps from GSB and FP will have the same value as in GSB. Ater processing the buffered points from time slot
-$t_0$, FP will generate a disk $d_1$ with points $p_2$, $p_4$ and $p_5$, leaving $p_1$ and $p_6$ out because their
-bitmaps say that they will not appear in the next 2 consecutive time slots.
+\figref{fig:gsb_fp_flow} shows how GSB (red) and FP (gray) will interact in a scenario where $\mu = 3$ and $\delta = 3$.
+In the first line we can see GSB receiving points $p_1$, $p_2$, $p_3$, $p_4$ and $p_5$ at time slot $t_0$ and then
+updating the bitmap for each of the points (red grid). Later on, at time slot $t_1$, GSB receives points $p_2$, $p_3$,
+$p_4$, $p_5$ and $p_6$ and again updates the presence bitmaps for each point. After the bitmap updates, one can notice
+that now $p_1$ has $01$ as its presence bitmap value, meaning that it was present at time slot $t_0$ but not at $t_1$,
+and GSB now has a buffer of points for time slot $t_0$ (red dashed box). When the points from time slot $t_2$ are
+received, and the presence bitmaps are updated, GSB send the points buffered from time slot $t_0$ to FP for processing.
+At this time, FP hasn't received any set of points for processing, so its bitmaps are clean (rightmost gray grid) and
+the concatenation of the bitmaps from GSB and FP will have the same value as in GSB. Ater processing the buffered points
+from time slot $t_0$, FP will generate a disk $d_1$ with points $p_2$, $p_4$ and $p_5$, leaving $p_1$ and $p_6$ out
+because their bitmaps say that they will not appear in the next 2 consecutive time slots.
 
 \begin{figure}[h!]
     \centering
