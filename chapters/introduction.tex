@@ -89,23 +89,23 @@ to compare and reuse work of others.
 
 As could be noticed, the state of the art algorithms for flock pattern detection are not ready to aid the development
 and evolving of Smart Cities, since they are not able to efficiently process the huge volumes of data that are generated
-by them. With that in mind, this thesis proposes an efficient flock detection algorithm aiming at achieving considerable
-gains in execution time, without compromising accuracy, thus targeting real-time deployment and online processing. With
-that algorithm, we could address Smart Cities scenarios, where decisions need to be made on the fly and rapidly enough
-in order to keep up with their development pace \citep{ieeesmartcities}\citep{springersmartcities}. Such gains were made
-possible by creating a filtering heuristic, based on bitmaps, in order to save processing time. Our proposal focuses on
-identifying Moving Objects (MO) that can actually form a flock, resulting in a huge reduction in the number of disks
-generated and thus resulting in less data to be processed. Our results indicate that our proposal outperforms the
-current state-of-the-art techniques, by achieving 99\% CPU time improvement and 96\% disks generation reduction in some
-relevant scenarios. Going even further, we also remodeled our proposed algorithm to take advantage of multi-core
-architectures, having some components executing in parallel resulting in impressive speed gains. With our Multi-threaded
-model, we were able to reduce the processing time of our proposed algorithm by 96\% in some cases. It is worth
-mentioning that the gains achieved with the Multi-threaded model are over the gains that we had already obtained over
-the state-of-the-art techniques.
+by them. With that in mind, this dissertation proposes an efficient flock detection algorithm aiming at achieving
+considerable gains in execution time, without compromising accuracy, thus targeting real-time deployment and online
+processing. With that algorithm, we could address Smart Cities scenarios, where decisions need to be made on the fly and
+rapidly enough in order to keep up with their development pace \citep{ieeesmartcities}\citep{springersmartcities}. Such
+gains were made possible by creating a filtering heuristic, based on bitmaps, in order to save processing time. Our
+proposal focuses on identifying Moving Objects (MO) that can actually form a flock, resulting in a huge reduction in the
+number of disks generated and thus resulting in less data to be processed. Our results indicate that our proposal
+outperforms the current state-of-the-art techniques, by achieving 99\% CPU time improvement and 96\% disks generation
+reduction in some relevant scenarios. Going even further, we also remodeled our proposed algorithm to take advantage of
+multi-core architectures, having some components executing in parallel resulting in impressive speed gains. With our
+Multi-threaded model, we were able to reduce the processing time of our proposed algorithm by 96\% in some cases. It is
+worth mentioning that the gains achieved with the Multi-threaded model are over the gains that we had already obtained
+over the state-of-the-art techniques.
 
 Last, but not least, we also propose a Generic System Archicture that can be used to solve a great number of data mining
 problems. We validate our architecture by implementing our algorithm and our multi-threaded model using it as the
-building blocks. Hence, to summarize, the contribution of this thesis is threefold:
+building blocks. Hence, to summarize, the contribution of this dissertation is threefold:
 
 \begin{enumerate}
     \item \textbf{An effiecient flock pattern detection algorithm}
@@ -119,9 +119,9 @@ building blocks. Hence, to summarize, the contribution of this thesis is threefo
 % ^.
 \end{enumerate}
 
-The remainder of this thesis is organized as follows. \chapref{chp:relatedwork} highlights the related work in both flock
-detection and trajectory data mining and exmplain in more details the academic contribution of our work.
-\chapref{chp:techbackground} presents the technical background necessary to understand this thesis, like the formal
-Flock definition and how an algorithm to find a flock pattern works. Our contribution is detailed in
+The remainder of this dissertation is organized as follows. \chapref{chp:relatedwork} highlights the related work in
+both flock detection and trajectory data mining and exmplain in more details the academic contribution of our work.
+\chapref{chp:techbackground} presents the technical background necessary to understand this dissertation, like the
+formal Flock definition and how an algorithm to find a flock pattern works. Our contribution is detailed in
 \chapref{chp:solution}, whereas in \chapref{chp:results} we show the results of our evaluations using our chosen
 metrics. Lastly, in \chapref{chp:conclusion} we draw some concluding remarks and provide directions for future work.
