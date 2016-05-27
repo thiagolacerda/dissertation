@@ -34,9 +34,9 @@ Even though we ere able to present great contributions in this field, there are 
 points that need more work and can lead to important results as well. Here is a list with some of them:
 
 \begin{enumerate}
-    \item The disk superset and duplicate check is very costly and would need further investigation in order to make our proposed architecture even
-        more efficient. Additionally, because it modifies the same disk set it is really hard to parallelize it without
-        causing performance degradation.
+    \item The disk superset and duplicate check is very costly and would need further investigation in order to make our
+        proposed architecture even more efficient. Additionally, because it modifies the same disk set it is really hard
+        to parallelize it without causing performance degradation.
     \item When investigating a grid cell, its extended grid might have cells that were previously processed by other
         extended grids. Thus, we could avoid paring the same points and generating the same disks again if we could keep
         some sort of disk cache and reuse those disks.
@@ -63,11 +63,11 @@ Diagrams used in conjuntion with Delaunay Triangulation and data structures like
 In order to be ready to be deployed and used as data mining solution, some work is still needed. In our experiments, we
 noticed that, due to the nature of real world datasets, one big challenge is still the time synchronization of the data
 stream, i.e. the discovery of the correct time slot size. As we said in \chapref{chp:techbackground}, we cannot assume
-that the data entries in a spatio-temporal dataset are sampled in a fixed time rate, therefore there is still research effort needed in order  to
-synchronize and group the entries in buckets of a pre-defined size, as we did with our $\sigma$ parameter. Therefore, for
-online analysis, there is a need for an automatic process to detect that $\sigma$ parameter according to the dataset
-being analyzed and also recalibrate that if the data behavior changes. Additionally, such automatic process should be
-smart enough to deal with abnormalities, such as outliers.
+that the data entries in a spatio-temporal dataset are sampled in a fixed time rate, therefore there is still research
+effort needed in order to synchronize and group the entries in buckets of a pre-defined size, as we did with our
+$\sigma$ parameter. Therefore, for online analysis, there is a need for an automatic process to detect that $\sigma$
+parameter according to the dataset being analyzed and also recalibrate that if the data behavior changes. Additionally,
+such automatic process should be smart enough to deal with abnormalities, such as outliers.
 
 Another scenario that needs to be evaluated is when we have a high speed online stream of data. With high speed incoming
 data, we can face some data drop, because of a Data Connector component being busy processing the data or forwarding the
