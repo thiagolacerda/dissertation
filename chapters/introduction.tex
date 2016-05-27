@@ -5,7 +5,14 @@ vehicles, smartphones and wearable devices, to be shipped with location tracking
 collect and report mobility information of people, animals and natural phonemena (e.g. hurricanes), to name a few. That
 technological advance is enabling the generation of massive volumes of spatio-temporal data that can contain information
 ranging from the daily routine of residents of a city \citep{whatdidyoudo} to behaviors of wild animals in a specific
-region \citep{trajclustering}\citep{miningperiodic}. It is notorious the interest of the academy in such subject,
+region \citep{trajclustering}\citep{miningperiodic}. It is notorious the interest of both industry and academia in such subject,
+% * <steniofernandes@gmail.com> 2016-05-27T11:16:07.536Z:
+%
+% > academia
+%
+% the correct term is academia , not academy, which graduate police and firefighter officers :-) olha no resto do texto pra se tem outras ocorrências.
+%
+% ^.
 specially with the rising of Smart Cities, in which spatio-temporal datasets can provide important insights in the
 context of traffic management and urban planning \citep{gissmartcities}\citep{parallelsmartcities}. Those datasets can
 be used to help solving a variety of problems and answer questions, such as:
@@ -22,7 +29,7 @@ be used to help solving a variety of problems and answer questions, such as:
 That list can grow indefinitely, as the scenarios and applications of spatio-temporal data analysis is vast. Some of the
 questions listed above are in the context of Smart Cities, which can take advantage of spatio-temporal data analysis as
 an aid to a broad set of applications, like urban planning, public security, and public health and commerce
-\citep{ieeesmartcities}. Aditionally, understanding that data and being able to take actions fast according to the
+\citep{ieeesmartcities}. Additionally, understanding that data and being able to take actions fast according to the
 conclusions extracted from them is crucial to create and evolve a Smart City. However, due to the volume of data that is
 produced on a daily basis and needs to be analyzed to in order to help those applications and answer those questions,
 the main problem is still the same: how to be able to analyze massive data volumes fast and efficiently so we can
@@ -53,7 +60,12 @@ decision-making is still an open challenge.
     \label{fig:flocks}
 \end{figure}
 
-Among those collaborative patterns, the flock pattern is one that has gained a lot of attention in the academy, since it
+Among those collaborative patterns, the flock pattern is one that has gained a lot of attention in the research community, since it
+% * <steniofernandes@gmail.com> 2016-05-27T11:19:54.364Z:
+%
+% police academy 2: vc pode trocar também por research community. lembre que empresas fazem pesquisa também. então a comunidade engloba both industry and academia researchers
+%
+% ^.
 can address all the scenarios and questions that were mentioned in this chapter and represents a very familiar behavior
 that is frequently seen in our daily routines. A seminal formal definition of that pattern was proposed by \citep{remo}
 and \citep{gudefficient} and since then, a lot of other studies has follow suit (we refer the reader to
@@ -64,7 +76,7 @@ However, this definition only applies to one single time step and does not help 
 behavior information. Such initial definition was then extended by \citep{gudreportingflock}, introducing the minimum
 time interval $\delta$ that the entities should stay together in order to characterize a flock pattern, as depicted by
 \figref{fig:flocks}. The figure shows a flock pattern that lasts three time steps and is formed by trajectories $T_1$,
-$T_2$ and $T_3$. It is worth mentioning that trajectories $T_4$ and $T_5$ are tno part of a flock pattern because there
+$T_2$ and $T_3$. It is worth mentioning that trajectories $T_4$ and $T_5$ are not part of a flock pattern because there
 are no disks enclosing them in all three time steps.
 
 When it comes to flock pattern detection efficiency and speed, one major problem on doing that is to find the disks that
@@ -77,8 +89,15 @@ really large. The main reason that we identified that makes it be so inefficient
 to predict what portions of the data can really generate a flock patterns, then it ends up wasting \ac{cpu} cycles by
 processing data that is not important.
 
-Despite the considerable number of research works in the academy regarding flock pattern detection, there is still a
+Despite the considerable number of research studies regarding flock pattern detection, there is still a
 problem that remains open, besides the fast pattern detection that we already mentioned: A framework/system architecture
+% * <steniofernandes@gmail.com> 2016-05-27T11:22:26.308Z:
+%
+% > problem
+%
+% não é be um problema e sim uma necessidade. reformule a frase
+%
+% ^.
 for flock pattern detection that can be generalized to other data mining problems. In the systematic revision of the the
 literature that we made in this field, we could not find any work formalizing a Software Architecture that can be
 extensible, easy to use and still simple to address the pattern detection problem. By creating such Architecture,
@@ -101,15 +120,15 @@ With our Multi-threaded model, we were able to reduce the processing time of our
 cases. It is worth mentioning that the gains achieved with the Multi-threaded model are over the gains that we had
 already obtained over the state-of-the-art techniques.
 
-Last, but not least, we also propose a Generic System Archicture that can be used to solve a great number of data mining
+Last, but not least, we also propose a Generic System Architecture that can be used to solve a great number of data mining
 problems. We validate our architecture by implementing our algorithm and our multi-threaded model using it as the
 building blocks. Hence, to summarize, the contribution of this dissertation is threefold:
 
 \begin{enumerate}
-    \item \textbf{An effiecient flock pattern detection algorithm}
+    \item \textbf{An efficient flock pattern detection algorithm}
     \item \textbf{A remodeled algorithm able to take advantage of multi-core architectures and rapidly find flock
         patterns}
-    \item \textbf{A simple and extensible System Archicture to aid solving spatio-temporal pattern detection problems}
+    \item \textbf{A simple and extensible System Architecture to aid solving spatio-temporal pattern detection problems}
 \end{enumerate}
 
 The remainder of this dissertation is organized as follows. \chapref{chp:relatedwork} highlights the related work in

@@ -1,4 +1,4 @@
-\chapter{Modular and efficient Flock Pattern identification}
+\chapter{Modular and Efficient Flock Pattern Identification}
 \label{chp:solution}
 \section{Generic System Architecture}
 \label{sec:architecture}
@@ -329,15 +329,15 @@ concatenated bitmaps to figure out which points can potentially form a flock and
 In time slot $t_4$, when \ac{fp} receives the points from time slot $t_2$, a flock pattern will be found, since we could find
 3 disks containing the same set of $O_{id}$ and containing at least $\mu = 3$ unique $O_{id}$.
 
-\section{Taking advantage of Multi-core Architectures}
+\section{Taking Advantage of Multi-core Architectures}
 \label{sec:multithread}
-Is well known that multi-core architectures are the current trend in technology. There is a myriad of multi-core
+It's well known that multi-core architectures are the current trend in technology. There is a myriad of multi-core
 processors in the market and many chipset companies taking advantages of those processor architectures too (even small
 devices, like smartphones, are being shipped with multi-core processors). Given that current scenario, there is no
-excuse in not taking advantage of those mult-core processors and still executing our solution in a single process
-fashion. Thus, we will remodel our propoesed architecture and in a multi-threaded structure and parallelize the tasks
+excuse in not taking advantage of those multi-core processors and still executing our solution in a single process
+fashion. Thus, we will remodel our proposed architecture and in a multi-threaded structure and parallelize the tasks
 that our algorithm is doing, in order to make it more responsive and fast so it can empower decision makers to act in
-realtime.
+real-time.
 
 One can see that the \ac{fp} component, that we described in the previous section, is doing a lot of work in order to
 discover the flock patterns, whenever it receives the set of points from the listener it perform the following actions:
@@ -389,7 +389,7 @@ for subsets and supersets in its own private disk set.
 
 \figref{fig:multithread} illustrates how the \ac{fp} will be rearchitected in order to take advantage of parallel
 execution.  We can see that the main thread will collect the \ac{egc} for each cell grid and enqueue it in a shared
-queue that will be acessed by $N$ consumers. Whenever a consumer ($c_t$ thread) dequeues an \ac{egc}, it will then try
+queue that will be accessed by $N$ consumers. Whenever a consumer ($c_t$ thread) dequeues an \ac{egc}, it will then try
 to find a pair of disks for each pair of points in the \ac{egc}, cluster the remaining points in those disks and then
 enqueue those disks in another shared queue. Such shared queue will only be shared with the disk thread $d_t$ belonging
 to the $c_t$ thread that created it. Then, each $d_t$ will be responsible to check for subsets and supersets in its own

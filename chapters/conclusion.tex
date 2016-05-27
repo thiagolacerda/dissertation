@@ -30,12 +30,12 @@ experiments were performed using various datasets, both synthetic generated and 
 and all of them having a considerable number of entries.
 
 \section{Future Work}
-Even though we ere able to present great contributions in this field, that are still some gaps that can be filled and
+Even though we ere able to present great contributions in this field, there are still some gaps that can be filled and
 points that need more work and can lead to important results as well. Here is a list with some of them:
 
 \begin{enumerate}
-    \item The disk superset and duplicate check is very costly and would need further investigation in order to make it
-        more efficient. Additionally because it modifies the same disk set it is really hard to parallelize it without
+    \item The disk superset and duplicate check is very costly and would need further investigation in order to make our proposed architecture even
+        more efficient. Additionally, because it modifies the same disk set it is really hard to parallelize it without
         causing performance degradation.
     \item When investigating a grid cell, its extended grid might have cells that were previously processed by other
         extended grids. Thus, we could avoid paring the same points and generating the same disks again if we could keep
@@ -53,21 +53,21 @@ scenarios that can also take advantage of flock pattern detection:
 \begin{enumerate}
     \item See how \ac{bitdf} performs in indoor flock detection.
     \item Use \ac{bitdf} in pedestrian mobility datasets.
-    \item Evaluate \ac{bitdf} in animal mobility datasets, like those from Movebank Database \citep{movebank}.
+    \item Evaluate \ac{bitdf} in animal mobility datasets, such as those from Movebank Database \citep{movebank}.
 \end{enumerate}
 
-Finally, some other data handling techniques can be used to help in the clustering process of points, like Voronoi
+Finally, some other data handling techniques can be used to help in the clustering process of points, such as Voronoi
 Diagrams used in conjuntion with Delaunay Triangulation and data structures like K-D-Tress.
 
 \subsection{Deployment Challenges in Real World Scenarios}
 In order to be ready to be deployed and used as data mining solution, some work is still needed. In our experiments, we
 noticed that, due to the nature of real world datasets, one big challenge is still the time synchronization of the data
 stream, i.e. the discovery of the correct time slot size. As we said in \chapref{chp:techbackground}, we cannot assume
-that the data entries in a spatio-temporal dataset are sampled in a fixed time rate, so there is still work needed to
-synchronize and group the entries in buckets of a pre-defined size, like we did with our $\sigma$ parameter. So, for
-online analysis, there is a need for an automatic process to detect that $\sigma$ parameter accordingly to the dataset
+that the data entries in a spatio-temporal dataset are sampled in a fixed time rate, therefore there is still research effort needed in order  to
+synchronize and group the entries in buckets of a pre-defined size, as we did with our $\sigma$ parameter. Therefore, for
+online analysis, there is a need for an automatic process to detect that $\sigma$ parameter according to the dataset
 being analyzed and also recalibrate that if the data behavior changes. Additionally, such automatic process should be
-smart enough to deal with abnormalities, like outliers.
+smart enough to deal with abnormalities, such as outliers.
 
 Another scenario that needs to be evaluated is when we have a high speed online stream of data. With high speed incoming
 data, we can face some data drop, because of a Data Connector component being busy processing the data or forwarding the
@@ -77,5 +77,5 @@ mechanism of incoming data, data sampling, data hashing, etc.
 
 \ac{gps} data is known to be very noisy and thus generate a lot of outliers. That said, it is very important to know how
 to deal with such problematic data without excluding good data entries. More importantly, when filtering bad data
-entries, such pre-processing should be done in a way that does not compromise the accuracy nor the effiency of the
+entries, such pre-processing should be done in a way that does not compromise the accuracy nor the efficiency of the
 solution proposed in this dissertation.
