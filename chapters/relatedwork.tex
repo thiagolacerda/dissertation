@@ -80,11 +80,12 @@ compared against convoy pattern algorithms and it is shown that, for some datase
 
 An algorithm to find patterns in Origin-Destination databases, meaning that only the origin and destination points of a
 Trajectory are recorded in the analyzed data set, is proposed by Guo et al. \citep{discovering_orig_dest}. They propose
-a way to model points of interest, since moving objects going to the same place (e.g. airport) will report different GPS
-coordinates. The proposed algorithm has a preprocessing phase that makes a Delaunay Triangulation of the points,
-followed by clustering them based two parameters: (k) number of points to build a cluster and ($\theta$) minimum number
-of points (or weight) of a cluster. After building the clusters, they derive some mobility measures, in order to extract
-spatial and temporal mobility patterns, presenting an useful way of understanding traffic loads in a given city.
+a way to model points of interest, since moving objects going to the same place (e.g. airport) will report different
+Global Positioning System (GPS) coordinates. The proposed algorithm has a preprocessing phase that makes a Delaunay
+Triangulation of the points, followed by clustering them based two parameters: (k) number of points to build a cluster
+and ($\theta$) minimum number of points (or weight) of a cluster. After building the clusters, they derive some mobility
+measures, in order to extract spatial and temporal mobility patterns, presenting an useful way of understanding traffic
+loads in a given city.
 
 Baratchi et al. propose a way to find frequently visited paths between two points of interests. The authors present an
 algorithm that deals with trajectory uncertainty and use cluster based techniques to map uncertain trajectories to
