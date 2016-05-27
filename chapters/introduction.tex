@@ -5,17 +5,10 @@ vehicles, smartphones and wearable devices, to be shipped with location tracking
 collect and report mobility information of people, animals and natural phonemena (e.g. hurricanes), to name a few. That
 technological advance is enabling the generation of massive volumes of spatio-temporal data that can contain information
 ranging from the daily routine of residents of a city \citep{whatdidyoudo} to behaviors of wild animals in a specific
-region \citep{trajclustering}\citep{miningperiodic}. It is notorious the interest of both industry and academia in such subject,
-% * <steniofernandes@gmail.com> 2016-05-27T11:16:07.536Z:
-%
-% > academia
-%
-% the correct term is academia , not academy, which graduate police and firefighter officers :-) olha no resto do texto pra se tem outras ocorrências.
-%
-% ^.
-specially with the rising of Smart Cities, in which spatio-temporal datasets can provide important insights in the
-context of traffic management and urban planning \citep{gissmartcities}\citep{parallelsmartcities}. Those datasets can
-be used to help solving a variety of problems and answer questions, such as:
+region \citep{trajclustering}\citep{miningperiodic}. It is notorious the interest of both industry and academia in such
+subject, specially with the rising of Smart Cities, in which spatio-temporal datasets can provide important insights in
+the context of traffic management and urban planning \citep{gissmartcities}\citep{parallelsmartcities}. Those datasets
+can be used to help solving a variety of problems and answer questions, such as:
 
 \begin{enumerate}
     \item \textbf{What are the busiest times and locations (such as traffic jams locations) in a city?}
@@ -40,11 +33,11 @@ group patterns, such as flock \citep{gudefficient}, convoy \citep{convoy}, swarm
 patterns contain moving objects that have a strong relationship by being close to each other, within a certain distance
 range and during some minimum time interval. Due to the wide range of applicability in the scenario of Smart Cities
 (e.g. city roads planning, intelligent transportation, public security, etc.), the data mining of such patterns has
-gained great importance in both industry and academy. There are a number of research challenges in this topic, specially
-regarding the development of accurate algorithms to detect those patterns. In addition of being precise, it is of
-paramount importance to design fast algorithms so that they can be keep up with real-time data. Hence, reiterating what
-as mentioned in the previous paragraph, efficiently extraction of data patterns for real-time analysis and on the fly
-decision-making is still an open challenge.
+gained great importance in both industry and academia. There are a number of research challenges in this topic,
+specially regarding the development of accurate algorithms to detect those patterns. In addition of being precise, it is
+of paramount importance to design fast algorithms so that they can be keep up with real-time data. Hence, reiterating
+what as mentioned in the previous paragraph, efficiently extraction of data patterns for real-time analysis and on the
+fly decision-making is still an open challenge.
 % * <steniofernandes@gmail.com> 2016-05-26T15:01:34.895Z:
 %
 % gap: why individual tracking is not a good idea? in other words, why perform flock analysis in several contexts, including smart cities
@@ -60,24 +53,19 @@ decision-making is still an open challenge.
     \label{fig:flocks}
 \end{figure}
 
-Among those collaborative patterns, the flock pattern is one that has gained a lot of attention in the research community, since it
-% * <steniofernandes@gmail.com> 2016-05-27T11:19:54.364Z:
-%
-% police academy 2: vc pode trocar também por research community. lembre que empresas fazem pesquisa também. então a comunidade engloba both industry and academia researchers
-%
-% ^.
-can address all the scenarios and questions that were mentioned in this chapter and represents a very familiar behavior
-that is frequently seen in our daily routines. A seminal formal definition of that pattern was proposed by \citep{remo}
-and \citep{gudefficient} and since then, a lot of other studies has follow suit (we refer the reader to
-\chapref{chp:relatedwork} for some of them), mainly due to the interests in developing mechanisms to solve real-world
-problems in the scope of \ac{iot} \citep{iot} and Smart Cities \citep{smartcities}.  According to \citep{gudefficient},
-a flock pattern consists of a minimum number of entities that are within a disk of radius \textit{r} at a given time.
-However, this definition only applies to one single time step and does not help on extracting some useful collective
-behavior information. Such initial definition was then extended by \citep{gudreportingflock}, introducing the minimum
-time interval $\delta$ that the entities should stay together in order to characterize a flock pattern, as depicted by
-\figref{fig:flocks}. The figure shows a flock pattern that lasts three time steps and is formed by trajectories $T_1$,
-$T_2$ and $T_3$. It is worth mentioning that trajectories $T_4$ and $T_5$ are not part of a flock pattern because there
-are no disks enclosing them in all three time steps.
+Among those collaborative patterns, the flock pattern is one that has gained a lot of attention in the research
+community, since it can address all the scenarios and questions that were mentioned in this chapter and represents a
+very familiar behavior that is frequently seen in our daily routines. A seminal formal definition of that pattern was
+proposed by \citep{remo} and \citep{gudefficient} and since then, a lot of other studies has follow suit (we refer the
+reader to \chapref{chp:relatedwork} for some of them), mainly due to the interests in developing mechanisms to solve
+real-world problems in the scope of \ac{iot} \citep{iot} and Smart Cities \citep{smartcities}.  According to
+\citep{gudefficient}, a flock pattern consists of a minimum number of entities that are within a disk of radius
+\textit{r} at a given time.  However, this definition only applies to one single time step and does not help on
+extracting some useful collective behavior information. Such initial definition was then extended by
+\citep{gudreportingflock}, introducing the minimum time interval $\delta$ that the entities should stay together in
+order to characterize a flock pattern, as depicted by \figref{fig:flocks}. The figure shows a flock pattern that lasts
+three time steps and is formed by trajectories $T_1$, $T_2$ and $T_3$. It is worth mentioning that trajectories $T_4$
+and $T_5$ are not part of a flock pattern because there are no disks enclosing them in all three time steps.
 
 When it comes to flock pattern detection efficiency and speed, one major problem on doing that is to find the disks that
 enclose the trajectories in each time step. Since the disks centers do not need to match any point in the dataset, there

@@ -4,7 +4,7 @@
 \label{sec:architecture}
 After the related work research that was performed, we noticed a lack of system architecture in order to solve data
 spatio-temporal pattern detection problems. So far, no previous work has provide an architecture that could be easily
-extensible and reusable for the myriad of the spatio-temporal pattern detection problems in the academy.
+extensible and reusable for the myriad of the spatio-temporal pattern detection problems in the academia.
 
 We first tried to approach this problem in a more generic fashion, since all moving pattern mining problem has the same
 workflow:
@@ -326,8 +326,8 @@ receives points from $t_1$), in which the past time (\ac{fp} bitmaps) goes at th
 bitmaps) goes at the left side of the concatenated bitmap. We then perform a search for $\mu = 3$ bits set to 1 in that
 concatenated bitmaps to figure out which points can potentially form a flock and can be places in a disk.
 
-In time slot $t_4$, when \ac{fp} receives the points from time slot $t_2$, a flock pattern will be found, since we could find
-3 disks containing the same set of $O_{id}$ and containing at least $\mu = 3$ unique $O_{id}$.
+In time slot $t_4$, when \ac{fp} receives the points from time slot $t_2$, a flock pattern will be found, since we could
+find 3 disks containing the same set of $O_{id}$ and containing at least $\mu = 3$ unique $O_{id}$.
 
 \section{Taking Advantage of Multi-core Architectures}
 \label{sec:multithread}
