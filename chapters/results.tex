@@ -34,8 +34,8 @@ the next destination of the GPS data is the FP Data Processor, which is composed
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=\textwidth]{images/experimental_arch.png}
     \caption{System design implemented for the experiments}
+    \includegraphics[width=\textwidth]{images/experimental_arch.png}
     \label{fig:experimental_arch}
 \end{figure}
 
@@ -77,32 +77,33 @@ in 112203 entries and 276 unique $O_{id}$ (instead of 50 in the original dataset
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for Trucks dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Trucks_n_4_g_1_5_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 1.5$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/Trucks_n_4_g_1_5_varying_l.eps}
         \label{fig:trucks_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Trucks_n_4_l_20_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 20$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/Trucks_n_4_l_20_varying_g.eps}
         \label{fig:trucks_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for Trucks dataset}
     \label{fig:trucks_results}
 \end{figure*}
 
 \begin{figure*}[h!]
+    \centering
+    \caption{Results varying $\mu$ and number of disks generated over time for Trucks dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Trucks_l_20_g_1_5_varying_n.eps}
         \caption{$\delta = 20$, $\epsilon = 1.5$ and $\mu$ varying}
+        \includegraphics[width=\textwidth]{images/Trucks_l_20_g_1_5_varying_n.eps}
         \label{fig:trucks_vary_n}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Trucks_d.eps}
         \caption{Cumulative disks by time}
+        \includegraphics[width=\textwidth]{images/Trucks_d.eps}
         \label{fig:trucks_disks}
     \end{subfigure}
-    \caption{Results varying $\mu$ and number of disks generated over time for Trucks dataset}
     \label{fig:trucks_results2}
 \end{figure*}
 
@@ -125,32 +126,33 @@ $O_{id}$.
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for BerlinMOD dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/BerlinMOD_n_4_g_100_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_n_4_g_100_varying_l.eps}
         \label{fig:berlinmod_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/BerlinMOD_n_4_l_8_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_n_4_l_8_varying_g.eps}
         \label{fig:berlinmod_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for BerlinMOD dataset}
     \label{fig:berlinmod_results}
 \end{figure*}
 
 \begin{figure*}[h!]
+    \centering
+    \caption{Results varying $\mu$ and number of disks generated over time for BerlinMOD dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/BerlinMOD_l_8_g_100_varying_n.eps}
         \caption{$\delta = 8$, $\epsilon = 100$ and $\mu$ varying}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_l_8_g_100_varying_n.eps}
         \label{fig:berlinmod_vary_n}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/BerlinMOD_d.eps}
         \caption{Cumulative disks by time}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_d.eps}
         \label{fig:berlinmod_disks}
     \end{subfigure}
-    \caption{Results varying $\mu$ and number of disks generated over time for BerlinMOD dataset}
     \label{fig:berlinmod_results2}
 \end{figure*}
 
@@ -170,17 +172,17 @@ China, available in \citep{tdrive}. It has 17,762,489 entries with 10336 unique 
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for TDrive dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/TDrive_n_4_g_100_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/TDrive_n_4_g_100_varying_l.eps}
         \label{fig:tdrive_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/TDrive_n_4_l_8_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/TDrive_n_4_l_8_varying_g.eps}
         \label{fig:tdrive_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for TDrive dataset}
     \label{fig:tdrive_results}
 \end{figure*}
 
@@ -195,17 +197,18 @@ are a reflex of the huge decrease of disks that were generated by time, as depic
 reaching almost 96\% of reduction.
 
 \begin{figure*}[h!]
+    \centering
+    \caption{Results varying $\mu$ and number of disks generated over time for TDrive dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/TDrive_l_8_g_100_varying_n.eps}
         \caption{$\delta = 8$, $\epsilon = 100$ and $\mu$ varying}
+        \includegraphics[width=\textwidth]{images/TDrive_l_8_g_100_varying_n.eps}
         \label{fig:tdrive_vary_n}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/TDrive_d.eps}
         \caption{Cumulative disks by time}
+        \includegraphics[width=\textwidth]{images/TDrive_d.eps}
         \label{fig:tdrive_disks}
     \end{subfigure}
-    \caption{Results varying $\mu$ and number of disks generated over time for TDrive dataset}
     \label{fig:tdrive_results2}
 \end{figure*}
 
@@ -218,32 +221,33 @@ and 7000 unique $O_{id}$.
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for Brinkhoff dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Brinkhoff_n_4_g_200_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 200$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/Brinkhoff_n_4_g_200_varying_l.eps}
         \label{fig:brinkhoff_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Brinkhoff_n_4_l_8_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/Brinkhoff_n_4_l_8_varying_g.eps}
         \label{fig:brinkhoff_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for Brinkhoff dataset}
     \label{fig:brinkhoff_results}
 \end{figure*}
 
 \begin{figure*}[h!]
+    \centering
+    \caption{Results varying $\mu$ and number of disks generated over time for Brinkhoff dataset}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Brinkhoff_l_8_g_200_varying_n.eps}
         \caption{$\delta = 8$, $\epsilon = 200$ and $\mu$ varying}
+        \includegraphics[width=\textwidth]{images/Brinkhoff_l_8_g_200_varying_n.eps}
         \label{fig:brinkhoff_vary_n}
     \end{subfigure}
     \begin{subfigure}[t]{0.48\textwidth}
-        \includegraphics[width=\textwidth]{images/Brinkhoff_d.eps}
         \caption{Cumulative disks by time}
+        \includegraphics[width=\textwidth]{images/Brinkhoff_d.eps}
         \label{fig:brinkhoff_disks}
     \end{subfigure}
-    \caption{Results varying $\mu$ and number of disks generated over time for Brinkhoff dataset}
     \label{fig:brinkhoff_results2}
 \end{figure*}
 
@@ -299,17 +303,17 @@ resources busy, as the number of executing threads exceeds too much the number o
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for Trucks dataset}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/Trucks_complete_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 1.5$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/Trucks_complete_varying_l.eps}
         \label{fig:trucks_complete_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/Trucks_complete_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 20$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/Trucks_complete_varying_g.eps}
         \label{fig:trucks_complete_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for Trucks dataset}
     \label{fig:trucks_complete_results}
 \end{figure*}
 
@@ -321,15 +325,15 @@ when varying $\mu$ (\figref{fig:trucks_complete_vary_n}) and $\epsilon$ (\figref
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/Trucks_complete_varying_n.eps}
     \caption{Results having $\delta = 20$, $\epsilon = 1.5$ and $\mu$ varying for the Trucks dataset}
+    \includegraphics[width=0.5\textwidth]{images/Trucks_complete_varying_n.eps}
     \label{fig:trucks_complete_vary_n}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/Trucks_thread.eps}
     \caption{Execution time reduction by number of threads for the Trucks dataset}
+    \includegraphics[width=0.7\textwidth]{images/Trucks_thread.eps}
     \label{fig:trucks_threads}
 \end{figure}
 
@@ -344,24 +348,24 @@ with 30 worker threads, being 60 in total).
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for BerlinMOD dataset}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/BerlinMOD_complete_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_complete_varying_l.eps}
         \label{fig:berlinmod_complete_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/BerlinMOD_complete_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/BerlinMOD_complete_varying_g.eps}
         \label{fig:berlinmod_complete_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for BerlinMOD dataset}
     \label{fig:berlinmod_complete_results}
 \end{figure*}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/BerlinMOD_complete_varying_n.eps}
     \caption{Results having $\delta = 8$, $\epsilon = 100$ and $\mu$ varying for the BerlinMOD dataset}
+    \includegraphics[width=0.5\textwidth]{images/BerlinMOD_complete_varying_n.eps}
     \label{fig:berlinmod_complete_vary_n}
 \end{figure}
 
@@ -376,8 +380,8 @@ worker threads.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/BerlinMOD_thread.eps}
     \caption{Execution time reduction by number of threads for the BerlinMOD dataset}
+    \includegraphics[width=0.7\textwidth]{images/BerlinMOD_thread.eps}
     \label{fig:berlinmod_threads}
 \end{figure}
 
@@ -400,31 +404,31 @@ time by 70\% when executing BitDF MT with both 5 and 7 worker threads, as depict
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/TDrive_thread.eps}
     \caption{Execution time reduction by number of threads for the TDrive dataset}
+    \includegraphics[width=0.7\textwidth]{images/TDrive_thread.eps}
     \label{fig:tdrive_threads}
 \end{figure}
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for TDrive dataset}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/TDrive_complete_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/TDrive_complete_varying_l.eps}
         \label{fig:tdrive_complete_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/TDrive_complete_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/TDrive_complete_varying_g.eps}
         \label{fig:tdrive_complete_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for TDrive dataset}
     \label{fig:tdrive_complete_results}
 \end{figure*}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/TDrive_complete_varying_n.eps}
     \caption{Results having $\delta = 8$, $\epsilon = 100$ and $\mu$ varying for the TDrive dataset}
+    \includegraphics[width=0.5\textwidth]{images/TDrive_complete_varying_n.eps}
     \label{fig:tdrive_complete_vary_n}
 \end{figure}
 
@@ -447,16 +451,16 @@ to become available.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/Brinkhoff_thread.eps}
     \caption{Execution time reduction by number of threads for the Brinkhof dataset}
+    \includegraphics[width=0.7\textwidth]{images/Brinkhoff_thread.eps}
     \label{fig:brinkhoff_threads}
 \end{figure}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/Brinkhoff_disks_threads.eps}
     \caption{Sum of disks generated by the disk threads (red) and number of disks that were inserted in the global disk
         set after subset/superset check (blue), by time slot}
+    \includegraphics[width=0.5\textwidth]{images/Brinkhoff_disks_threads.eps}
     \label{fig:brinkhoff_disks_threads}
 \end{figure}
 
@@ -471,24 +475,24 @@ BitDF MT could outperform BitDF by 76\%, whereas by running with 7 worker thread
 
 \begin{figure*}[h!]
     \centering
+    \caption{Results varying $\delta$ and $\epsilon$ for Brinkhoff dataset}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/Brinkhoff_complete_varying_l.eps}
         \caption{$\mu = 4$, $\epsilon = 100$ and $\delta$ varying}
+        \includegraphics[width=\textwidth]{images/Brinkhoff_complete_varying_l.eps}
         \label{fig:brinkhoff_complete_vary_l}
     \end{subfigure}
     \begin{subfigure}[t]{0.49\textwidth}
-        \includegraphics[width=\textwidth]{images/Brinkhoff_complete_varying_g.eps}
         \caption{$\mu = 4$, $\delta = 8$ and $\epsilon$ varying}
+        \includegraphics[width=\textwidth]{images/Brinkhoff_complete_varying_g.eps}
         \label{fig:brinkhoff_complete_vary_g}
     \end{subfigure}
-    \caption{Results varying $\delta$ and $\epsilon$ for Brinkhoff dataset}
     \label{fig:brinkhoff_complete_results}
 \end{figure*}
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/Brinkhoff_complete_varying_n.eps}
     \caption{Results having $\delta = 8$, $\epsilon = 100$ and $\mu$ varying for the Brinkhoff dataset}
+    \includegraphics[width=0.5\textwidth]{images/Brinkhoff_complete_varying_n.eps}
     \label{fig:brinkhoff_complete_vary_n}
 \end{figure}
 
