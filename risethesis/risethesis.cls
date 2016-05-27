@@ -638,21 +638,22 @@ requirements for the degree of \@degree\ in \@majorfielden.
 	\hspace{0.5cm} \@title  / \@author. --
 	\@address, \@date-
 	
-	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	\hspace{0.5cm} \pageref{LastPage} p. : il., fig., tab.\\
 	
 	\hspace{0.5cm} \@advisertitle~\@adviser\\
 	
 	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\@texttype~--~\@universitypt,
+	\parbox[t]{\textwidth}{\@texttype~--~\@universityen,
 	\@date.}\\
 	
 	\hspace{0.5cm}
-		1. Palavra-chave1.
-		2. Palavra-chave2.
-		I. Orientador.
-		II. Universidade xxx.
-		III. Faculdade de xxx.
-		IV. Título\\ 			
+        1. Smart Cities.
+        2. Pattern Mining
+        3. Spatio-temporal data
+        4. Flock Pattern
+        I. Fernandes, Stênio F. de Lacerda (Advisor).
+		II. ~\@universityen.
+		IV. Título\\
 	
 	\hspace{8.75cm} CDU 02:141:005.7\\
 	
