@@ -10,24 +10,24 @@ applicable and are intrinsically related to the type of problems that we have ju
 Throughout this dissertation, we could show that a lot of work has been done in the academy, in order to provide
 algorithms able to identify the Flock pattern. However, none of them could perform that task efficiently nor be able to
 scale well when a large dataset was the analysis target. Additionally, we found that there was no system architecture
-proposal that could be simple and extensible enough to be used in the various data mining problems present today. Hence,
-since we are witnessing the rising of Smart Cities, helping to solve those aforementioned issues would be of tremendous
-importance.
+proposal that could be simple and extensible enough to be used in the various spatio-temporal pattern detection problems
+present today. Hence, since we are witnessing the rising of Smart Cities, helping to solve those aforementioned issues
+would be of tremendous importance.
 
 Given the importance of efficiently discovering Flock patterns, in order to enable decision makers to act fast, we
-proposed a simple, extensible and reusable System Architecture that can fit in almost any data mining problem. We then
-used that architecture to implement a novel flock pattern detection algorithm that was able to outperform the
-state-of-the-art solutions in more than 99\%. Such impressive results were possible due to the filtering heuristic based
-on bitmaps that we proposed, which was able to reduce the generation of cluster disks in more than 96\%, directly
-reducing the amount of data that needed to be processed by the algorithm. Despite the great results achieved with our
-solution, we realized that there was still room for improvements, given the large availability of multi-core processors
-in today's computers. With that in mind, we remodeled our proposed solution, proving how flexible our proposed
-architecture was, to perform some critical and time consuming tasks in parallel, taking full advantage of the multi-core
-paradigm. Our performance benchmarks showed that we could outperform our own single threaded solution by 96\% in some
-cases. So, to put that in numbers, we were able to reduce a running time of 15 thousand seconds (state-of-the-art
-techniques) to only 13 seconds (BitDF MT). It is also important to mention that our experiments were performed using
-various datasets, both synthetic generated and collected from real world experiments and all of them having a
-considerable number of entries.
+proposed a simple, extensible and reusable System Architecture that can fit in almost any spatio-temporal pattern
+detection problem. We then used that architecture to implement a novel flock pattern detection algorithm that was able
+to outperform the state-of-the-art solutions in more than 99\%. Such impressive results were possible due to the
+filtering heuristic based on bitmaps that we proposed, which was able to reduce the generation of cluster disks in more
+than 96\%, directly reducing the amount of data that needed to be processed by the algorithm. Despite the great results
+achieved with our solution, we realized that there was still room for improvements, given the large availability of
+multi-core processors in today's computers. With that in mind, we remodeled our proposed solution, proving how flexible
+our proposed architecture was, to perform some critical and time consuming tasks in parallel, taking full advantage of
+the multi-core paradigm. Our performance benchmarks showed that we could outperform our own single threaded solution by
+96\% in some cases. So, to put that in numbers, we were able to reduce a running time of 15 thousand seconds
+(state-of-the-art techniques) to only 13 seconds (BitDF MT). It is also important to mention that our experiments were
+performed using various datasets, both synthetic generated and collected from real world experiments and all of them
+having a considerable number of entries.
 
 Even though we ere able to present great contributions in this field, that are still some gaps that can be filled and
 points that need more work and can lead to important results as well. Here is a list with some of them:
