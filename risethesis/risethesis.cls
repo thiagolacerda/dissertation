@@ -11,7 +11,7 @@
 %%
 %% ACKNOWLEDGEMENTS
 %%
-%% We would like to thanks the RiSE's reasearchers community and the 
+%% We would like to thanks the RiSE's reasearchers community and the
 %% other students from Federal University of Pernambuco who contributed
 %% to the RiSE template development.
 
@@ -19,7 +19,7 @@
 %\input{aboutufpethesis.txt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% OPTIONS 
+%% OPTIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \DeclareOption{pt}{%
@@ -35,14 +35,14 @@
 
 \DeclareOption{twoside}{%
   \PassOptionsToClass{twoside}{book}}
- 
+
 \DeclareOption{print}{%
   \let\@scr=0}
 
 \DeclareOption{scr}{%
   \let\@scr=1%
   \PassOptionsToClass{dvipdfm}{book}}
-  
+
 \DeclareOption{bsc}{%
   \let\@degreetype=0}
 
@@ -57,13 +57,13 @@
 
 \DeclareOption{phd}{%
   \let\@degreetype=4}
-  
+
 \DeclareOption{singlespacing}{%
   \let\@linespacing=0}
-  
+
 \DeclareOption{onehalfspacing}{%
   \let\@linespacing=1}
-  
+
 \DeclareOption{doublespacing}{%
   \let\@linespacing=2}
 
@@ -240,7 +240,7 @@
   This volume has been typeset in \LaTeX with the \textsf{UFPEThesis} class
   (\url{www.cin.ufpe.br/~paguso/ufpethesis}).
   \if\@scr1
-  For details about this document, click \Acrobatmenu{GeneralInfo}{here}. 
+  For details about this document, click \Acrobatmenu{GeneralInfo}{here}.
   \fi}
 \fi\fi
 
@@ -402,7 +402,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
      \fontsize{100}{100}%          % font size 100pt, baselineskip 100pt
      \selectfont%                  % activate font
    }
-   
+
    \colorlet{chapnumcol}{gray!75}  % color for chapter number
 
    \titleformat{\chapter}[display]
@@ -469,17 +469,17 @@ requirements for the degree of \@degree\ in \@majorfielden.
 
 \newenvironment{references}
 {
-	\backmatter
-	\bibliographystyle{risethesis/abnt}
-	\setlength{\bibhang}{0pt}
-	\singlespacing % Change to singlespacing for the references
-	\begingroup
-	\raggedright
-	\renewcommand{\bibname}{\bibliographytocname}
+    \backmatter
+    \bibliographystyle{risethesis/abnt}
+    \setlength{\bibhang}{0pt}
+    \singlespacing % Change to singlespacing for the references
+    \begingroup
+    \raggedright
+    \renewcommand{\bibname}{\bibliographytocname}
 }
 {
-	\endgroup
-	\onehalfspacing % Put onehalfspacing back
+    \endgroup
+    \onehalfspacing % Put onehalfspacing back
 }
 
 %% Captions (Tables, Figures, etc.)
@@ -545,29 +545,29 @@ requirements for the degree of \@degree\ in \@majorfielden.
 \def\presentationpage{%
   \if@openright\cleardoublepage\else\clearpage\fi
   \thispagestyle{empty}
-  
-	\begin{figure}[ht]
-	\begin{minipage}[b]{1.5cm}
-	  \includegraphics[width=1.5cm]{ufpelogo}
-	\end{minipage}
-	\hspace{0.2cm}
-	\begin{minipage}[b]{16cm}
-	  {
-		  \if\@language0
-    		  \sf\normalsize
-    		  \@universitypt
-    		  \vskip 0.1cm
-    		  \if\@showinstitute1
-    		    \@instituteen
-    		    \vskip 0.1cm
-    		  \fi
-    		  \if\@showdepartment1
-    		    \@departmentpt
-    		    \vskip 0.1cm
-    		  \fi
-    		  \@programpt
-    	  \else
-    	      \sf\normalsize
+
+    \begin{figure}[ht]
+    \begin{minipage}[b]{1.5cm}
+      \includegraphics[width=1.5cm]{ufpelogo}
+    \end{minipage}
+    \hspace{0.2cm}
+    \begin{minipage}[b]{16cm}
+      {
+          \if\@language0
+              \sf\normalsize
+              \@universitypt
+              \vskip 0.1cm
+              \if\@showinstitute1
+                \@instituteen
+                \vskip 0.1cm
+              \fi
+              \if\@showdepartment1
+                \@departmentpt
+                \vskip 0.1cm
+              \fi
+              \@programpt
+          \else
+              \sf\normalsize
               \@universityen
               \vskip 0.1cm
               \if\@showinstitute1
@@ -580,10 +580,10 @@ requirements for the degree of \@degree\ in \@majorfielden.
                 \vskip 0.1cm
               \fi
               \@programen
-    	  \fi
-	  }
-	\end{minipage}
-	\end{figure}
+          \fi
+      }
+    \end{minipage}
+    \end{figure}
   \vskip 25mm
   \begin{center}
   {\normalsize \MakeUppercase{\@author}}
@@ -596,12 +596,12 @@ requirements for the degree of \@degree\ in \@majorfielden.
     \@presentationtext
     \vskip2\baselineskip
     \flushright{
-    	%\begin{center}
-    	%\begin{tabular}{rl}
-    	{\quotefont \@advisertitle:} \@adviser\\
-    	\if\@showcoadviser1{\quotefont\@coadvisertitle:} \@coadviser\\\fi
-    	%\end{tabular}
-    	%\end{center}
+        %\begin{center}
+        %\begin{tabular}{rl}
+        {\quotefont \@advisertitle:} \@adviser\\
+        \if\@showcoadviser1{\quotefont\@coadvisertitle:} \@coadviser\\\fi
+        %\end{tabular}
+        %\end{center}
     }
     \end{minipage}
   \end{flushright}
@@ -622,44 +622,44 @@ requirements for the degree of \@degree\ in \@majorfielden.
     \thispagestyle{empty}
     \singlespacing
     \footnotesize
-}{%   
+}{%
     \onehalfspacing
     \normalsize
 }%
 
 \newcommand{\FakeFichaCatalografica}{
-	\vspace*{\fill}						% Posição verticaL
-	\hrule							% Linha horizontal
-	\begin{center}					% Minipage Centralizado
-	\begin{minipage}[c]{12.5cm}		% Largura
-	
-	\@author
-	
-	\hspace{0.5cm} \@title  / \@author. --
-	\@address, \@date-
-	
-	\hspace{0.5cm} \pageref{LastPage} p. : il., fig., tab.\\
-	
-	\hspace{0.5cm} \@advisertitle~\@adviser\\
-	
-	\hspace{0.5cm}
-	\parbox[t]{\textwidth}{\@texttype~--~\@universityen,
-	\@date.}\\
-	
-	\hspace{0.5cm}
+    \vspace*{\fill}                        % Posição verticaL
+    \hrule                            % Linha horizontal
+    \begin{center}                    % Minipage Centralizado
+    \begin{minipage}[c]{12.5cm}        % Largura
+
+    \@author
+
+    \hspace{0.5cm} \@title  / \@author. --
+    \@address, \@date-
+
+    \hspace{0.5cm} \pageref{LastPage} p. : il., fig., tab.\\
+
+    \hspace{0.5cm} \@advisertitle~\@adviser\\
+
+    \hspace{0.5cm}
+    \parbox[t]{\textwidth}{\@texttype~--~\@universityen,
+    \@date.}\\
+
+    \hspace{0.5cm}
         1. Smart Cities.
         2. Pattern Mining
         3. Spatio-temporal data
         4. Flock Pattern
         I. Fernandes, Stênio F. de Lacerda (Advisor).
-		II. ~\@universityen.
-		IV. Título\\
-	
-	\hspace{8.75cm} CDU 02:141:005.7\\
-	
-	\end{minipage}
-	\end{center}
-	\hrule
+        II. ~\@universityen.
+        IV. Título\\
+
+    \hspace{8.75cm} CDU 02:141:005.7\\
+
+    \end{minipage}
+    \end{center}
+    \hrule
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -674,30 +674,30 @@ requirements for the degree of \@degree\ in \@majorfielden.
   Ciência da Computação do Centro de Informática da Universidade Federal de
   Pernambuco, sob o título \textbf{\@title}, orientada pelo \textbf{Prof.
   \@adviser} e aprovada pela banca examinadora formada pelos professores:
-  
+
   \vspace{5\baselineskip}
-  
+
   \begin{center}
-  
+
   -----------------------------------------------------------------------\\
   João do Morro\\
   Centro de Informática/UFPE
-  
+
   \vspace{2\baselineskip}
   -----------------------------------------------------------------------\\
   Didi Mocó Sonrisal Novalgino Mufungo\\
   Centro de Informática/UFPE
-  
+
   \vspace{2\baselineskip}
   -----------------------------------------------------------------------\\
   Biff H. Tannen\\
   Departamento de Ciência da Computação/UFBA
-  
+
   \vfill
   \@address
   \\
   \@date
-  
+
   \end{center}
 }
 
@@ -715,7 +715,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
     \quotefonti
     \begin{flushright}}
 \def\enddedicatory{
-		\end{flushright}
+        \end{flushright}
     \normalfont
     \end{minipage}
   \end{flushright}}
@@ -753,7 +753,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \pagestyle{empty}
   \chapter*{\abstrname}
   \thispagestyle{empty}}
-  
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Keywords
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -814,7 +814,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \end{flushright}
   \normalfont\vskip2\baselineskip}
 
-  
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Table of contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -831,7 +831,7 @@ requirements for the degree of \@degree\ in \@majorfielden.
    \@starttoc{toc}
 
    \thispagestyle{empty}}
- 
+
 
 \renewcommand\listoffigures{%
    \pagestyle{empty}
@@ -858,27 +858,27 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Some codes coming from phdthesis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
+%
 % %% make the equation numbers have little ovals around them
  \def\tagform@#1{\maketag@@@{\cornersize{0.8}\ovalbox{\ignorespaces\sffamily{#1}\unskip\@@italiccorr}}}
-% 
+%
 % %% Load up PS insertion package
  \PScommands
- 
+
 % %% now reset the headers and footers
  \fancyhead{}
  \fancyfoot{}
- 
+
 % %% put the page numbers on the top in a nice box
 % %% even side pages
  \fancyhead[LE]{%
- 	\rule{0cm}{4mm}\color{black}{\thepage}\hfill\leftmark
+     \rule{0cm}{4mm}\color{black}{\thepage}\hfill\leftmark
  }
- 
-% 
+
+%
 % %% odd side pages
  \fancyhead[RO]{
- 	\rule{0cm}{4mm}\color{black}{\rightmark}\hfill\thepage
+     \rule{0cm}{4mm}\color{black}{\rightmark}\hfill\thepage
  }
 
 % Header style of the chapter page
@@ -888,10 +888,10 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \fancyhead{\hfill\thepage}
   \renewcommand{\headrulewidth}{0pt}
  }
-% 
+%
 % %% bring the style into effect
  \pagestyle{fancy}
-% 
+%
 % %% make the quotation appear next to the chapter number
 \renewcommand\chapterheadstartvskip{\vspace*{-5\baselineskip}}
 
@@ -900,9 +900,9 @@ requirements for the degree of \@degree\ in \@majorfielden.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setcounter{secnumdepth}{4}
-% 
+%
 % \def\part{%
-% 	\if@openright\cleardoublepage\else\clearpage\fi
+%     \if@openright\cleardoublepage\else\clearpage\fi
 %   \thispagestyle{empty}%
 %   \secdef\@part\@spart}
 % \def\@part[#1]#2{%
@@ -957,12 +957,12 @@ requirements for the degree of \@degree\ in \@majorfielden.
 
 % Theorem-like environments
 \newtheoremstyle{theo}%
-	{\topsep}{\topsep}% Space above and below
-	{\slshape}% Body style
-	{0pt}% Heading indent amount
-	{\bfseries}{.}% Heading font and punctuation after it
-	{1ex plus 0pt minus .2ex}% Space after heading 
-	{}% Head spec (empty = same as �plain� style
+    {\topsep}{\topsep}% Space above and below
+    {\slshape}% Body style
+    {0pt}% Heading indent amount
+    {\bfseries}{.}% Heading font and punctuation after it
+    {1ex plus 0pt minus .2ex}% Space after heading
+    {}% Head spec (empty = same as �plain� style
 \theoremstyle{definition}
 \newtheorem{Def}{\@defname}[chapter]
 \theoremstyle{theo}

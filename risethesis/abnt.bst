@@ -31,34 +31,34 @@
 % Definição dos campos das entradas
 %==============================================================================
 ENTRY
-{ 
-	author
-	editor
-	title
-	booktitle
-	chapter
-	pages
-	address
-	publisher
-	year
-	journal
-	month
-	number
-	edition
-	howpublished
-	institution
-	key
-	note
-	organization
-	school
-	series
-	type
-	volume
+{
+    author
+    editor
+    title
+    booktitle
+    chapter
+    pages
+    address
+    publisher
+    year
+    journal
+    month
+    number
+    edition
+    howpublished
+    institution
+    key
+    note
+    organization
+    school
+    series
+    type
+    volume
 }
 {}
 {
-	label
-	year.char
+    label
+    year.char
 }
 
 INTEGERS {i j n}
@@ -98,7 +98,7 @@ MACRO {ibmsj} {"IBM Systems Journal"}
 MACRO {ieeese} {"IEEE Transactions on Software Engineering"}
 MACRO {ieeetc} {"IEEE Transactions on Computers"}
 MACRO {ieeetcad}
-	{"IEEE Transactions on Computer-Aided Design of Integrated Circuits"}
+    {"IEEE Transactions on Computer-Aided Design of Integrated Circuits"}
 MACRO {ipl} {"Information Processing Letters"}
 MACRO {jacm} {"Journal of the ACM"}
 MACRO {jcss} {"Journal of Computer and System Sciences"}
@@ -118,7 +118,7 @@ MACRO {tcs} {"Theoretical Computer Science"}
 %==============================================================================
 FUNCTION {show.missing.field.warning}
 {
-	"Falta o campo " swap$ " em " cite$ * * * warning$
+    "Falta o campo " swap$ " em " cite$ * * * warning$
 }
 
 %==============================================================================
@@ -126,62 +126,62 @@ FUNCTION {show.missing.field.warning}
 %==============================================================================
 FUNCTION {not}
 {
-		{ #0 }
-		{ #1 }
-	if$
+        { #0 }
+        { #1 }
+    if$
 }
 
 FUNCTION {and}
 {
-		'skip$
-		{ pop$ #0 }
-	if$
+        'skip$
+        { pop$ #0 }
+    if$
 }
 
 FUNCTION {or}
 {
-		{ pop$ #1 }
-		'skip$
-	if$
+        { pop$ #1 }
+        'skip$
+    if$
 }
 
 FUNCTION {is.numeric.char}
 {
-	#1 #1 substring$
-	duplicate$ "" =
-		{pop$ #0}
-		{
-			duplicate$ chr.to.int$ #47 >
-			swap$ chr.to.int$ #58 <
-			and
-		}
-	if$
+    #1 #1 substring$
+    duplicate$ "" =
+        {pop$ #0}
+        {
+            duplicate$ chr.to.int$ #47 >
+            swap$ chr.to.int$ #58 <
+            and
+        }
+    if$
 }
 
 FUNCTION {is.uppercase.char}
 {
-	#1 #1 substring$
-	duplicate$ "" =
-		{pop$ #0}
-		{
-			duplicate$ chr.to.int$ #64 >
-			swap$ chr.to.int$ #91 <
-			and
-		}
-	if$
+    #1 #1 substring$
+    duplicate$ "" =
+        {pop$ #0}
+        {
+            duplicate$ chr.to.int$ #64 >
+            swap$ chr.to.int$ #91 <
+            and
+        }
+    if$
 }
 
 %==============================================================================
 % Escreve no arquivo o comando que gera o item
 %
 % Parm:
-%	 um string com a formatacao do item
+%     um string com a formatacao do item
 %==============================================================================
 FUNCTION {write.item}
 {
-	"\bibitem[" label * "]{" * cite$ * "} " *
-	swap$ *
-	write$ newline$ newline$
+    "\bibitem[" label * "]{" * cite$ * "} " *
+    swap$ *
+    write$ newline$ newline$
 }
 
 %==============================================================================
@@ -189,28 +189,28 @@ FUNCTION {write.item}
 % nessa ordem
 %
 % Parm:
-%	 o titulo
+%     o titulo
 %==============================================================================
 FUNCTION {extract.subtitle}
 {
-	#1 'i :=
+    #1 'i :=
 
-	duplicate$
-	i #1 substring$
-	{
-		duplicate$ ":" = not
-		swap$ "" = not
-		and
-	}
-	{
-		#1 i + 'i :=
-		duplicate$
-		i #1 substring$
-	} while$
+    duplicate$
+    i #1 substring$
+    {
+        duplicate$ ":" = not
+        swap$ "" = not
+        and
+    }
+    {
+        #1 i + 'i :=
+        duplicate$
+        i #1 substring$
+    } while$
 
-	duplicate$ i #999 substring$
-	swap$
-	#1 i #1 - substring$
+    duplicate$ i #999 substring$
+    swap$
+    #1 i #1 - substring$
 }
 
 %==============================================================================
@@ -218,39 +218,39 @@ FUNCTION {extract.subtitle}
 % ordem
 %
 % Parm:
-%	 o texto
+%     o texto
 %==============================================================================
 FUNCTION {extract.first.word}
 {
-	#1 'i :=
+    #1 'i :=
 
-	duplicate$
-	i #1 substring$
-	{
-		duplicate$ " " = not
-		swap$ "" = not
-		and
-	}
-	{
-		#1 i + 'i :=
-		duplicate$
-		i #1 substring$
-	} while$
+    duplicate$
+    i #1 substring$
+    {
+        duplicate$ " " = not
+        swap$ "" = not
+        and
+    }
+    {
+        #1 i + 'i :=
+        duplicate$
+        i #1 substring$
+    } while$
 
-	duplicate$ i #999 substring$
-	swap$
-	#1 i #1 - substring$
+    duplicate$ i #999 substring$
+    swap$
+    #1 i #1 - substring$
 }
 
 %==============================================================================
 % Enfatiza um string
 %
 % Parm:
-%	 o string
+%     o string
 %==============================================================================
 FUNCTION {emphasize}
 {
-	"\textbf{" swap$ * "}" *
+    "\textbf{" swap$ * "}" *
 }
 
 %==============================================================================
@@ -259,171 +259,171 @@ FUNCTION {emphasize}
 % Ex.: NOME. Titulo. data. ano.
 %
 % Parm:
-%	 um string representando o item (pode ser vazio, para iniciar o item)
-%	 o texto a ser adicionado
+%     um string representando o item (pode ser vazio, para iniciar o item)
+%     o texto a ser adicionado
 %==============================================================================
 FUNCTION {add.to.item}
 {
-	duplicate$ empty$
-		'pop$
-		{
-			swap$
-			duplicate$ empty$
-				'skip$
-				{" " *}
-			if$
-			swap$ add.period$ *
-		}
-	if$
+    duplicate$ empty$
+        'pop$
+        {
+            swap$
+            duplicate$ empty$
+                'skip$
+                {" " *}
+            if$
+            swap$ add.period$ *
+        }
+    if$
 }
 
 %==============================================================================
 % Adiciona um item (se nao-empty$) a uma lista do tipo "a, b, c, ..."
 %
 % Parm:
-%	 um string representando a lista (pode ser vazio, para criar uma lista)
-%	 o item a ser adicionado
+%     um string representando a lista (pode ser vazio, para criar uma lista)
+%     o item a ser adicionado
 %==============================================================================
 FUNCTION {add.to.list}
 {
-	duplicate$ empty$
-		'pop$
-		{
-			swap$
-			duplicate$ empty$
-				'skip$
-				{", " *}
-			if$
-			swap$ *
-		}
-	if$
+    duplicate$ empty$
+        'pop$
+        {
+            swap$
+            duplicate$ empty$
+                'skip$
+                {", " *}
+            if$
+            swap$ *
+        }
+    if$
 }
 
 %==============================================================================
 % Adiciona um nome a uma lista de nomes (separados por ponto-e-virgula)
 %
 % Parm:
-%	 um string representando a lista (pode ser vazio, para criar uma lista)
-%	 o nome a ser adicionado
+%     um string representando a lista (pode ser vazio, para criar uma lista)
+%     o nome a ser adicionado
 %==============================================================================
 FUNCTION {add.to.namelist}
 {
-	swap$
-	duplicate$ empty$
-		'skip$
-		{"; " *}
-	if$
-	swap$ *
+    swap$
+    duplicate$ empty$
+        'skip$
+        {"; " *}
+    if$
+    swap$ *
 }
 
 %==============================================================================
 % Formata uma lista de nomes.
 %
 % Parm:
-%	 os nomes a serem formatados
+%     os nomes a serem formatados
 %==============================================================================
 FUNCTION {format.names}
 {
-	duplicate$ num.names$ 'n :=
-	#1 'i :=
-	"" 'names :=
+    duplicate$ num.names$ 'n :=
+    #1 'i :=
+    "" 'names :=
 
-	{i n #1 + <}
-	{
-		duplicate$ duplicate$ i "{ll}{~jj}" format.name$
-		duplicate$ "others" =
-		n #3 >
-		i #2 =
-		and
-		or
-		{
-			pop$ pop$ names " et~al." *
-			n 'i :=
-		}{
-			"u" change.case$ swap$
-			i "{, f.}{~vv}" format.name$ *
-			names swap$ add.to.namelist
-		} if$ 'names :=
-		#1 i + 'i :=
-	} while$
-	pop$
-	names
-	duplicate$ #-1 #1 substring$ "." = {
-		#-2 global.max$ substring$
-		"\@." *
-	}
-		'skip$
-	if$
+    {i n #1 + <}
+    {
+        duplicate$ duplicate$ i "{ll}{~jj}" format.name$
+        duplicate$ "others" =
+        n #3 >
+        i #2 =
+        and
+        or
+        {
+            pop$ pop$ names " et~al." *
+            n 'i :=
+        }{
+            "u" change.case$ swap$
+            i "{, f.}{~vv}" format.name$ *
+            names swap$ add.to.namelist
+        } if$ 'names :=
+        #1 i + 'i :=
+    } while$
+    pop$
+    names
+    duplicate$ #-1 #1 substring$ "." = {
+        #-2 global.max$ substring$
+        "\@." *
+    }
+        'skip$
+    if$
 }
 
 %==============================================================================
 % Formata uma lista de sobrenomes.
 %
 % Parm:
-%	 os nomes a serem formatados
+%     os nomes a serem formatados
 %==============================================================================
 FUNCTION {format.family.names}
 {
-	duplicate$ num.names$ 'n :=
-	#1 'i :=
-	"" 'names :=
+    duplicate$ num.names$ 'n :=
+    #1 'i :=
+    "" 'names :=
 
-	{i n #1 + <}
-	{
-		duplicate$ i "{ll}{~jj}" format.name$
-		duplicate$ "others" =
-		n #3 >
-		i #2 =
-		and
-		or
-		{
-			pop$ names " et~al." *
-			n 'i :=
-		}{
-			"u" change.case$
-			names swap$ add.to.namelist
-		} if$ 'names :=
-		#1 i + 'i :=
-	} while$
-	pop$
-	names
+    {i n #1 + <}
+    {
+        duplicate$ i "{ll}{~jj}" format.name$
+        duplicate$ "others" =
+        n #3 >
+        i #2 =
+        and
+        or
+        {
+            pop$ names " et~al." *
+            n 'i :=
+        }{
+            "u" change.case$
+            names swap$ add.to.namelist
+        } if$ 'names :=
+        #1 i + 'i :=
+    } while$
+    pop$
+    names
 }
 
 %==============================================================================
 % Formata uma lista de sobrenomes com todos os autores.
 %
 % Parm:
-%	 os nomes a serem formatados
+%     os nomes a serem formatados
 %==============================================================================
 FUNCTION {format.family.names.all}
 {
-	duplicate$ num.names$ 'n :=
-	#1 'i :=
-	"" 'names :=
+    duplicate$ num.names$ 'n :=
+    #1 'i :=
+    "" 'names :=
 
-	{i n #1 + <}
-	{
-		duplicate$ i "{ll}{~jj}" format.name$
-		duplicate$ "others" =
-		{
-			pop$ names " et~al." *
-			n 'i :=
-		}{
-			"u" change.case$
-			names swap$ add.to.namelist
-		} if$ 'names :=
-		#1 i + 'i :=
-	} while$
-	pop$
-	names
+    {i n #1 + <}
+    {
+        duplicate$ i "{ll}{~jj}" format.name$
+        duplicate$ "others" =
+        {
+            pop$ names " et~al." *
+            n 'i :=
+        }{
+            "u" change.case$
+            names swap$ add.to.namelist
+        } if$ 'names :=
+        #1 i + 'i :=
+    } while$
+    pop$
+    names
 }
 
 %==============================================================================
 % Formata um titulo (pode ser `title' ou `booktitle')
 %
 % Parm:
-%	 um valor (0 ou 1) que indica se a formatacao deve ser enfatizada ou nao
-%	 um string com o titulo a ser formatado
+%     um valor (0 ou 1) que indica se a formatacao deve ser enfatizada ou nao
+%     um string com o titulo a ser formatado
 %==============================================================================
 FUNCTION {format.title}
 {
@@ -440,25 +440,25 @@ FUNCTION {format.title}
 %==============================================================================
 FUNCTION {get.adjusted.pages}
 {
-	#1 'i :=
-	"" 'new.pages :=
-	pages #1 #1 substring$
-	{duplicate$ "" = not}
-	{
-		duplicate$ "-" =
-		pages i #1 - #1 substring$ "-" = not
-		and
-		pages i #1 + #1 substring$ "-" = not
-		and
-			{"-" *}
-			'skip$
-		if$
-		new.pages swap$ * 'new.pages :=
-		#1 i + 'i :=
-		pages i #1 substring$
-	} while$
-	pop$
-	new.pages
+    #1 'i :=
+    "" 'new.pages :=
+    pages #1 #1 substring$
+    {duplicate$ "" = not}
+    {
+        duplicate$ "-" =
+        pages i #1 - #1 substring$ "-" = not
+        and
+        pages i #1 + #1 substring$ "-" = not
+        and
+            {"-" *}
+            'skip$
+        if$
+        new.pages swap$ * 'new.pages :=
+        #1 i + 'i :=
+        pages i #1 substring$
+    } while$
+    pop$
+    new.pages
 }
 
 %==============================================================================
@@ -468,9 +468,9 @@ FUNCTION {get.adjusted.pages}
 %==============================================================================
 FUNCTION {format.entrytitle}
 {
-	#0 title format.title
-	extract.first.word "u" change.case$
-	swap$ * 
+    #0 title format.title
+    extract.first.word "u" change.case$
+    swap$ *
 }
 
 %==============================================================================
@@ -480,37 +480,37 @@ FUNCTION {format.entrytitle}
 %==============================================================================
 FUNCTION {convert.to.number}
 {
-	duplicate$ "First" =
-	{pop$ "1"}
-	{duplicate$ "Second" =
-	{pop$ "2"}
-	{duplicate$ "Third" =
-	{pop$ "3"}
-	{duplicate$ "Fourth" =
-	{pop$ "4"}
-	{duplicate$ "Fifth" =
-	{pop$ "5"}
-	{duplicate$ "Sixth" =
-	{pop$ "6"}
-	{duplicate$ "Seventh" =
-	{pop$ "7"}
-	{duplicate$ "Eighth" =
-	{pop$ "8"}
-	{duplicate$ "Ninth" =
-	{pop$ "9"}
-	{duplicate$ "Tenth" =
-	{pop$ "10"}
-	{skip$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
+    duplicate$ "First" =
+    {pop$ "1"}
+    {duplicate$ "Second" =
+    {pop$ "2"}
+    {duplicate$ "Third" =
+    {pop$ "3"}
+    {duplicate$ "Fourth" =
+    {pop$ "4"}
+    {duplicate$ "Fifth" =
+    {pop$ "5"}
+    {duplicate$ "Sixth" =
+    {pop$ "6"}
+    {duplicate$ "Seventh" =
+    {pop$ "7"}
+    {duplicate$ "Eighth" =
+    {pop$ "8"}
+    {duplicate$ "Ninth" =
+    {pop$ "9"}
+    {duplicate$ "Tenth" =
+    {pop$ "10"}
+    {skip$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
 }
 
 %=========================================================================
@@ -519,164 +519,164 @@ FUNCTION {convert.to.number}
 %==============================================================================
 FUNCTION {format.author}
 {
-	author empty$
-		{""}
-		{author format.names}
-	if$
+    author empty$
+        {""}
+        {author format.names}
+    if$
 }
 
 FUNCTION {format.editor}
 {
-	editor empty$
-		{""}
-		{editor format.names "~(Ed.)" *}
-	if$
+    editor empty$
+        {""}
+        {editor format.names "~(Ed.)" *}
+    if$
 }
 
 FUNCTION {format.edition}
 {
-	edition empty$
-		{""}
-		{edition convert.to.number ".ed." *}
-	if$
+    edition empty$
+        {""}
+        {edition convert.to.number ".ed." *}
+    if$
 }
 
 FUNCTION {format.volume}
 {
-	volume empty$
-		{""}
-		{"v." volume *}
-	if$
+    volume empty$
+        {""}
+        {"v." volume *}
+    if$
 }
 
 FUNCTION {format.number}
 {
-	number empty$
-		{""}
-		{"n." number *}
-	if$
+    number empty$
+        {""}
+        {"n." number *}
+    if$
 }
 
 FUNCTION {format.month}
 {
-	month empty$
-		{""}
-		{month}
-	if$
+    month empty$
+        {""}
+        {month}
+    if$
 }
 
 FUNCTION {format.address}
 {
-	address empty$
-		{""}
-		{address}
-	if$
+    address empty$
+        {""}
+        {address}
+    if$
 }
 
 FUNCTION {format.publisher}
 {
-	type$ "mastersthesis" =
-	type$ "phdthesis" =
-	or {
-		school empty$ {""} {school} if$
-	}{
-	type$ "techreport" = {
-		institution empty$ {""} {institution} if$
-	}{
-	type$ "manual" = {
-		organization empty$ {""} {organization} if$
-	}{
-		publisher empty$ {""} {publisher} if$
-	} if$
-	} if$
-	} if$
+    type$ "mastersthesis" =
+    type$ "phdthesis" =
+    or {
+        school empty$ {""} {school} if$
+    }{
+    type$ "techreport" = {
+        institution empty$ {""} {institution} if$
+    }{
+    type$ "manual" = {
+        organization empty$ {""} {organization} if$
+    }{
+        publisher empty$ {""} {publisher} if$
+    } if$
+    } if$
+    } if$
 }
 
 FUNCTION {format.year}
 {
-	year empty$
-		{""}
-		{year}
-	if$
+    year empty$
+        {""}
+        {year}
+    if$
 }
 
 FUNCTION {format.chapter}
 {
-	chapter empty$
-		{""}
-		{
-			type empty$
-				{str:chapter}
-				{type "~" *}
-			if$
-			chapter *
-		}
-	if$
+    chapter empty$
+        {""}
+        {
+            type empty$
+                {str:chapter}
+                {type "~" *}
+            if$
+            chapter *
+        }
+    if$
 }
 
 FUNCTION {format.pages}
 {
-	pages empty$
-		{""}
-		{"p." get.adjusted.pages *}
-	if$
+    pages empty$
+        {""}
+        {"p." get.adjusted.pages *}
+    if$
 }
 
 FUNCTION {format.totalpages}
 {
-	pages empty$
-		{""}
-		{pages "p." *}
-	if$
+    pages empty$
+        {""}
+        {pages "p." *}
+    if$
 }
 
 FUNCTION {format.note}
 {
-	note empty$
-		{""}
-		{note}
-	if$
+    note empty$
+        {""}
+        {note}
+    if$
 }
 
 FUNCTION {format.month.year}
 {
-	month empty$
-		{year}
-		{month "~" * year *}
-	if$
+    month empty$
+        {year}
+        {month "~" * year *}
+    if$
 }
 
 FUNCTION {format.type}
 {
-	type empty$
-		'skip$
-		{pop$ type}
-	if$
+    type empty$
+        'skip$
+        {pop$ type}
+    if$
 }
 
 FUNCTION {format.howpublished}
 {
-	howpublished empty$
-		{""}
-		{howpublished}
-	if$
+    howpublished empty$
+        {""}
+        {howpublished}
+    if$
 }
 
 FUNCTION {format.series}
 {
-	series empty$
-		{""}
-		{series}
-	if$
+    series empty$
+        {""}
+        {series}
+    if$
 }
 
 FUNCTION {format.parenthised.number}
 {
-	number empty$ {
-		""
-	}{
-		"(" number * ")" *
-	} if$
+    number empty$ {
+        ""
+    }{
+        "(" number * ")" *
+    } if$
 }
 
 %==============================================================================
@@ -704,18 +704,18 @@ FUNCTION {add.howpublished} {format.howpublished add.to.list}
 %==============================================================================
 FUNCTION {comma.to.colon}
 {
-	's :=
-	"" 't :=
-	#1 'i :=
-	{s i #1 substring$ "" = not}
-	{
-		s i #1 substring$ duplicate$ "," =
-			{pop$ t ":" * 't :=}
-			{t swap$ * 't :=}
-		if$
-		i #1 + 'i :=
-	} while$
-	t
+    's :=
+    "" 't :=
+    #1 'i :=
+    {s i #1 substring$ "" = not}
+    {
+        s i #1 substring$ duplicate$ "," =
+            {pop$ t ":" * 't :=}
+            {t swap$ * 't :=}
+        if$
+        i #1 + 'i :=
+    } while$
+    t
 }
 
 %
@@ -724,30 +724,30 @@ FUNCTION {comma.to.colon}
 %
 FUNCTION {find.first.uppercase.char}
 {
-	's :=
-	#1 'j :=
-	#1 'i :=
-	{
-		s i #1 substring$ 't :=
-		t "" = not
-		t is.uppercase.char not
-		and
-	}
-	{
-		i #1 + 'i :=
-		t "\" = not
-		t "{" = not
-		and
-		t "}" = not
-		and
-			{i 'j :=}
-			'skip$
-		if$
-	} while$
-	t "" =
-		{#1}
-		{j}
-	if$
+    's :=
+    #1 'j :=
+    #1 'i :=
+    {
+        s i #1 substring$ 't :=
+        t "" = not
+        t is.uppercase.char not
+        and
+    }
+    {
+        i #1 + 'i :=
+        t "\" = not
+        t "{" = not
+        and
+        t "}" = not
+        and
+            {i 'j :=}
+            'skip$
+        if$
+    } while$
+    t "" =
+        {#1}
+        {j}
+    if$
 }
 
 %
@@ -756,24 +756,24 @@ FUNCTION {find.first.uppercase.char}
 %
 FUNCTION {extract.first.number}
 {
-	's :=
-	"" 't :=
-	#1 'i :=
-	{
-		s i #1 substring$
-		duplicate$ is.numeric.char not
-		swap$ "" = not
-		and
-	}
-	{
-		i #1 + 'i :=
-	} while$
-	{s i #1 substring$ is.numeric.char}
-	{
-		t s i #1 substring$ * 't :=
-		i #1 + 'i :=
-	} while$
-	t
+    's :=
+    "" 't :=
+    #1 'i :=
+    {
+        s i #1 substring$
+        duplicate$ is.numeric.char not
+        swap$ "" = not
+        and
+    }
+    {
+        i #1 + 'i :=
+    } while$
+    {s i #1 substring$ is.numeric.char}
+    {
+        t s i #1 substring$ * 't :=
+        i #1 + 'i :=
+    } while$
+    t
 }
 
 %
@@ -782,10 +782,10 @@ FUNCTION {extract.first.number}
 % devolve a primeira e a segunda parte
 FUNCTION {split.string}
 {
-	swap$ 's :=
-	duplicate$
-	s swap$ #1 swap$ #1 - substring$
-	swap$ s swap$ global.max$ substring$
+    swap$ 's :=
+    duplicate$
+    s swap$ #1 swap$ #1 - substring$
+    swap$ s swap$ global.max$ substring$
 }
 
 %
@@ -794,41 +794,41 @@ FUNCTION {split.string}
 %
 FUNCTION {extract.proceedings.type}
 {
-	's :=
-	type empty$ not
-		{type s}
-		{"dummy"
-	pop$ s #1 #11 substring$ duplicate$ "Proceedings" =
-		{s #12 global.max$ substring$}{
-	pop$ s #1 #5 substring$ duplicate$ "Proc." =
-		{pop$ "Proceedings" s #6 global.max$ substring$}{
-	pop$ s #1 #22 substring$ duplicate$ "Conference Proceedings" =
-		{pop$ "Proceedings" s #23 global.max$ substring$}{
-	pop$ s #1 #6 substring$ duplicate$ "Annals" =
-		{s #7 global.max$ substring$}{
-	pop$ s #1 #5 substring$ duplicate$ "Actas" =
-		{s #6 global.max$ substring$}{
-	pop$ s #1 #5 substring$ duplicate$ "Anais" =
-		{s #6 global.max$ substring$}{
-	pop$ s #1 #6 substring$ duplicate$ "Anales" =
-		{s #7 global.max$ substring$}{
-	pop$ s #1 #8 substring$ duplicate$ "Memorias" =
-		{s #9 global.max$ substring$}{
-	pop$ s #1 #22 substring$ duplicate$ "Trabajos Seleccionados" =
-		{s #23 global.max$ substring$}{
-	pop$ s #1 #11 substring$ duplicate$ "Tagungsband" =
-		{s #12 global.max$ substring$}
-		{pop$ "Anais" s} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
+    's :=
+    type empty$ not
+        {type s}
+        {"dummy"
+    pop$ s #1 #11 substring$ duplicate$ "Proceedings" =
+        {s #12 global.max$ substring$}{
+    pop$ s #1 #5 substring$ duplicate$ "Proc." =
+        {pop$ "Proceedings" s #6 global.max$ substring$}{
+    pop$ s #1 #22 substring$ duplicate$ "Conference Proceedings" =
+        {pop$ "Proceedings" s #23 global.max$ substring$}{
+    pop$ s #1 #6 substring$ duplicate$ "Annals" =
+        {s #7 global.max$ substring$}{
+    pop$ s #1 #5 substring$ duplicate$ "Actas" =
+        {s #6 global.max$ substring$}{
+    pop$ s #1 #5 substring$ duplicate$ "Anais" =
+        {s #6 global.max$ substring$}{
+    pop$ s #1 #6 substring$ duplicate$ "Anales" =
+        {s #7 global.max$ substring$}{
+    pop$ s #1 #8 substring$ duplicate$ "Memorias" =
+        {s #9 global.max$ substring$}{
+    pop$ s #1 #22 substring$ duplicate$ "Trabajos Seleccionados" =
+        {s #23 global.max$ substring$}{
+    pop$ s #1 #11 substring$ duplicate$ "Tagungsband" =
+        {s #12 global.max$ substring$}
+        {pop$ "Anais" s} if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
 }
 
 %==============================================================================
@@ -840,13 +840,13 @@ FUNCTION {extract.proceedings.type}
 %==============================================================================
 FUNCTION {process.proceedings.booktitle}
 {
-	extract.proceedings.type
-	duplicate$ find.first.uppercase.char split.string "u" change.case$
-	swap$ extract.first.number
-	duplicate$ empty$
-		'pop$
-		{", " swap$ * * "." *}
-	if$
+    extract.proceedings.type
+    duplicate$ find.first.uppercase.char split.string "u" change.case$
+    swap$ extract.first.number
+    duplicate$ empty$
+        'pop$
+        {", " swap$ * * "." *}
+    if$
 }
 
 %==============================================================================
@@ -854,65 +854,65 @@ FUNCTION {process.proceedings.booktitle}
 %==============================================================================
 FUNCTION {format.publication}
 {
-	""
-	address empty$
-		{
-			"[S.l."
-			format.publisher empty$
-				{":~s.n.]" *}
-				{"]: " format.publisher * *}
-			if$ add.year add.to.item
-		}
-		{
-			format.address
-			format.publisher empty$
-				{": [s.n.]" *}
-				{": " format.publisher * *}
-			if$ add.year add.to.item
-		}
-	if$
+    ""
+    address empty$
+        {
+            "[S.l."
+            format.publisher empty$
+                {":~s.n.]" *}
+                {"]: " format.publisher * *}
+            if$ add.year add.to.item
+        }
+        {
+            format.address
+            format.publisher empty$
+                {": [s.n.]" *}
+                {": " format.publisher * *}
+            if$ add.year add.to.item
+        }
+    if$
 }
 
 FUNCTION {format.proceedings.publication}
 {
-	publisher empty$
-		{"[S.l.:~s.n.]"}
-		{publisher comma.to.colon}
-	if$ add.year
+    publisher empty$
+        {"[S.l.:~s.n.]"}
+        {publisher comma.to.colon}
+    if$ add.year
 }
 
 FUNCTION {format.misc.publication}
 {
-	publisher empty$ {
-		format.address add.year
-	}{
-		format.publication
-	} if$
+    publisher empty$ {
+        format.address add.year
+    }{
+        format.publication
+    } if$
 }
 
 FUNCTION {format.series.info}
 {
-	"(" format.series *
-	add.volume ")" *
+    "(" format.series *
+    add.volume ")" *
 }
 
 FUNCTION {format.complementary.data.with.totalpages}
 {
-	"" format.totalpages add.to.item
-	""
-	series empty$
-		{add.volume add.number add.to.item}
-		{add.number add.to.item format.series.info add.to.item}
-	if$
+    "" format.totalpages add.to.item
+    ""
+    series empty$
+        {add.volume add.number add.to.item}
+        {add.number add.to.item format.series.info add.to.item}
+    if$
 }
 
 FUNCTION {format.complementary.data.with.page.range}
 {
-	""
-	series empty$
-		{add.volume add.number add.pages}
-		{"" add.number add.pages add.to.item format.series.info add.to.item}
-	if$
+    ""
+    series empty$
+        {add.volume add.number add.pages}
+        {"" add.number add.pages add.to.item format.series.info add.to.item}
+    if$
 }
 
 %
@@ -920,8 +920,8 @@ FUNCTION {format.complementary.data.with.page.range}
 %
 FUNCTION {format.proceedings.booktitle}
 {
-	process.proceedings.booktitle "" swap$ add.address add.to.item
-	swap$ "{\ldots}" * emphasize " " swap$ * *
+    process.proceedings.booktitle "" swap$ add.address add.to.item
+    swap$ "{\ldots}" * emphasize " " swap$ * *
 }
 
 %==============================================================================
@@ -929,186 +929,186 @@ FUNCTION {format.proceedings.booktitle}
 %==============================================================================
 FUNCTION {article}
 {
-	""
-	format.author add.to.item
-	#0 title format.title add.to.item
-	journal emphasize
-		address empty$ {
-			"[S.l.]" add.to.list
-		}{
-			add.address
-		} if$
-		add.volume add.number add.pages add.month.year add.to.item
-	format.note add.to.item
+    ""
+    format.author add.to.item
+    #0 title format.title add.to.item
+    journal emphasize
+        address empty$ {
+            "[S.l.]" add.to.list
+        }{
+            add.address
+        } if$
+        add.volume add.number add.pages add.month.year add.to.item
+    format.note add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {book}
 {
-	""
-	editor empty$
-		{format.author}
-		{format.editor}
-	if$ add.to.item
-	#1 title format.title add.to.item
-	format.edition add.to.item
-	format.publication add.to.item
-	format.complementary.data.with.totalpages add.to.item
-	format.note add.to.item
+    ""
+    editor empty$
+        {format.author}
+        {format.editor}
+    if$ add.to.item
+    #1 title format.title add.to.item
+    format.edition add.to.item
+    format.publication add.to.item
+    format.complementary.data.with.totalpages add.to.item
+    format.note add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {inbook}
 {
-	""
-	editor empty$
-		{format.author}
-		{format.editor}
-	if$ add.to.item
-	#1 title format.title add.to.item
-	format.edition add.to.item
-	format.publication add.to.item
-	format.complementary.data.with.page.range add.to.item
-	format.note add.to.item
+    ""
+    editor empty$
+        {format.author}
+        {format.editor}
+    if$ add.to.item
+    #1 title format.title add.to.item
+    format.edition add.to.item
+    format.publication add.to.item
+    format.complementary.data.with.page.range add.to.item
+    format.note add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {incollection}
 {
-	""
-	format.author add.to.item
-	#0 title format.title add.to.item
-	"In:"
-		editor empty$
-			'skip$
-			{format.editor add.to.item}
-		if$ 
-		#1 booktitle format.title add.to.item add.to.item
-	format.edition add.to.item
-	format.publication add.to.item
-	format.complementary.data.with.page.range add.to.item
-	format.note add.to.item
+    ""
+    format.author add.to.item
+    #0 title format.title add.to.item
+    "In:"
+        editor empty$
+            'skip$
+            {format.editor add.to.item}
+        if$
+        #1 booktitle format.title add.to.item add.to.item
+    format.edition add.to.item
+    format.publication add.to.item
+    format.complementary.data.with.page.range add.to.item
+    format.note add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {inproceedings}
 {
-	""
-	format.author add.to.item
-	#0 title format.title add.to.item
-	" In: " booktitle format.proceedings.booktitle * *
-	format.proceedings.publication add.to.item
-	format.complementary.data.with.page.range add.to.item
-	format.note add.to.item
+    ""
+    format.author add.to.item
+    #0 title format.title add.to.item
+    " In: " booktitle format.proceedings.booktitle * *
+    format.proceedings.publication add.to.item
+    format.complementary.data.with.page.range add.to.item
+    format.note add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {manual}
 {
-	""
-	author empty$
-		{format.entrytitle add.to.item}
-		{
-			format.author add.to.item
-			#1 title format.title add.to.item
-		}
-	if$
+    ""
+    author empty$
+        {format.entrytitle add.to.item}
+        {
+            format.author add.to.item
+            #1 title format.title add.to.item
+        }
+    if$
 
-	format.edition add.to.item
-	format.publication add.to.item
-	format.complementary.data.with.totalpages add.to.item
-	format.note add.to.item
+    format.edition add.to.item
+    format.publication add.to.item
+    format.complementary.data.with.totalpages add.to.item
+    format.note add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {mastersthesis}
 {
-	""
-	format.author add.to.item
-	#1 title format.title add.to.item
-	format.year add.to.item
-	format.totalpages add.to.item
-	str:mastersthesis format.type " --- " * format.publisher *
-		add.address add.to.item
-	format.note add.to.item
-	format.parenthised.number add.to.item
+    ""
+    format.author add.to.item
+    #1 title format.title add.to.item
+    format.year add.to.item
+    format.totalpages add.to.item
+    str:mastersthesis format.type " --- " * format.publisher *
+        add.address add.to.item
+    format.note add.to.item
+    format.parenthised.number add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {misc}
 {
-	""
-	author empty$
-		{
-			title empty$
-				'skip$
-				{format.entrytitle add.to.item}
-			if$
-		}
-		{
-			format.author add.to.item
-			title empty$
-				'skip$
-				{#1 title format.title add.to.item}
-			if$
-		}
-	if$
-	note empty$ {
-		format.misc.publication add.to.item
-		format.complementary.data.with.totalpages add.to.item
-	}{
-		format.note add.howpublished add.to.item
-	} if$
+    ""
+    author empty$
+        {
+            title empty$
+                'skip$
+                {format.entrytitle add.to.item}
+            if$
+        }
+        {
+            format.author add.to.item
+            title empty$
+                'skip$
+                {#1 title format.title add.to.item}
+            if$
+        }
+    if$
+    note empty$ {
+        format.misc.publication add.to.item
+        format.complementary.data.with.totalpages add.to.item
+    }{
+        format.note add.howpublished add.to.item
+    } if$
 
-	write.item
+    write.item
 }
 
 FUNCTION {phdthesis}
 {
-	""
-	format.author add.to.item
-	#1 title format.title add.to.item
-	format.year add.to.item
-	format.totalpages add.to.item
-	str:phdthesis format.type " --- " * format.publisher *
-		add.address add.to.item
-	format.note add.to.item
-	format.parenthised.number add.to.item
+    ""
+    format.author add.to.item
+    #1 title format.title add.to.item
+    format.year add.to.item
+    format.totalpages add.to.item
+    str:phdthesis format.type " --- " * format.publisher *
+        add.address add.to.item
+    format.note add.to.item
+    format.parenthised.number add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {proceedings}
 {
-	""
-	title format.proceedings.booktitle *
-	format.proceedings.publication add.to.item
-	format.complementary.data.with.page.range add.to.item
-	format.note add.to.item
+    ""
+    title format.proceedings.booktitle *
+    format.proceedings.publication add.to.item
+    format.complementary.data.with.page.range add.to.item
+    format.note add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {techreport}
 {
-	""
-	format.author add.to.item
-	#1 title format.title add.to.item
-	format.publication add.to.item
-	type empty$
-		{""}
-		{type}
-	if$ add.note add.to.item
-	format.parenthised.number add.to.item
+    ""
+    format.author add.to.item
+    #1 title format.title add.to.item
+    format.publication add.to.item
+    type empty$
+        {""}
+        {type}
+    if$ add.note add.to.item
+    format.parenthised.number add.to.item
 
-	write.item
+    write.item
 }
 
 FUNCTION {booklet} {misc}
@@ -1120,8 +1120,8 @@ FUNCTION {default.type} {misc}
 %==============================================================================
 FUNCTION {init}
 {
-	"" 'last.label :=
-	"b" 'current.letter :=
+    "" 'last.label :=
+    "b" 'current.letter :=
 }
 
 %==============================================================================
@@ -1129,38 +1129,38 @@ FUNCTION {init}
 %==============================================================================
 FUNCTION {get.sortstring}
 {
-	author empty$ not {format.author " AAA" *}{
-	editor empty$ not {format.editor " AAA" *}{
-	title empty$ not {title}{
-	note empty$ not {note}{
-	key empty$ not {key}{
-	"???"
-	} if$
-	} if$
-	} if$
-	} if$
-	} if$
+    author empty$ not {format.author " AAA" *}{
+    editor empty$ not {format.editor " AAA" *}{
+    title empty$ not {title}{
+    note empty$ not {note}{
+    key empty$ not {key}{
+    "???"
+    } if$
+    } if$
+    } if$
+    } if$
+    } if$
 
-	type$ "inbook" =
-	booktitle empty$ not
-	and
-		{
-			booktitle title = not
-				{pop$ title}
-				'skip$
-			if$
-		}
-		'skip$
-	if$
+    type$ "inbook" =
+    booktitle empty$ not
+    and
+        {
+            booktitle title = not
+                {pop$ title}
+                'skip$
+            if$
+        }
+        'skip$
+    if$
 
-	type$ "proceedings" = {
-		pop$
-		title process.proceedings.booktitle
-		swap$ pop$
-	}
-		'skip$
-	if$
-	purify$ "l" change.case$
+    type$ "proceedings" = {
+        pop$
+        title process.proceedings.booktitle
+        swap$ pop$
+    }
+        'skip$
+    if$
+    purify$ "l" change.case$
 }
 
 %==============================================================================
@@ -1168,11 +1168,11 @@ FUNCTION {get.sortstring}
 %==============================================================================
 FUNCTION {set.sortkeys}
 {
-	get.sortstring
-	format.year *
-	#1 entry.max$ substring$
-	#1 global.max$ substring$
-	'sort.key$ :=
+    get.sortstring
+    format.year *
+    #1 entry.max$ substring$
+    #1 global.max$ substring$
+    'sort.key$ :=
 }
 
 %==============================================================================
@@ -1189,17 +1189,17 @@ FUNCTION {adjust.label}
                 #1 + int.to.chr$
                 'current.letter :=
         }{
-		"" 'year.char :=
+        "" 'year.char :=
                 "b" 'current.letter :=
-	} if$
+    } if$
 }
 FUNCTION {reverse.adjust.label}
 {
         last.year.char "b" = {
-		"a" 'year.char :=
-	}
-		'skip$
-	if$
+        "a" 'year.char :=
+    }
+        'skip$
+    if$
         year.char 'last.year.char :=
 }
 
@@ -1210,37 +1210,37 @@ FUNCTION {reverse.adjust.label}
 %==============================================================================
 FUNCTION {get.labelstring}
 {
-	author empty$ not
-		{author format.family.names}
-		{
-			editor empty$ not
-				{editor format.family.names}
-				{
-					title empty$ not
-						{title "u" change.case$}
-						{
-							key empty$ not
-								{key}
-								{"???"}
-							if$
-						}
-					if$
-				}
-			if$
-		}
-	if$
+    author empty$ not
+        {author format.family.names}
+        {
+            editor empty$ not
+                {editor format.family.names}
+                {
+                    title empty$ not
+                        {title "u" change.case$}
+                        {
+                            key empty$ not
+                                {key}
+                                {"???"}
+                            if$
+                        }
+                    if$
+                }
+            if$
+        }
+    if$
 
-	type$ "inbook" =
-	booktitle empty$ not
-	and
-		{
-			booktitle title = not
-				{pop$ title "u" change.case$}
-				'skip$
-			if$
-		}
-		'skip$
-	if$
+    type$ "inbook" =
+    booktitle empty$ not
+    and
+        {
+            booktitle title = not
+                {pop$ title "u" change.case$}
+                'skip$
+            if$
+        }
+        'skip$
+    if$
 }
 
 %==============================================================================
@@ -1252,37 +1252,37 @@ FUNCTION {get.labelstring}
 %==============================================================================
 FUNCTION {get.labelstring.all}
 {
-	author empty$ not
-		{author format.family.names.all}
-		{
-			editor empty$ not
-				{editor format.family.names.all}
-				{
-					title empty$ not
-						{title "u" change.case$}
-						{
-							key empty$ not
-								{key}
-								{"???"}
-							if$
-						}
-					if$
-				}
-			if$
-		}
-	if$
+    author empty$ not
+        {author format.family.names.all}
+        {
+            editor empty$ not
+                {editor format.family.names.all}
+                {
+                    title empty$ not
+                        {title "u" change.case$}
+                        {
+                            key empty$ not
+                                {key}
+                                {"???"}
+                            if$
+                        }
+                    if$
+                }
+            if$
+        }
+    if$
 
-	type$ "inbook" =
-	booktitle empty$ not
-	and
-		{
-			booktitle title = not
-				{pop$ title "u" change.case$}
-				'skip$
-			if$
-		}
-		'skip$
-	if$
+    type$ "inbook" =
+    booktitle empty$ not
+    and
+        {
+            booktitle title = not
+                {pop$ title "u" change.case$}
+                'skip$
+            if$
+        }
+        'skip$
+    if$
 }
 
 %==============================================================================
@@ -1290,23 +1290,23 @@ FUNCTION {get.labelstring.all}
 %==============================================================================
 FUNCTION {prepare.label.sorting}
 {
-	get.labelstring.all format.year *
-	duplicate$ 'label := 'sort.key$ :=
+    get.labelstring.all format.year *
+    duplicate$ 'label := 'sort.key$ :=
 }
 FUNCTION {make.label}
 {
-	get.labelstring
-	"(" *
-	year empty$ {
-		"????"
-	}{
-		year year.char *
-	} if$ *
-	")" *
-	get.labelstring.all *
-	#1 entry.max$ substring$
-	#1 global.max$ substring$
-	'label :=
+    get.labelstring
+    "(" *
+    year empty$ {
+        "????"
+    }{
+        year year.char *
+    } if$ *
+    ")" *
+    get.labelstring.all *
+    #1 entry.max$ substring$
+    #1 global.max$ substring$
+    'label :=
 }
 
 %==============================================================================
@@ -1314,12 +1314,12 @@ FUNCTION {make.label}
 %==============================================================================
 FUNCTION {begin.bib}
 {
-	preamble$ empty$
-		'skip$
-		{preamble$ write$ newline$ newline$}
-	if$
-	"\begin{thebibliography}{\hspace{\parindent}}" write$ newline$
-	newline$
+    preamble$ empty$
+        'skip$
+        {preamble$ write$ newline$ newline$}
+    if$
+    "\begin{thebibliography}{\hspace{\parindent}}" write$ newline$
+    newline$
 }
 
 %==============================================================================
@@ -1327,7 +1327,7 @@ FUNCTION {begin.bib}
 %==============================================================================
 FUNCTION {end.bib}
 {
-	"\end{thebibliography}" write$ newline$
+    "\end{thebibliography}" write$ newline$
 }
 
 %==============================================================================
