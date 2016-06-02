@@ -10,19 +10,18 @@ those 4 datasets, 2 were collected from real world experiments and 2 were synthe
 Before evaluating the performance of \ac{bitdf} using those datasets, we first gathered some metadata information about
 them, in order to choose wisely the value for the aforementioned parameters, so we could indeed find a good number of
 flocks patterns. Such metadata were collected by running \ac{bitdf} multiple times with various values for those
-parameters. Thus, based on the dataset description, we started with some guess values for them and then increased or
+parameters. Thus, based on the dataset description, we picked some starting values for them and then increased or
 decreased the values according to the number of flock patterns that we were able to find. After finding at least 100
 flock patterns, we then settled on a range of values for those parameters and used them to evaluate each dataset.
 
-\figref{fig:experimental_arch} shows the components that will be part of our experiments (using the architecture
-proposed in \secref{sec:architecture}) and how our experiments are going to be performed. For each dataset (which will
-be presented individually in the sections to come) that we used, we simulated an online stream of \ac{gps} data arriving
-on a Custom Data Source Connector in our system. After that, that incoming \ac{gps} data would be forwarded to a Data
-Decoder that knows how to translate each entry in that specific dataset to a structure that can be understood by the
-\ac{gsb} Data Listener. When the \ac{gsb} Data Listener gets the data, the Algorithm~\ref{alg:gpsb} will take care of
-it, buffering it and building the necessary Presence Bitmap for that $O_{id}$. After we have buffered $\delta$ time
-slots of points in \ac{gsb}, the next destination of the \ac{gps} data is the \ac{fp} Data Processor, which is composed
-by three different components:
+\figref{fig:experimental_arch} shows the components (using the architecture proposed in \secref{sec:architecture}) that
+will be part of our experiments and how our experiments are going to be performed. For each dataset (which will be
+presented individually in the sections to come) that we used, we simulated an online stream of \ac{gps} data arriving on
+a custom \ac{dsc} in our system. Then, that incoming \ac{gps} data would be forwarded to a \ac{dd} that knows how to
+translate each entry in that specific dataset to a structure that can be understood by the \ac{gsb} \ac{dl}. When
+the \ac{gsb} \ac{dl} gets the data, the Algorithm~\ref{alg:gpsb} will take care of it, buffering it and building
+the necessary presence bitmap for that $O_{id}$. After we have buffered $\delta$ time slots of points in \ac{gsb}, the
+next destination of the \ac{gps} data is the \ac{fp} \ac{dp}, which is composed by three different components:
 
 \begin{enumerate}
     \item \textbf{Grid Manager}: Will get the \ac{gps} data and build the grid depicted in \figref{fig:grid} and provide
@@ -42,10 +41,10 @@ by three different components:
 \end{figure}
 
 The metrics that we chose to measure the efficiency of \ac{bitdf} were (1) Running Time and (2) Number of Disks
-Generated.  For (1) we went through each parameter ($\mu$, $\delta$ and $\epsilon$), fixed it in a specific value and
+Generated. For (1) we went through each parameter ($\mu$, $\delta$ and $\epsilon$), fixed it in a specific value and
 varied the remaining others based on the range that we settled from our metadata gathering. We picked (2) as an
 evaluation metric because it will show with numbers the reason why \ac{bitdf} can run way faster than the other
-algorihtms. Finally, in order to have a baseline to compare with \ac{bitdf}, we implemented the \ac{bfe} algorihtm
+algorihtms. Finally, in order to have a baseline to compare against \ac{bitdf}, we implemented the \ac{bfe} algorihtm
 proposed by Vieira et al. \citep{vieira} and ran benchmarks with it as well.
 
 We implemented the system architecture proposed in \figref{fig:experimental_arch} in C++, using g++ 4.8.4 and the C++11
@@ -53,27 +52,27 @@ We implemented the system architecture proposed in \figref{fig:experimental_arch
 Quad processor and 14GB of main memory running Ubuntu Server 14.04 \ac{lts}. As already mentioned, we used four datasets
 (real and synthetic) in our experiments, with some of them having more than 50M entries and 2K unique $O_{id}$.
 
-Before showing the results, there are some analysis outcomes that will hold for any dataset analyzed here:
+Before showing the results, there are some \ac{ao} that will hold for any dataset being analyzed here:
 
 \begin{enumerate}
     \item \textbf{$\delta$ variation}: The longer the flock patterns we try to find (long $\delta$), the more disks will
         stay cached being analyzed and trying to be merged with new disks from time slots to come. This can have a big
         impact in running time.\label{sssec:lvariation}
 
-    \item \textbf{$\epsilon$ variation}: As the disk radius ($\epsilon$) gets bigger, more points will be clustered
-        inside a disk and thus more intersections and duplicates of those disks as more likely to be founf. This will
+    \item \textbf{$\epsilon$ variation}: As the disk radius ($\epsilon / 2$) gets bigger, more points will be clustered
+        inside a disk and thus more intersections and duplicates of those disks as more likely to be found. This will
         affect the time spent in analyzing disks from one time slot to another. \label{sssec:gvariation}
 
     \item \textbf{$\mu$ variation}: By increasing $\mu$, it gets more and more difficult to find disks that are flock
-        candidates ($|D| \ge \mu$), so less disks are generated. This scenario is where \ac{bitdf} will achieve less
+        candidates ($|d| \ge \mu$), so less disks are generated. This scenario is where \ac{bitdf} will achieve less
         improvements. \label{sssec:nvariation}
 \end{enumerate}
 
 \section{Trucks Dataset}
 \label{sec:trucks}
 This was one of the datasets that Vieira et al. \citep{vieira} used in the experiments of \ac{bfe}, but the authors
-modified such dataset \citep{trucksdataset}, resulting in a data set which is way far from those found in real world
-analysis. In their modification, every time interval is of one second, the \ac{gps} coordinates were mapped to a
+modified such dataset \citep{trucksdataset}, resulting in a dataset which is way far from those found in real world
+analyses. In their modification, every time interval is of one second, the \ac{gps} coordinates were mapped to a
 $\mathbb{R}^2$ coordinate system (ranging from 0 to 1000) and most of the points are present in each time interval. The
 modified dataset resulted in 112203 entries and 276 unique $O_{id}$ (instead of 50 in the original dataset).
 
@@ -111,23 +110,23 @@ modified dataset resulted in 112203 entries and 276 unique $O_{id}$ (instead of 
     \label{fig:trucks_results2}
 \end{figure*}
 
-By looking at \figref{fig:trucks_results} and \figref{fig:trucks_results2}, we can see that we have some gains in
-execution time. However, they are not too significant due to the fact that the number of disks generated by each time
+By looking at \figref{fig:trucks_results} and \figref{fig:trucks_results2}, we can see that \ac{bitdf} had some gains in
+execution time. However, they were not too significant due to the fact that the number of disks generated by each time
 slot does not differ too much between \ac{bfe} and \ac{bitdf}, as we can see in \figref{fig:trucks_disks}. This happens
 because almost all points appear in every single time slot, then buffering and mapping the $O_{id}$ presence in time
 does not make a big impact, since we will not be able to filter out disks created with points not being present in
-$\delta$ consecutive time slots.  \figref{fig:trucks_vary_l} and \figref{fig:trucks_vary_g} show some running time
-improvements against \ac{bfe}, which are backed up by the explanations given at~\ref{sssec:lvariation}
-and~\ref{sssec:gvariation}. A different behavior is observed in \figref{fig:trucks_vary_n}, in which \ac{bitdf} starts
-better but ends up almost tied with \ac{bfe}, which can be explained by~\ref{sssec:nvariation}, but is also very
-influenced by the dataset modifications.
+$\delta$ consecutive time slots. \figref{fig:trucks_vary_l} and \figref{fig:trucks_vary_g} show some running time
+improvements against \ac{bfe}, which are backed up by the explanations given at \ac{ao}~\ref{sssec:lvariation} and
+\ac{ao}~\ref{sssec:gvariation}. A different behavior is observed in \figref{fig:trucks_vary_n}, in which \ac{bitdf}
+starts better but ends up almost tied with \ac{bfe}, which can be explained by \ac{ao}~\ref{sssec:nvariation}, but is
+also very influenced by the dataset modifications.
+\vfill
 
 \section{BerlinMOD Dataset}
 \label{sec:berlinmod}
-BerlinMOD consists in a traffic generation model \citep{berlinmodpaper} used to create sythentic datasets of moving
-objects. This particular dataset that we are analysing was the biggest one that we could find in the set of synthetic
-datasets that are available in their website \citep{berlinmod} and consists of 56,127,943 entries and 2000 unique
-$O_{id}$.
+BerlinMOD consists in a traffic generation model \citep{berlinmodpaper} used to create sythentic datasets of \acp{mo}.
+This particular dataset that we are analysing was the biggest one that we could find in the set of synthetic datasets
+that are available in their website \citep{berlinmod} and consists of 56,127,943 entries and 2000 unique $O_{id}$.
 
 \begin{figure*}[h!]
     \centering
@@ -168,15 +167,15 @@ was able to achieve great performance gains over \ac{bfe}, in some cases being 5
 (\figref{fig:berlinmod_vary_l}). In \figref{fig:berlinmod_disks} it is shown that \ac{bitdf} reduces the cumulative
 number of disks created over time in 94\%, by only creating disks that can indeed form flock patterns, which justifies
 the great improvements that \ac{bitdf} was able to get in this dataset. Differently from the results presented in
-\secref{sec:trucks}, even with a growing $\mu$, \ac{bitdf} was able to get great improvements over \ac{bfe}, ranging
-from 20\% to 48\%, as depicted in \figref{fig:berlinmod_vary_n}. It is also worth mentioning the gain in running time
-that \ac{bitdf} was able to achieve when we varied the $\epsilon$ parameter, reaching 48\%, as shown in
-\figref{fig:berlinmod_vary_g}
+\secref{sec:trucks}, \ac{bitdf} was able to get great improvements over \ac{bfe}, ranging from 20\% to 48\%, even when
+increasing the value of $\mu$ as depicted in \figref{fig:berlinmod_vary_n}. Lastly, as depicted in
+\figref{fig:berlinmod_vary_g}, \ac{bitdf} was able to outperform \ac{bfe} in almost 50\% when varying the parameter
+$\epsilon$.
 
 \section{TDrive Dataset}
 \label{sec:tdrive}
-This is a real dataset, having spatio-temporal data describing one week of taxis' trajectories of taxis in Beijing,
-China, available in \citep{tdrive}. It has 17,762,489 entries with 10336 unique $O_{id}$.
+This is a real dataset, having spatio-temporal data describing one week of trajectories of taxis in Beijing, China,
+available in \citep{tdrive}. It has 17,762,489 entries with 10336 unique $O_{id}$.
 
 \begin{figure*}[h!]
     \centering
@@ -226,8 +225,8 @@ depicted in \figref{fig:tdrive_disks}, reaching almost 96\% of reduction.
 \label{sec:brinkhoff}
 Likewise BerlinMOD, Brinkhoff is also a city traffic generation model \citep{brinkhoffpaper}. We generated a synthetic
 dataset using the Minnesota Web-based Traffic Generator \citep{mntg}, having 2000 as the "Starting Vehicles" and 100 as
-the "Simulation Time" parameters, which are the largest allowed numbers for them. The result dataset has 314,523 entries
-and 7000 unique $O_{id}$.
+the "Simulation Time" parameters, which are the largest allowed numbers by the generator. The result dataset has 314,523
+entries and 7000 unique $O_{id}$.
 
 \begin{figure*}[h!]
     \centering
@@ -265,28 +264,27 @@ and 7000 unique $O_{id}$.
 
 The results achieved with this dataset were the best that \ac{bitdf} was able to get amongst the other datasets analyzed
 in this dissertation, as one can notice by looking to \figref{fig:brinkhoff_results} and
-\figref{fig:brinkhoff_results2}.  There were huge drops in execution time, as depicted in \figref{fig:brinkhoff_vary_l},
+\figref{fig:brinkhoff_results2}. There were huge drops in execution time, as depicted in \figref{fig:brinkhoff_vary_l},
 where \ac{bitdf} analyzed the whole dataset in only 69 seconds, while \ac{bfe} took 12,732 seconds, representing an
 improvement of 99.5\%. Another great running time improvement of 99\% can be seen when we varied the $\epsilon$
-parameter, as shown in \figref{fig:brinkhoff_vary_g}, droping from 13,141 seconds to 125 seconds. We can see in
+parameter, as shown in \figref{fig:brinkhoff_vary_g}, droping from 13,141 seconds to only 125 seconds. We can see in
 \figref{fig:brinkhoff_vary_n} that even with the variation of $\mu$, \ac{bitdf} was able to show huge improvement, with
-results ranging from 98\% to 99\% of \ac{cpu} time reduction.  Additionally, we can see in \figref{fig:brinkhoff_disks}
-that we were able to reduce the number of disks by 95\%, what is a huge improvement and is reflecting directly in the
-running time improvements that we could see with this dataset.
+results ranging from 98\% to 99\% of \ac{cpu} time reduction. Additionally, we can see in \figref{fig:brinkhoff_disks}
+that we were able to reduce the number of disks by 95\%, which is a dramatic improvement and is reflecting directly in
+the running time improvements that we could see with this dataset.
+\vfill
 
 % Multi-thread evaluations
 \section{Multi-threaded evaluation}
 After implementing the architecture proposed in \secref{sec:architecture}, evaluating it in \chapref{chp:results} and
 seeing great improvements in the running time when compared with other algorithms, we decided to test how our system
 would perform by taking advantage of the multi-core paradigm that is been widely used nowadays. We then took a step
-further and implement a new Data Processor, that we called \ac{pfp}. \ac{pfp} was implemented having in mind the
-multi-threaded model described in \secref{subsec:multithread}, which we call \ac{bitdf} \ac{mt}.
+further and implement a new \ac{dp}, that we called \ac{pfp}. \ac{pfp} was implemented having in mind the \ac{mt} model
+described in \secref{subsec:multithread}, which we call \ac{bitdf} \ac{mt}.
 
-In order to see how \ac{bitdf} \ac{mt} would perform, we took the worst performances of \ac{bitdf} for each dataset,
-from \chapref{chp:results}, and compared it with \ac{bitdf} \ac{mt} running with different number of worker threads
-executing in parallel. It is important to notice that when we say that we are running with 4 worker threads, we are
-actually running with 8 threads: 4 $c_t$ threads processing different \ac{egc}s plus one $d_t$ thread (attached to its
-$c_t$ thread) processing the disks generated by its parent $c_i$.
+In order to see how \ac{bitdf} \ac{mt} would perform, we took from \chapref{chp:results} the worst performances of
+\ac{bitdf} for each dataset and compared such performance against \ac{bitdf} \ac{mt} running with different number of
+worker threads executing in parallel.
 
 Our benchmarks were executed in a different machine from that one mentioned in the beginning of \chapref{chp:results},
 in a way that we opted to get a better multi-core processor setup. With that in mind, we ran our experiments in a Linux
@@ -295,25 +293,36 @@ Hyper-Threading technology \citep{hyper} meaning that we would theoretically hav
 
 Below we will present the benchmarks that were run for each dataset already seen in \chapref{chp:results}, namely
 Trucks, TDrive, BerlinMOD and Brinkhoff. For each of the aforementioned datasets, we ran \ac{bitdf} \ac{mt} with the
-same parameters as the longest \ac{bitdf} run presented in \chapref{chp:results}, varying the threads from 1 (pure
-\ac{bitdf}) to 30.  With variations of 1 worker thread from 1 to 10, 2 worker threads from 10 to 20 and 5 worker threads
-from 20 to 30. We set the result of \ac{bitdf} (1 thread) as being 100\% of the total executing time and highlighted
-with red color and all \ac{bitdf} \ac{mt} runs are in blue, always being a percentage of the highlighted result. It is
-worth mentioning that here we are only evaluating the running time of \ac{bitdf} \ac{mt}, because the number of
-generated disks will be the same as we have seen in the previous results shown for \ac{bitdf} in \chapref{chp:results},
-since we are still using \ac{bitdf} as the base flock processor. Additionally, in order to have a better idea on how
-\ac{bitdf} \ac{mt} outperforms \ac{bitdf} and \ac{bfe}, we show some graphs depicting the running time of them together,
-for each dataset. For our \ac{bitdf} \ac{mt}, we picked 5 and 7 as the number of worker threads, since those are the
-values that show the best peformance overall.
+same parameters as the longest \ac{bitdf} run presented in \chapref{chp:results}, varying the worker threads from 1
+(pure \ac{bitdf}) to 30. With variations of 1 worker thread from 1 to 10, 2 worker threads from 10 to 20 and 5 worker
+threads from 20 to 30. It is important to notice that when we say that we are running with $x$ worker threads, we are
+actually running with $2*x$ threads: $x$ $c_t$ threads processing different \acp{egc} plus 1 $d_t$ thread (attached to
+its $c_t$ thread) processing the disks generated by its parent $c_i$. We set the result of pure \ac{bitdf} as being
+100\% of the total executing time and highlighted it with red color and all \ac{bitdf} \ac{mt} runs are in blue, always
+being a percentage of the highlighted result. It is worth mentioning here that the only metric that we are evaluating in
+these experiments is the running time of \ac{bitdf} \ac{mt}, because the number of generated disks will be the same that
+we have seen in the previous results shown for \ac{bitdf} in \chapref{chp:results}, since we are still using the same
+bitmap filtering heuristic proposed by \ac{bitdf}. Moreover, in order to have a better idea on how \ac{bitdf} \ac{mt}
+outperforms \ac{bitdf} and \ac{bfe}, we show some graphs depicting the running time of them together, for each dataset.
+For such comparion, we picked 5 and 7 as the number of worker threads for \ac{bitdf} \ac{mt}, since those are the values
+that show the best peformance overall.
 
 First we present the results for the Trucks dataset, which we ran with the following parameters (based on previous
 results from \secref{sec:trucks}): $\mu=4$, $\delta=20$ and $\epsilon=1.5$. That dataset would be the most difficult one
 to show running time improvements due to its small size and running times being already fast (with the longest one being
 around 200 seconds for \ac{bitdf}). Despite that, we can see in \figref{fig:trucks_threads} that we were able to reduce
-as much as 51\% when running with 5 $c_t$ threads, which totalize 10 threads. After that we can see that we could stay
-almost stable, not gaining any performance but also not deteriorating it too much. Having it becoming stable is an
-expected result, as the processor would start to schedule and pause threads execution, because of having all its
-resources busy, as the number of executing threads exceeds too much the number of available processing units.
+as much as 51\% when running with 5 $c_t$ threads, which totalizes 10 threads. After that we can see that we could stay
+almost stable, not gaining any performance but also not deteriorating it too much. Such performance stabilization is an
+expected result, as the processor would start to schedule and pause the execution of threads, because of having all its
+resources busy, as the number of executing threads exceeds too much the number of available processing units (cores).
+
+\begin{figure}[h!]
+    \centering
+    \caption{Execution time reduction by number of threads for the Trucks dataset}
+    \centerline{\includegraphics[width=0.7\textwidth]{images/Trucks_thread.eps}}
+    \footnotesize{Source: Made by the author.}
+    \label{fig:trucks_threads}
+\end{figure}
 
 \begin{figure*}[h!]
     \centering
@@ -346,22 +355,22 @@ running time of \ac{bitdf} by 18\% when varying $\mu$ (\figref{fig:trucks_comple
     \label{fig:trucks_complete_vary_n}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Execution time reduction by number of threads for the Trucks dataset}
-    \centerline{\includegraphics[width=0.7\textwidth]{images/Trucks_thread.eps}}
-    \footnotesize{Source: Made by the author.}
-    \label{fig:trucks_threads}
-\end{figure}
-
 In \figref{fig:berlinmod_threads}, we show the graph with the results for the BerlinMOD dataset. Due to its large size
 and somewhat long execution times (as previously presented in \secref{sec:berlinmod}) we expected to obtain good results
-in running \ac{bitdf} in a multi-threaded fashion. We have set our parameters to have the following values: $\mu=4$,
-$\delta=8$ and $\epsilon=200$, as we had those resulting in the longest running time (around 1000 seconds). It is
-noticed by \figref{fig:berlinmod_threads} that the results also tend to stabilize when we reach 5 worker threads (10 in
-total), but we reach our best running time with 8 worker threads, with an improvement of 62\%. It is also seen that the
-running time starts to getting worse as we exceed the number of processing units too much (shown when \ac{bitdf} is
-executing with 30 worker threads, being 60 in total).
+in running \ac{bitdf} with independent worker threads. We have set our parameters to have the following values: $\mu=4$,
+$\delta=8$ and $\epsilon=200$, as we had those resulting in the longest running time (around 1000 seconds) in our first
+experiments with this dataset. It is noticed by \figref{fig:berlinmod_threads} that the results also tend to stabilize
+when we reach 5 worker threads (10 in total), but we reach our best running time with 8 worker threads, with an
+improvement of 62\%. It is also seen that the running time starts to get worse as we exceed the number of processing
+units available (shown when \ac{bitdf} is executing with 30 worker threads, being 60 in total).
+
+\begin{figure}[h!]
+    \centering
+    \caption{Execution time reduction by number of threads for the BerlinMOD dataset}
+    \centerline{\includegraphics[width=0.7\textwidth]{images/BerlinMOD_thread.eps}}
+    \footnotesize{Source: Made by the author.}
+    \label{fig:berlinmod_threads}
+\end{figure}
 
 \begin{figure*}[h!]
     \centering
@@ -388,39 +397,14 @@ executing with 30 worker threads, being 60 in total).
     \label{fig:berlinmod_complete_vary_n}
 \end{figure}
 
-By looking at \figref{fig:berlinmod_complete_results} and \figref{fig:berlinmod_complete_vary_n}, one can see that where
-\ac{bitdf} had the worst results is where \ac{bitdf} \ac{mt} was able to show how a good multi-threaded remodeling is
-important in order to get the most out of multi-core architecture. \ac{bitdf} \ac{mt} improved the running time of
-\ac{bitdf} by 50\% when running with both 5 and 7 worker threads, as shown in \figref{fig:berlinmod_complete_vary_l}.
-\ac{bitdf} \ac{mt} also achieved good results when we varied the $\mu$ parameter, having 45\% of running time decrease
-as it is depicted in \figref{fig:berlinmod_complete_vary_n}. Last, but definitely not least, we can se in
-\figref{fig:berlinmod_complete_vary_l} that \ac{bitdf} \ac{mt} improved the running time of \ac{bitdf} by 70\%, with
-both 5 and 7 worker threads.
-
-\begin{figure}[h!]
-    \centering
-    \caption{Execution time reduction by number of threads for the BerlinMOD dataset}
-    \centerline{\includegraphics[width=0.7\textwidth]{images/BerlinMOD_thread.eps}}
-    \footnotesize{Source: Made by the author.}
-    \label{fig:berlinmod_threads}
-\end{figure}
-
-TDrive is also a large dataset, but not as large as BerlinMOD and its executing time was not as long as the latter.
-Based on the results presented in \secref{sec:tdrive}, we chose the parameter that led to the longest executing time
-(around 600 seconds): $\mu=4$, $\delta=4$ and $\epsilon=100$. \figref{fig:tdrive_threads} shows tht the results obey the
-same pattern that we have been seeing in the previous results: great improvements in the beginning, but stabilizing as
-we exceed the number of processing units in the machine. We can also see some slight improvements even when we evaluate
-with more than 5 worker threads. We can see in \figref{fig:tdrive_threads} that we were able to reduce the running time
-as much as 70\%, when compared to the single threaded model, which is a huge improvement added to those already achieved
-in \secref{sec:tdrive}
-
-When it comes to comparing the running time of \ac{bitdf} \ac{mt} against \ac{bitdf} and \ac{bfe}, we can see that
-\ac{bitdf} \ac{mt} was able to improve the running time even more than we have seen in \secref{sec:tdrive}. When varying
-the parameter $\mu$ we could reduce the execution time by 60\%, as one can see in \figref{fig:tdrive_complete_vary_n}.
-\figref{fig:tdrive_complete_vary_g} also shows improvements of 60\%, when compared to \ac{bitdf}, when varying the
-parameter $\epsilon$. The best result though is when we varied the parameter $\delta$, in which we could improve the
-\ac{bitdf} running time by 70\% when executing \ac{bitdf} \ac{mt} with both 5 and 7 worker threads, as depicted in
-\figref{fig:tdrive_complete_vary_g}.
+By looking at \figref{fig:berlinmod_complete_results} and \figref{fig:berlinmod_complete_vary_n}, one can see that even
+where \ac{bitdf} had the worst results, \ac{bitdf} \ac{mt} was able to achieve important reductions in running time,
+showing how a good multi-threaded remodeling is important in order to get the most out of a multi-core architecture.
+\ac{bitdf} \ac{mt} improved the running time of \ac{bitdf} by 50\% when running with both 5 and 7 worker threads, as
+shown in \figref{fig:berlinmod_complete_vary_l}. \ac{bitdf} \ac{mt} also achieved good results when we varied the $\mu$
+parameter, having 45\% of running time decrease as it is depicted in \figref{fig:berlinmod_complete_vary_n}. Last, but
+definitely not least, we can se in \figref{fig:berlinmod_complete_vary_l} that \ac{bitdf} \ac{mt} improved the running
+time of \ac{bitdf} by 70\%, with both 5 and 7 worker threads.
 
 \begin{figure}[h!]
     \centering
@@ -429,6 +413,15 @@ parameter $\epsilon$. The best result though is when we varied the parameter $\d
     \footnotesize{Source: Made by the author.}
     \label{fig:tdrive_threads}
 \end{figure}
+
+Another large dataset the we evaluate was the TDrive dataset, in which \ac{bitdf} showed great results when analzing it.
+Based on the results presented in \secref{sec:tdrive}, we chose the parameter values that led to the longest executing
+time (around 600 seconds): $\mu=4$, $\delta=4$ and $\epsilon=100$. \figref{fig:tdrive_threads} shows that the results
+follow the same pattern that we have been seeing in the previous analyses: great improvements in the beginning, but
+stabilizing as we exceed the number of processing units in the machine. We can also see some slight improvements even
+when we evaluate with more than 5 worker threads. It is also depicted in \figref{fig:tdrive_threads} that we were able
+to reduce the running time as much as 70\%, when compared to the single threaded model, which is a huge improvement
+added to those already achieved in \secref{sec:tdrive}
 
 \begin{figure*}[h!]
     \centering
@@ -455,6 +448,22 @@ parameter $\epsilon$. The best result though is when we varied the parameter $\d
     \label{fig:tdrive_complete_vary_n}
 \end{figure}
 
+When it comes to comparing the running time of \ac{bitdf} \ac{mt} against \ac{bitdf} and \ac{bfe}, we can see that
+\ac{bitdf} \ac{mt} was able to improve the running time even more than we have seen in \secref{sec:tdrive}. When varying
+the parameter $\mu$ we could reduce the execution time by 60\%, as one can see in \figref{fig:tdrive_complete_vary_n}.
+\figref{fig:tdrive_complete_vary_g} also shows improvements of 60\%, when compared against \ac{bitdf}, when varying the
+parameter $\epsilon$. The best result though is when we varied the parameter $\delta$, in which we could improve the
+\ac{bitdf} running time by 70\% when executing \ac{bitdf} \ac{mt} with both 5 and 7 worker threads, as depicted in
+\figref{fig:tdrive_complete_vary_g}.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Execution time reduction by number of threads for the Brinkhof dataset}
+    \centerline{\includegraphics[width=0.7\textwidth]{images/Brinkhoff_thread.eps}}
+    \footnotesize{Source: Made by the author.}
+    \label{fig:brinkhoff_threads}
+\end{figure}
+
 Our last dataset to evaluate is the Brinkhoff synthetic dataset. We were already able to achieve huge running time
 improvements with \ac{bitdf}, but we could achieve even more with \ac{bitdf} \ac{mt}. Based on the dataset results
 (\secref{sec:brinkhoff}), we chose the running parameters as follows: $\mu=4$, $\delta=4$ and $\epsilon=1200$.
@@ -474,31 +483,22 @@ waiting for shared data to become available.
 
 \begin{figure}[h!]
     \centering
-    \caption{Execution time reduction by number of threads for the Brinkhof dataset}
-    \centerline{\includegraphics[width=0.7\textwidth]{images/Brinkhoff_thread.eps}}
-    \footnotesize{Source: Made by the author.}
-    \label{fig:brinkhoff_threads}
-\end{figure}
-
-\begin{figure}[h!]
-    \centering
     \caption{Sum of disks generated by the disk threads (red) and number of disks that were inserted in the global disk
         set after subset/superset check (blue), by time slot}
-    \centerline{\includegraphics[width=0.5\textwidth]{images/Brinkhoff_disks_threads.eps}}
+    \centerline{\includegraphics[width=0.7\textwidth]{images/Brinkhoff_disks_threads.eps}}
     \footnotesize{Source: Made by the author.}
     \label{fig:brinkhoff_disks_threads}
 \end{figure}
 
-Despite the reduction in running time of more than 90\% that \ac{bitdf} was able to achieve, seen in
+Despite the reduction in running time of more than 90\% that \ac{bitdf} was able to achieve, as seen in
 \secref{sec:brinkhoff}, we could reduce that number even more with \ac{bitdf} \ac{mt}. It is difficult to see the actual
 difference between the running time of \ac{bitdf} and \ac{bitdf} \ac{mt}, due to the slowness of \ac{bfe} in that
-dataset, which is causing the y axis range to be very wide. However, \ac{bitdf} \ac{mt} with 5 and 7 worker threads
+dataset, which is causing the y axis range to be very large. However, \ac{bitdf} \ac{mt} with 5 and 7 worker threads
 could reduce the time of \ac{bitdf} by 82\% when varying the $\mu$ parameters, as shown in
 \figref{fig:brinkhoff_complete_vary_n}. When varying the $\epsilon$ parameter, \ac{bitdf} \ac{mt} with 5 and 7 worker
-threads could also decrease the \ac{bitdf} running time by 82\%. \figref{fig:brinkhoff_complete_vary_g} shows that when
-we varying the $\delta$ parameter, good results could be achieve as wel. When running with 5 worker threads, \ac{bitdf}
-\ac{mt} could outperform \ac{bitdf} by 76\%, whereas by running with 7 worker threads, \ac{bitdf} \ac{mt} could be
-better by 85\%.
+threads could also decrease the \ac{bitdf} running time by 82\%. Finally, by varying the $\delta$ parameter and running
+with 5 worker threads, \ac{bitdf} \ac{mt} could outperform \ac{bitdf} by 76\%, whereas by running with 7 worker threads,
+\ac{bitdf} \ac{mt} could be better by 85\%, as we can see in \figref{fig:brinkhoff_complete_vary_g}.
 
 \begin{figure*}[h!]
     \centering
