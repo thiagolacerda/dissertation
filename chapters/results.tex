@@ -18,10 +18,10 @@ flock patterns, we then settled on a range of values for those parameters and us
 will be part of our experiments and how our experiments are going to be performed. For each dataset (which will be
 presented individually in the sections to come) that we used, we simulated an online stream of \ac{gps} data arriving on
 a custom \ac{dsc} in our system. Then, that incoming \ac{gps} data would be forwarded to a \ac{dd} that knows how to
-translate each entry in that specific dataset to a structure that can be understood by the \ac{gsb} \ac{dl}. When
-the \ac{gsb} \ac{dl} gets the data, the Algorithm~\ref{alg:gpsb} will take care of it, buffering it and building
-the necessary presence bitmap for that $O_{id}$. After we have buffered $\delta$ time slots of points in \ac{gsb}, the
-next destination of the \ac{gps} data is the \ac{fp} \ac{dp}, which is composed by three different components:
+translate each entry in that specific dataset to a structure that can be understood by the \ac{gsb} \ac{dl}. When the
+\ac{gsb} \ac{dl} gets the data, the \algoref{alg:gpsb} will take care of it, buffering it and building the necessary
+presence bitmap for that $O_{id}$. After we have buffered $\delta$ time slots of points in \ac{gsb}, the next
+destination of the \ac{gps} data is the \ac{fp} \ac{dp}, which is composed by three different components:
 
 \begin{enumerate}
     \item \textbf{Grid Manager}: Will get the \ac{gps} data and build the grid depicted in \figref{fig:grid} and provide

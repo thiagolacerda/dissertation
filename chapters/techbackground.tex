@@ -46,7 +46,7 @@ $\mathbb{R}^2$ system and execute the algorithm used by the \ac{whoi} to perform
 $\mathbb{R}^2$ on the fly \citep{latlogtoxy}. Please refer to \tabref{tbl:coordinates} for some examples of \ac{wgs84}
 coordinates being translated to $\mathbb{R}^2$, using the algorithm provided by \ac{whoi}.
 
-It is worth noting that real-world datasets do not guarantee that all points of all trajectories are sampled in the same
+It is worth noting that real world datasets do not guarantee that all points of all trajectories are sampled in the same
 rate. In a ideal world, a perfect spatio-temporal dataset would have entries as described in \tabref{tbl:ideal_rate},
 where one can see that each $O_{id}$ has its position sampled in intervals of 1 $t$ unit. However,
 \tabref{tbl:real_rate}presents how \acp{mo} in real-world datasets have their position sampled over time: no fixed rate
@@ -211,7 +211,7 @@ way to reduce that search space to a finite number of locations, which we will e
 and will be used in the algorithm proposed in this dissertation.
 
 We can easily find two circles that intersect two points using some vectorial operations as shown in
-Algorithm~\ref{alg:disks} below.
+\algoref{alg:disks} below.
 
 Given two \ac{gps} points $p_1$ and $p_2$, we get the values of $x1$ and $y1$, which will correspond to the longitude
 and latitude in meters (such conversion is mentioned in \secref{sec:tech_data}) of $p_1$, and $x2$ and $y2$ being the
@@ -265,7 +265,7 @@ depicted in \figref{fig:disks_discovery}.
     \label{fig:disks_discovery}
 \end{figure}
 
-In order to avoid running Algorithm~\ref{alg:disks} through all the points found in a time slot $t_i$, Vieira et al.
+In order to avoid running \algoref{alg:disks} through all the points found in a time slot $t_i$, Vieira et al.
 \citep{vieira} proposed a grid structure to reduce the search space for the set of points. In that approach, all points
 that belong to time slot $t_i$ will be arranged into a grid with cells of size $\epsilon$. After that, we will go
 through each cell $g_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each
@@ -275,13 +275,13 @@ directly impacts in the number of cells and the number of points in each cell. F
 more cells will be created and less points will be present in each cell.  O the other hand, large $\epsilon$ will create
 less but more populated cells.
 
-Algorithm~\ref{alg:grid} shows how we will construct the grid structure for a set of points from a specific time slot
-$t_i$. In order to represent a grid structure, we will use a map of indexes to a list of points, which will then be
-populated as follows. For each point $p$ in the point set, we will \textit{bucketize} the longitude and the latitude of
-the point (both converted to meters, using \eqnref{eq:timeslot}) by dividing them by the cell size $\epsilon$ (lines 5
-and 6). Once we have the division results, we will convert them to string and concatenate them, forming a cell index
-(line 8). With the cell index in hand, we only need to add the point to the corresponding cell (line 9). It is worth
-noting that this proposed approach will not create empty cells, saving memory and unnecessary cell traversing time.
+\algoref{alg:grid} shows how we will construct the grid structure for a set of points from a specific time slot $t_i$.
+In order to represent a grid structure, we will use a map of indexes to a list of points, which will then be populated
+as follows. For each point $p$ in the point set, we will \textit{bucketize} the longitude and the latitude of the point
+(both converted to meters, using \eqnref{eq:timeslot}) by dividing them by the cell size $\epsilon$ (lines 5 and 6).
+Once we have the division results, we will convert them to string and concatenate them, forming a cell index (line 8).
+With the cell index in hand, we only need to add the point to the corresponding cell (line 9). It is worth noting that
+this proposed approach will not create empty cells, saving memory and unnecessary cell traversing time.
 
 \begin{algorithm}[h!]
 \caption{Construct Grid}

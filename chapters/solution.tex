@@ -162,12 +162,12 @@ respectively, and will have each of them keep track of the history of every $O_{
 \end{algorithmic}
 \end{algorithm}
 
-Algorithm~\ref{alg:gpsb} shows a big picture of how \ac{gsb} will work once it receives spatio-temporal data records
-from a \ac{dd}. It will listen to the incoming \ac{gps} point stream in the procedure \textsc{ReceivePoints}, add each
-point to the \textit{pointBuffer} structure (which is a hash map of points by time slot) and record the presence in time
-of that $O_{id}$ in its bitmap structure by calling \textsc{AddPointPresence}. When \ac{gsb} has buffered $\delta$ time
-slots (line 23) it will then send the points of $timeSlot - \delta$ to \ac{fp}. After \ac{fp} is done with processing
-the points, \ac{gsb} will discard the presence maps of $timeSlot - \delta$ (which corresponds to the points sent to
+\algoref{alg:gpsb} shows a big picture of how \ac{gsb} will work once it receives spatio-temporal data records from a
+\ac{dd}. It will listen to the incoming \ac{gps} point stream in the procedure \textsc{ReceivePoints}, add each point to
+the \textit{pointBuffer} structure (which is a hash map of points by time slot) and record the presence in time of that
+$O_{id}$ in its bitmap structure by calling \textsc{AddPointPresence}. When \ac{gsb} has buffered $\delta$ time slots
+(line 23) it will then send the points of $timeSlot - \delta$ to \ac{fp}. After \ac{fp} is done with processing the
+points, \ac{gsb} will discard the presence maps of $timeSlot - \delta$ (which corresponds to the points sent to
 \ac{fp}), by calling \textsc{ShiftPresenceMaps}, and also discard the points collected in $timeSlot - \delta$, which
 were already processed by \ac{fp}. The flow continues indefinitely by buffering the points from the next time slot $t_i$
 and send the points from $t_{i - \delta}$ to \ac{fp} for processing. It is worth noting that \textit{timeSlotSize},
@@ -199,22 +199,21 @@ consecutive bits set to 1. The bitmaps in \ac{gsb} will always refer to the "fut
     \end{tabular}
 \end{table}
 
-Our \ac{dp} is explained in more detail by Algorithms~\ref{alg:fp_helpers} and~\ref{alg:fp} as follows. In
-Algorithm~\ref{alg:fp_helpers} we start by first listing the procedures that will help the core procedure of \ac{fp}
-(the \textsc{Process} procedure, in Algorithm~\ref{alg:fp}). It is also in Algorithm~\ref{alg:fp_helpers} that we list
-the most important piece of this \ac{dp} that allows us to achieve such good optimizations, in both \ac{cpu} cycles and
-number of disks generated, which is the \textsc{IsPointEligible} procedure. Such procedure is responsible to put
-together what happened in the \textit{past} and what is going to happen in the \textit{future} for a given point $p$, in
-order to decide whether $p$ can be part of a potential flock pattern or not. It does that by concatenating, for a given
-$O_{id}$, the bitmap from \ac{fp} with the bitmap from \ac{gsb} (line 5 of Algorithm~\ref{alg:fp_helpers}) and searching
-for a sequence of $\delta$ bits set to 1 (lines 6 to 15 of Algorithm~\ref{alg:fp_helpers}). That search is performed by
-combining AND and XOR bitwise operations against the presence bitmap assembled in line 5 of
-Algorithm~\ref{alg:fp_helpers}. If a sequence of $\delta$ bits set to 1 is found, we can state with confidence that such
-point $p$ can potentially be part of a flock pattern. Later on, if a potential flock is found in a time slot $t_i$ and
-$p$ is part of it, we need to update the \ac{fp}'s bitmap of that point so when we process points of time slot $t_{i+1}$
-we have the correct bitmap representation of $p$ and that is where \textsc{MapPointFlock} (line 20) comes to play.
-\textsc{MapPointFlock} does that by prepending 1 to $p$'s bitmap in \ac{fp} module by performing an OR bitwise
-operation.
+Our \ac{dp} is explained in more detail by \algoref{alg:fp_helpers} and \algoref{alg:fp} as follows. In
+\algoref{alg:fp_helpers} we start by first listing the procedures that will help the core procedure of \ac{fp} (the
+\textsc{Process} procedure, in \algoref{alg:fp}). It is also in \algoref{alg:fp_helpers} that we list the most important
+piece of this \ac{dp} that allows us to achieve such good optimizations, in both \ac{cpu} cycles and number of disks
+generated, which is the \textsc{IsPointEligible} procedure. Such procedure is responsible to put together what happened
+in the \textit{past} and what is going to happen in the \textit{future} for a given point $p$, in order to decide
+whether $p$ can be part of a potential flock pattern or not. It does that by concatenating, for a given $O_{id}$, the
+bitmap from \ac{fp} with the bitmap from \ac{gsb} (line 5 of \algoref{alg:fp_helpers}) and searching for a sequence of
+$\delta$ bits set to 1 (lines 6 to 15 of \algoref{alg:fp_helpers}). That search is performed by combining AND and XOR
+bitwise operations against the presence bitmap assembled in line 5 of \algoref{alg:fp_helpers}. If a sequence of
+$\delta$ bits set to 1 is found, we can state with confidence that such point $p$ can potentially be part of a flock
+pattern. Later on, if a potential flock is found in a time slot $t_i$ and $p$ is part of it, we need to update the
+\ac{fp}'s bitmap of that point so when we process points of time slot $t_{i+1}$ we have the correct bitmap
+representation of $p$ and that is where \textsc{MapPointFlock} (line 20) comes to play.  \textsc{MapPointFlock} does
+that by prepending 1 to $p$'s bitmap in \ac{fp} module by performing an OR bitwise operation.
 
 \begin{algorithm}[h!]
 \caption{Flock Processor Helper Procedures}
@@ -362,7 +361,7 @@ actions:
 It can be easily perceived that the \ac{egc} processing (steps (a) and (b)) can be done in parallel for the multiple
 cells that will be processed, since there is no dependency and no concurrent writing operations between cells. Another
 step that is very \ac{cpu} heavy is the disk check described in step 3, but that step is very difficult to parallelize,
-as we could see in Algorithm~\ref{alg:fp}. In that algorithm we showed that we start with an empty set of disks in the
+as we could see in \algoref{alg:fp}. In that algorithm we showed that we start with an empty set of disks in the
 beginning of the \textsc{Process} procedure and add disks to that set as we go finding them. However, before adding a
 disk $d$ to the set, we check amongst the other disks that were previously there if $d$ is neither a subset nor a
 superset of an existing disk. If $d$ is a subset, then it is not added to the set, but if $d$ is a superset of an
