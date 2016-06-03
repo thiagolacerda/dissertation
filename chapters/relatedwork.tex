@@ -122,7 +122,7 @@ Vieira et al. \citep{vieira} proposed a polynomial algorithm to find flock patte
 parameters: minimum number of trajectories $\mu$, the disk radius $\epsilon$ and a minimum time length $\delta$.  In
 order to discover the centers of the cluster disks for each time step, they paired the points that had distance less or
 equal to $2*\epsilon$, created two disks based in that pair and tried to cluster other points into those disks. Their
-algorithm assumed that each point is sampled in a fixed time interval, assumption that does not reflect real world
+algorithm assumed that each point is sampled in a fixed time interval, assumption that does not reflect real-world
 datasets. Additionally, their algorithm suffered from wasting \ac{cpu} cycles by processing disk candidates that were
 not real potential flock candidates. The authors also proposed some filtering heuristics to optimize the processing
 time, but the optimizations did not present good results, and our local tests showed that the optimizations affected the
@@ -193,7 +193,7 @@ paradigm, thus proving its modularity, extensibility and ease of use.
 We could notice that the presented algorithms suffer from \ac{cpu} cycles waste by processing data that will not
 generate any pattern, like the flock disks that contain points that are not present in subsequent time steps. Avoiding
 such unnecessary processing can boost the running time of a flock pattern detection algorithm and then provide
-information in a real time fashion for decision takers. With that in mind, we will present an efficient algorithm, based
+information in a real-time fashion for decision takers. With that in mind, we will present an efficient algorithm, based
 on bitmaps, that will only be concerned with data that can really generate flock patterns, saving a considerable amount
 of time. Moreover, our algorithm will be able to provide information, about the datasets being analyzed, way faster than
 other algorithms. We will prove such efficiency by showing benchmarks comparing the running time of our solution against
