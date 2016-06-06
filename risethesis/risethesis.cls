@@ -682,18 +682,18 @@ requirements for the degree of \@degree\ in \@majorfielden.
   \begin{center}
 
   -----------------------------------------------------------------------\\
-  João do Morro\\
+  Rostand Edson Oliveira Costa\\
+  Laboratório de Aplicações de Vídeo Digital - LAVID/UFPB
+
+  \vspace{2\baselineskip}
+  -----------------------------------------------------------------------\\
+  Kiev Santos da Gama\\
   Centro de Informática/UFPE
 
   \vspace{2\baselineskip}
   -----------------------------------------------------------------------\\
-  Didi Mocó Sonrisal Novalgino Mufungo\\
+  Stênio Flávio de Lacerda Fernandes\\
   Centro de Informática/UFPE
-
-  \vspace{2\baselineskip}
-  -----------------------------------------------------------------------\\
-  Biff H. Tannen\\
-  Departamento de Ciência da Computação/UFBA
 
   \vfill
   \@address
