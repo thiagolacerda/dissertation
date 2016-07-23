@@ -403,7 +403,7 @@ showing how a good multi-threaded remodeling is important in order to get the mo
 \ac{bitdf} \ac{mt} improved the running time of \ac{bitdf} by 50\% when running with both 5 and 7 worker threads, as
 shown in \figref{fig:berlinmod_complete_vary_l}. \ac{bitdf} \ac{mt} also achieved good results when we varied the $\mu$
 parameter, having 45\% of running time decrease as it is depicted in \figref{fig:berlinmod_complete_vary_n}. Last, but
-definitely not least, we can se in \figref{fig:berlinmod_complete_vary_l} that \ac{bitdf} \ac{mt} improved the running
+definitely not least, we can se in \figref{fig:berlinmod_complete_vary_g} that \ac{bitdf} \ac{mt} improved the running
 time of \ac{bitdf} by 70\%, with both 5 and 7 worker threads.
 
 \begin{figure}[h!]
@@ -454,7 +454,7 @@ the parameter $\mu$ we could reduce the execution time by 60\%, as one can see i
 \figref{fig:tdrive_complete_vary_g} also shows improvements of 60\%, when compared against \ac{bitdf}, when varying the
 parameter $\epsilon$. The best result though is when we varied the parameter $\delta$, in which we could improve the
 \ac{bitdf} running time by 70\% when executing \ac{bitdf} \ac{mt} with both 5 and 7 worker threads, as depicted in
-\figref{fig:tdrive_complete_vary_g}.
+\figref{fig:tdrive_complete_vary_l}.
 
 \begin{figure}[h!]
     \centering
@@ -496,9 +496,10 @@ difference between the running time of \ac{bitdf} and \ac{bitdf} \ac{mt}, due to
 dataset, which is causing the y axis range to be very large. However, \ac{bitdf} \ac{mt} with 5 and 7 worker threads
 could reduce the time of \ac{bitdf} by 82\% when varying the $\mu$ parameters, as shown in
 \figref{fig:brinkhoff_complete_vary_n}. When varying the $\epsilon$ parameter, \ac{bitdf} \ac{mt} with 5 and 7 worker
-threads could also decrease the \ac{bitdf} running time by 82\%. Finally, by varying the $\delta$ parameter and running
-with 5 worker threads, \ac{bitdf} \ac{mt} could outperform \ac{bitdf} by 76\%, whereas by running with 7 worker threads,
-\ac{bitdf} \ac{mt} could be better by 85\%, as we can see in \figref{fig:brinkhoff_complete_vary_g}.
+threads could also decrease the \ac{bitdf} running time by 82\% (\figref{fig:brinkhoff_complete_vary_g}). Finally, by
+varying the $\delta$ parameter and running with 5 worker threads, \ac{bitdf} \ac{mt} could outperform \ac{bitdf} by
+76\%, whereas by running with 7 worker threads, \ac{bitdf} \ac{mt} could be better by 85\%, as we can see in
+\figref{fig:brinkhoff_complete_vary_l}.
 
 \begin{figure*}[h!]
     \centering
