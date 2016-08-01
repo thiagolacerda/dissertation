@@ -42,8 +42,8 @@ analyses and on the fly decision-making is still an open challenge.
 
 \begin{figure}[h!]
     \centering
-    \caption{T1, T2 and T3 form a flock of size 3 with minimum length of 3 time steps, with a disk enclosing all
-        trajectories at each time step $t_i$}
+    \caption{Orange, green and blue trajectories form a flock of size 3 with minimum length of 3 time steps, with a disk
+        enclosing all trajectories at each time step $t_i$}
     \centerline{\includegraphics[width=0.7\linewidth]{images/flock_pattern.png}}
     \footnotesize{Source: Made by the author.}
     \label{fig:flocks}
@@ -60,8 +60,9 @@ et al. \citep{gudefficient}, a flock pattern consists of a minimum number of ent
 extracting some useful collective behavior information. Such initial definition was then extended by Benkert et al.
 \citep{gudreportingflock}, introducing the minimum time interval $\delta$ that the entities should stay together in
 order to characterize a flock pattern, as depicted in \figref{fig:flocks}. That figure shows a flock pattern that lasts
-three time steps and is formed by trajectories $T_1$, $T_2$ and $T_3$. It is worth mentioning that trajectories $T_4$
-and $T_5$ are not part of a flock pattern because there are no disks enclosing them in all three time steps.
+three time steps and is formed by the orange, green and blue trajectories. It is worth mentioning that the remaining
+trajectories (yellow and pink) are not part of a flock pattern because there are no disks enclosing them in all three
+time steps.
 
 When it comes to flock pattern detection efficiency and speed, one major problem on doing that is to find the disks that
 enclose the trajectories in each time step. Since the disks centers do not need to match any point in the dataset, there
