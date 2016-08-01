@@ -2,23 +2,23 @@ OUTDIR = out
 TEX = TEXINPUTS=risethesis/: pdflatex -output-directory $(OUTDIR)
 BIB = BSTINPUTS=risethesis/: bibtex
 
-.PHONY: all aux bib thesis clean outdir
+.PHONY: all aux bib dissertation clean outdir
 
-all: outdir bib thesis
+all: outdir bib dissertation
 
-thesis: outdir thesis.tex thesis.bbl
-	$(TEX) thesis.tex
-	$(TEX) thesis.tex
-	mv $(OUTDIR)/thesis.pdf .
+dissertation: outdir dissertation.tex dissertation.bbl
+	$(TEX) dissertation.tex
+	$(TEX) dissertation.tex
+	mv $(OUTDIR)/dissertation.pdf .
 
-bib: outdir aux $(OUTDIR)/thesis.aux references.bib
-	$(BIB) $(OUTDIR)/thesis
-	mv $(OUTDIR)/thesis.bbl .
+bib: outdir aux $(OUTDIR)/dissertation.aux references.bib
+	$(BIB) $(OUTDIR)/dissertation
+	mv $(OUTDIR)/dissertation.bbl .
 
-aux: | out/thesis.aux
+aux: | out/dissertation.aux
 
-out/thesis.aux:
-	$(TEX) thesis.tex
+out/dissertation.aux:
+	$(TEX) dissertation.tex
 
 outdir: | out
 
