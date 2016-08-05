@@ -167,10 +167,11 @@ this dissertation.
 
 \section{Academic Contribution}
 It is notorious, from the related work presented in \secref{sec:rel_general} and \secref{sec:rel_flocks}, that there is
-a lot to cover in order to provide efficient flock pattern detection as well as an elegant and comprehensive system
-architecture to the pattern detection problem (which was not seen in any of the presented works). All of that is a
-subject to care about due to the extensive number of scenarios that data pattern mining, as well as flock patterns, can
-help and be applied to. We can have flock pattern detection helping the following, to name a few \citep{applications}:
+a lot to cover in order to provide efficient flock pattern detection as well as a lack of elegant and modular System
+Architecture to address the flock pattern detection problem (which was not seen in any of the presented works). All of
+that is a subject to care about due to the extensive number of scenarios that data pattern mining, as well as flock
+patterns, can help and be applied to. We can have flock pattern detection helping the following, to name a few
+\citep{applications}:
 
 \begin{enumerate}
     \item \textbf{Traffic Management}: Unusual grouping of vehicles, or abnormal traffic volume in certain regions can
@@ -184,11 +185,11 @@ help and be applied to. We can have flock pattern detection helping the followin
         the habits of the population and provide resources to enhance life quality of those involved.
 \end{enumerate}
 
-In \secref{sec:architecture} we will propose an elegant and extensible System Architecture that will be able address
-pattern detection problems. Such architecture will be divided in logic modules and components, each one with a very
-specific and self-contained goal, making then reusable and extensible to address other data analysis problems. We will
-also show that by modifying a single component in that architecture will enable the usage of a different software
-paradigm, thus proving its modularity, extensibility and ease of use.
+In \secref{sec:architecture} we will propose an elegant, modular and simple System Architecture that will be able
+address flock pattern detection problems. Such architecture will be divided in logic modules and components, each one
+with a very specific and self-contained goal, making then reusable and good candidates to address other data analysis
+problems. We will also show that by modifying a single component in that architecture will enable the usage of a
+different software paradigm, thus proving its modularity, extensibility and ease of use.
 
 We could notice that the presented algorithms suffer from \ac{cpu} cycles waste by processing data that will not
 generate any pattern, like the flock disks that contain points that are not present in subsequent time steps. Avoiding

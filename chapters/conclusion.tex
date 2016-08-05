@@ -10,19 +10,19 @@ applicable and are intrinsically related to the type of problems that we have ju
 Throughout this dissertation, we could show that a lot of work has been done in the academia, in order to provide
 algorithms able to identify the flock pattern. However, none of them could perform that task efficiently nor be able to
 scale well when a large dataset was the analysis target. Additionally, we found that there was no system architecture
-proposal that could be simple and extensible enough to be used in the various spatio-temporal pattern detection problems
-present today. Hence, since we are witnessing the rising of Smart Cities, helping to solve those aforementioned issues
-would be of tremendous importance and the flock pattern can be a valueable ally on that matter.
+proposal that could be simple and modular in order to address the problem of flock pattern detection in spatio-temporal
+datasets. Hence, since we are witnessing the rising of Smart Cities, helping to solve those aforementioned issues would
+be of tremendous importance and the flock pattern can be a valueable ally on that matter.
 
 Given the importance of efficiently discovering flock patterns, in order to enable decision makers to act fast, we
-proposed a simple, extensible and reusable System Architecture that can fit in almost any spatio-temporal pattern
-detection problem. We then used that architecture to implement a novel flock pattern detection algorithm that was able
-to outperform the state-of-the-art solutions in more than 99\%. Such impressive results were possible due to the
-filtering heuristic based on bitmaps that we proposed, which was able to reduce the generation of cluster disks in more
-than 96\%, directly reducing the amount of data that needed to be processed by the algorithm. Despite the great results
-achieved with our solution, we realized that there was still more room for improvements, given the large availability of
-multi-core processors in today's computers. With that in mind, we remodeled our proposed solution, proving how flexible
-our proposed architecture was, to perform some critical and time consuming tasks in parallel, taking full advantage of
+proposed a simple, and modular System Architecture that can fit in the flock pattern detection problem and possibly be
+used in other pattern mining scenarios as well. We then used that architecture to implement a novel flock pattern
+detection algorithm that was able to outperform the state-of-the-art solutions in more than 99\%. Such impressive
+results were possible due to the filtering heuristic based on bitmaps that we proposed, which was able to reduce the
+generation of cluster disks in more than 96\%, directly reducing the amount of data that needed to be processed by the
+algorithm. Despite the great results achieved with our solution, we realized that there was still more room for
+improvements, given the large availability of multi-core processors in today's computers. With that in mind, we
+remodeled our proposed solution to perform some critical and time consuming tasks in parallel, taking full advantage of
 the multi-core paradigm. Our performance benchmarks showed that we could outperform our own single threaded solution by
 96\% in some cases. Moreover, to put our comparison againts the state-of-the-art techniques in number, we were able to
 reduce a running time of 15 thousand seconds (state-of-the-art techniques) to only 13 seconds (\ac{bitdf} \ac{mt}). It

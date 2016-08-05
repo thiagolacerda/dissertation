@@ -1,24 +1,24 @@
 \chapter{Modular and Efficient Flock Pattern Identification}
 \label{chp:solution}
-\section{Generic System Architecture}
+\section{Modular System Architecture}
 \label{sec:architecture}
-After the related work research that was performed, we noticed a lack of system architecture in order to solve data
-spatio-temporal pattern detection problems. So far, no previous work has provided an system architecture that could be
-easily extensible and reusable for helping to address the myriad of issues related to spatio-temporal pattern detection.
+After the related work research that was performed, we noticed a lack of System Architecture in order to solve the flock
+pattern detection problem in spatio-temporal datasets. So far, no previous work has provided such System Architecture
+that could be modular and simple in order to help address the myriad of issues related to flock pattern detection.
 
-We first tried to approach this problem in a more generic fashion, since all moving pattern mining problem has the same
-workflow:
+We first tried to approach this problem in a more generic fashion, since the flock pattern mining (and also a lot of
+other moving pattern mining problems) has the same workflow:
 
 \begin{enumerate}
     \item Connect to a spatio-temporal data source
     \item Retrieve and aggregate spatio-temporal data
-    \item Process and mine that data in order to find the desired pattern or extract the desired information
+    \item Process and mine that data in order to find the desired pattern (flock, in this case)
 \end{enumerate}
 
-With that in mind, we designed a modular and easily extensible architecture that can fit for almost all spatio-temporal
-data mining problem, which is depicted by \figref{fig:architecture}. One can notice that we focus on 4 key building
-blocks, that can be easily registered/unregistered according to the targeting problem: (1) \acp{dsc}; (2) \acp{dd}; (3)
-\acp{dl} (Data aggregators); (4) \acp{dp}.
+With that in mind, we designed a modular and simple System Architecture that was built towards the flock pattern
+detection problem in spatio-temporal datasets, which is depicted by \figref{fig:architecture}. One can notice that we
+focus on 4 key building blocks, that can be easily registered/unregistered according to the targeting problem: (1)
+\acp{dsc}; (2) \acp{dd}; (3) \acp{dl} (Data aggregators); (4) \acp{dp}.
 
 In layer (1) we are concerned on how to retrieve the data, meaning how to communicate properly to the data source in
 order to be able to extract each record of spatio-temporal from it. Thus, each \ac{dsc} depicted in the \textit{Data
@@ -29,7 +29,7 @@ online data stream and listen for incoming data.
 
 \begin{figure}[h!]
     \centering
-    \caption{Generic System Architecture overview}
+    \caption{Modular System Architecture overview}
     \centerline{\includegraphics[width=\linewidth]{images/architecture.eps}}
     \footnotesize{Source: Made by the author.}
     \label{fig:architecture}
@@ -43,9 +43,9 @@ receive each data record that such \ac{dsc} gathers from a data source. It is im
 register to only one \ac{dsc}, but a \ac{dsc} can have multiple \acp{dd} registered to it.
 
 In any problem of data mining, aggregation is one of the most important phases, since it is there that the data
-gathering happens and necessary arrangements are made in order to get the data ready for processing. In our system that
-is represented by layer (4), which we call the Data Listeners' Module. We can have multiple types of \acp{dl} in that
-module, and each of them can perform different types of aggregation and pre-processing depending on the final goal.  For
+gathering happens and necessary arrangements are made in order to get the data ready for processing. In our system, that
+phase happens in layer (4), which we call the Data Listeners' Module. We can have multiple types of \acp{dl} in that
+module, and each of them can perform different types of aggregation and pre-processing depending on the final goal. For
 example, we could have an aggregator (or listener) that \textit{bucketize} the \ac{gps} points by their timestamp and
 filter out outliers, before sending to processing, or another one that performs point interpolation in order to reduce
 trajectory uncertainty. Similarly to the \ac{dd} module, a \ac{dl} can only register itself to one \ac{dd}, but a
@@ -55,13 +55,14 @@ contributions of this dissertation, which will perform a \textit{bufferized} agg
 The last, but not least, remaining piece is the Data Processors' Module, in layer (5). It is there that we will have the
 intelligence to perform a data mining task that will generate insights for decision making, detect moving patterns and
 the forth. We can have a \ac{dp} that detects flock patterns, another one that detects convergence patterns and even
-another \ac{dp} that provides traffic information in real-time, to name a few. Following the pattern of the
+another \ac{dp} that provides traffic information in real-time, to name a few. Fitting in the scope of this
+dissertation, we will implement and show a \ac{dd} that can detect flock patterns. Lastly, following the pattern of the
 aforementioned modules, each \ac{dp} can only register itself to a single \ac{dl}, but a \ac{dl} can have multiple
 \acp{dp} registered to it. This dissertation will present a novel \ac{dp} for detecting flock patterns, based on the
 \ac{bfe} algorithm proposed by Vieira et al. \citep{vieira}.
 
-Researchers and data analysts can leverage from the proposed architecture in order to tackle multiple problems at once,
-reusing components that can serve other spatio-temporal pattern mining problems.
+Researchers and data analysts, working with flock pattern detection, can leverage from the proposed architecture in
+order to have some infrastructure to help on their spartio-temporal problems.
 
 \section{Aggregation and data processing efficiency}
 \label{sec:aggreg_efficiency}

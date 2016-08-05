@@ -5,16 +5,16 @@ spatio-temporal patterns that one can extract from a spatio-temporal dataset, th
 lot of attention, because of its intrinsic relation with the aforementioned problems. A lot of work has been done in the
 academia, in order to provide algorithms able to identify the flock pattern. However, none of them could perform that
 task efficiently nor be able to scale well when a large dataset was the analysis target. Additionally, we found that
-there was no System Architecture proposal that could be simple and extensible enough to be used in the various
-spatio-temporal pattern detection problems present today. Given that context, this dissertation proposes a Generic
-System Archicture that can be used to solve a great number of spatio-temporal pattern mining problems. We then validate
-such architecture by implementing on top of it an efficient flock detection algorithm, aiming at achieving considerable
-gains in execution time without compromising accuracy, thus targeting real-time deployment and online processing in
-Smart Cities. Last, but not least, we remodel our algorithm in order to take advantage of multi-core architectures
-present in modern computers. Our results indicate that our proposal outperforms the current state-of-the-art techniques,
-by achieving 99\% CPU time improvement. Moreover, with our multi-thread model, we were able to reduce the processing
-time of our proposed algorithm by 96\% in some cases. We prove the efficiency of our solution by performing evaluation
-with both real and synthetic large datasets.
+there was no System Architecture proposal that could be simple and modular enough to be used in that spatio-temporal
+pattern detection problem. Given that context, this dissertation proposes a Modular System Archicture that can be used
+to solve flock pattern mining problems and possibly be reused to other spatio-temporal mining experiments. We then use
+such architecture as the infrastructure to implement an efficient flock detection algorithm, aiming at achieving
+considerable gains in execution time without compromising accuracy, thus targeting real-time deployment and online
+processing in Smart Cities. Last, but not least, we remodel our algorithm in order to take advantage of multi-core
+architectures present in modern computers. Our results indicate that our proposal outperforms the current
+state-of-the-art techniques, by achieving 99\% CPU time improvement. Moreover, with our multi-thread model, we were able
+to reduce the processing time of our proposed algorithm by 96\% in some cases. We prove the efficiency of our solution
+by performing evaluation with both real and synthetic large datasets.
 
 \begin{keywords}
 Smart Cities, Pattern Mining, Spatio-temporal data, Flock Pattern
