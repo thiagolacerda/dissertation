@@ -1,6 +1,6 @@
 \chapter{Introduction}
 \label{chp:introduction}
-The advances of positioning technologies are empowering a myriad of different objects present in our daily usage (e.g.
+The advances of positioning technologies are enabling lot of different objects present in our daily usage (e.g.
 vehicles, smartphones and wearable devices) to be shipped with location tracking systems. Those devices are able to
 collect and report mobility information of people, animals and natural phenomena (e.g. hurricanes), to name a few. That
 technological advance is enabling the generation of massive volumes of spatio-temporal data that can contain information
@@ -13,7 +13,7 @@ Those datasets can be used to help solving a variety of issues and answer some q
 \begin{enumerate}
     \item \textbf{What are the busiest times and locations (such as traffic jams locations) in a city?}
         \citep{visualtrafficjam}
-    \item \textbf{What is the movement patterns of the citizens of a city during work hours?}
+    \item \textbf{What are the movement patterns of the citizens of a city during work hours?}
     \item \textbf{What is the migration pattern of inhabitants of a specific area?}
     \item \textbf{What is the movement behavior of wild animals in their habitat?} \citep{movemine}
     \item \textbf{Is there any suspicious movement of groups of objects during some specific time window?}
@@ -24,7 +24,7 @@ the questions listed above are in the context of Smart Cities, which can take ad
 as an aid to a broad set of applications, like urban planning, public security, and public health and commerce
 \citep{ieeesmartcities}. Additionally, understanding the data in question and being able to take actions fast according
 to the conclusions extracted from such data is crucial to create and evolve a Smart City. However, due to the huge
-volume of data that is produced on a daily basis and needs to be analyzed to in order to help those applications and
+volume of data that is produced on a daily basis and the need analyze them to in order to help those applications and
 answer those questions, the main problem is still the same: how to be able to analyze massive data volumes fast and
 efficiently so we can empower decision takers to act quickly?
 
@@ -52,17 +52,17 @@ analyses and on the fly decision-making is still an open challenge.
 Among those collaborative patterns, the flock pattern is one that has gained a lot of attention in the research
 community, since it can address all the scenarios and questions that were mentioned in this chapter and represents a
 very familiar behavior that is frequently seen in our daily routines. A seminal formal definition of that pattern was
-proposed by \citep{remo} and \citep{gudefficient} and since then, a lot of other studies has follow suit (we refer the
-reader to \chapref{chp:relatedwork} for some of them), mainly due to the interests in developing mechanisms to solve
-real-world problems in the scope of \ac{iot} \citep{iot} and Smart Cities \citep{smartcities}. According to Gudmundsson
-et al. \citep{gudefficient}, a flock pattern consists of a minimum number of entities that are within a disk of radius
-\textit{r} at a given time.  However, this definition only applies to one single time step and does not help on
-extracting some useful collective behavior information. Such initial definition was then extended by Benkert et al.
-\citep{gudreportingflock}, introducing the minimum time interval $\delta$ that the entities should stay together in
-order to characterize a flock pattern, as depicted in \figref{fig:flocks}. That figure shows a flock pattern that lasts
-three time steps and is formed by the orange, green and blue trajectories. It is worth mentioning that the remaining
-trajectories (yellow and pink) are not part of a flock pattern because there are no disks enclosing them in all three
-time steps.
+proposed by Laube et al. \citep{remo} and Gudmundsson et al. \citep{gudefficient} and since then, a lot of other studies
+has follow suit (we refer the reader to \chapref{chp:relatedwork} for some of them), mainly due to the interests in
+developing mechanisms to solve real-world problems in the scope of \ac{iot} \citep{iot} and Smart Cities
+\citep{smartcities}. According to Gudmundsson et al. \citep{gudefficient}, a flock pattern consists of a minimum number
+of entities that are within a disk of radius \textit{r} at a given time. However, this definition only applies to one
+single time step and does not help on extracting some useful collective behavior information. Such initial definition
+was then extended by Benkert et al. \citep{gudreportingflock}, introducing the minimum time interval $\delta$ that the
+entities should stay together in order to characterize a flock pattern, as depicted in \figref{fig:flocks}. That figure
+shows a flock pattern that lasts three time steps and is formed by the orange, green and blue trajectories. It is worth
+mentioning that the remaining trajectories (yellow and pink) are not part of a flock pattern because there are no disks
+enclosing them in all three time steps.
 
 When it comes to flock pattern detection efficiency and speed, one major problem on doing that is to find the disks that
 enclose the trajectories in each time step. Since the disks centers do not need to match any point in the dataset, there
@@ -84,7 +84,7 @@ In our related work research, we noticed that the state of the art algorithms fo
 to aid the development and evolution of Smart Cities, since they are not able to efficiently process the huge volumes of
 data that are generated by them. With that in mind, this dissertation proposes an efficient flock detection algorithm
 aiming at achieving considerable gains in execution time, without compromising accuracy, thus targeting real-time
-deployment and online processing. With that algorithm, we could address Smart Cities scenarios, where decisions need to
+deployment and on-line processing. With that algorithm, we could address Smart Cities scenarios, where decisions need to
 be made on the fly and rapidly enough in order to keep up with their development pace
 \citep{ieeesmartcities}\citep{springersmartcities}. Such gains were made possible by creating a filtering heuristic,
 based on bitmaps, in order to save processing time. Our proposal focuses on identifying \acp{mo} that can actually form
@@ -111,5 +111,6 @@ The remainder of this dissertation is organized as follows. \chapref{chp:related
 both flock detection and trajectory data mining and explain in more details the academic contribution of our work.
 \chapref{chp:techbackground} presents the technical background necessary to understand this dissertation, like the
 formal flock pattern definition and how an algorithm to find a flock pattern works. Our contribution is detailed in
-\chapref{chp:solution}, whereas in \chapref{chp:results} we show the results of our evaluations based on the chosen
-metrics. Lastly, in \chapref{chp:conclusion} we draw some concluding remarks and provide directions for future work.
+\chapref{chp:solution}, whereas in \chapref{chp:results} we show the results of our experimental evaluations, on the
+datasets that we picked, based on the chosen metrics. Lastly, in \chapref{chp:conclusion} we draw some concluding
+remarks and provide directions for future work.
