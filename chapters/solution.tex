@@ -2,8 +2,8 @@
 \label{chp:solution}
 \section{Modular System Architecture}
 \label{sec:architecture}
-After the related work research that was performed, we noticed a lack of System Architecture in order to solve the flock
-pattern detection problem in spatio-temporal datasets. So far, no previous work has provided such System Architecture
+After the related work research that was performed, we noticed a lack of system architecture in order to solve the flock
+pattern detection problem in spatio-temporal datasets. So far, no previous work has provided such system architecture
 that could be modular and simple in order to help address the myriad of issues related to flock pattern detection.
 
 We first tried to approach this problem in a more generic fashion, since the flock pattern mining (and also a lot of
@@ -15,7 +15,7 @@ other moving pattern mining problems) has the same workflow:
     \item Process and mine that data in order to find the desired pattern (flock, in this case)
 \end{enumerate}
 
-With that in mind, we designed a modular and simple System Architecture that was built towards the flock pattern
+With that in mind, we designed a modular and simple system architecture that was built towards the flock pattern
 detection problem in spatio-temporal datasets, which is depicted by \figref{fig:architecture}. One can notice that we
 focus on 4 key building blocks, that can be easily registered/unregistered according to the targeting problem: (1)
 \acp{dsc}; (2) \acp{dd}; (3) \acp{dl} (Data aggregators); (4) \acp{dp}.
@@ -29,7 +29,7 @@ online data stream and listen for incoming data.
 
 \begin{figure}[h!]
     \centering
-    \caption{Modular System Architecture overview}
+    \caption{Modular system architecture overview}
     \centerline{\includegraphics[width=\linewidth]{images/architecture.eps}}
     \footnotesize{Source: Made by the author.}
     \label{fig:architecture}
