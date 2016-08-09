@@ -4,7 +4,7 @@
 \label{sec:architecture}
 After the related work research that was performed, we noticed a lack of system architecture in order to solve the flock
 pattern detection problem in spatio-temporal datasets. So far, no previous work has provided such system architecture
-that could be modular and simple in order to help address the myriad of issues related to flock pattern detection.
+that could be modular and simple in order to help address the issues related to flock pattern detection.
 
 We first tried to approach this problem in a more generic fashion, since the flock pattern mining (and also a lot of
 other moving pattern mining problems) has the same workflow:
@@ -21,7 +21,7 @@ focus on 4 key building blocks, that can be easily registered/unregistered accor
 \acp{dsc}; (2) \acp{dd}; (3) \acp{dl} (Data aggregators); (4) \acp{dp}.
 
 In layer (1) we are concerned on how to retrieve the data, meaning how to communicate properly to the data source in
-order to be able to extract each record of spatio-temporal from it. Thus, each \ac{dsc} depicted in the \textit{Data
+order to be able to extract each spatio-temporal record from it. Thus, each \ac{dsc} depicted in the \textit{Data
 Connectors' Module} in \figref{fig:architecture} represents a logical piece that knows how to connect to and extract
 data from a specific data source. We can have a \ac{dsc} that knows how to connect to a MySQL database, or another one
 that can connect to a cloud based storage system like \ac{aws} DynamoDB, or even a \ac{dsc} that simply connects to an
@@ -38,9 +38,9 @@ online data stream and listen for incoming data.
 After connecting and retrieving data from a data source, we need to clean, decode and translate the incoming raw data to
 a format that is simple and understandable to our system. Aiming at achieving that, we will have a \ac{dd} component,
 which knows how to interpret the raw data format that comes from a \ac{dsc} and translate it to a format that layer (3)
-can understand. We can see in \figref{fig:architecture} that a \ac{dd} can register itself to a \ac{dsc} in order to
-receive each data record that such \ac{dsc} gathers from a data source. It is important to note that a \ac{dd} can
-register to only one \ac{dsc}, but a \ac{dsc} can have multiple \acp{dd} registered to it.
+onwards can understand. We can see in \figref{fig:architecture} that a \ac{dd} can register itself to a \ac{dsc} in
+order to receive each data record that such \ac{dsc} gathers from a data source. It is important to note that a \ac{dd}
+can register to only one \ac{dsc}, but a \ac{dsc} can have multiple \acp{dd} registered to it.
 
 In any problem of data mining, aggregation is one of the most important phases, since it is there that the data
 gathering happens and necessary arrangements are made in order to get the data ready for processing. In our system, that
@@ -55,11 +55,10 @@ contributions of this dissertation, which will perform a \textit{bufferized} agg
 The last, but not least, remaining piece is the Data Processors' Module, in layer (5). It is there that we will have the
 intelligence to perform a data mining task that will generate insights for decision making, detect moving patterns and
 the forth. We can have a \ac{dp} that detects flock patterns, another one that detects convergence patterns and even
-another \ac{dp} that provides traffic information in real-time, to name a few. Fitting in the scope of this
-dissertation, we will implement and show a \ac{dd} that can detect flock patterns. Lastly, following the pattern of the
+another \ac{dp} that provides traffic information in real-time, to name a few. Also, following the pattern of the
 aforementioned modules, each \ac{dp} can only register itself to a single \ac{dl}, but a \ac{dl} can have multiple
-\acp{dp} registered to it. This dissertation will present a novel \ac{dp} for detecting flock patterns, based on the
-\ac{bfe} algorithm proposed by Vieira et al. \citep{vieira}.
+\acp{dp} registered to it. Fitting in the scope of this dissertation, we will implement and show a novel \ac{dp} that
+can detect flock patterns, based on the \ac{bfe} algorithm proposed by Vieira et al. \citep{vieira}.
 
 Researchers and data analysts, working with flock pattern detection, can leverage from the proposed architecture in
 order to have some infrastructure to help on their spartio-temporal problems.
@@ -69,10 +68,10 @@ order to have some infrastructure to help on their spartio-temporal problems.
 By analyzing some of the algorithms proposed in \secref{sec:rel_flocks} and their respective running times, we noticed
 that most of the \ac{cpu} cycles were spent in analyzing disks that will not generate flock patterns, due to the points
 not being present in $\delta$ consecutive time slots. In all algorithms, disks generated in time slot $t_{i+1}$ are
-compared with those generated in $t_{i}$ in order to check if an extension to a potential flock pattern is found. This
-operation has $O(nm)$ complexity, with $n$ being the number of disks and $m$ the number of potential flocks from
-previous time slots.  Additionally, for each comparison between a disk and a potential flock, an intersection operation
-between them needs to be made.
+compared with the potential flocks found in $t_{i}$ in order to check if an extension to a potential flock pattern is
+found. This operation has $O(nm)$ complexity, with $n$ being the number of disks and $m$ the number of potential flocks
+from previous time slots.  Additionally, for each comparison between a disk and a potential flock, an intersection
+operation between them needs to be made.
 
 Things get even worse in algorithms like \ac{bfe}, where a new created disk $d_j$ is checked if it is either subset or a
 duplicate of a previously found disk $d_i$ (as already mentioned in \secref{subsec:disk_discovery}). The running time of
@@ -80,9 +79,9 @@ this step can result in a $O(n^2)$ time complexity in the worst case (with $n$ b
 that time slot) requiring an intersection operation between each pair of disks that are being compared. We can reduce
 significantly that number of disks by only creating disks with points that can potentially form a flock pattern, i.e.
 with points that appears in the dataset for $\delta$ consecutive time slots. In order to show how expensive those disk
-operations can be, we measured the time spent in them using the datasets that we will use in our experiments and show
-the results in \figref{fig:time_consumption}. The analysis shows that the disk and flock related operations can reach
-99\% of the overall processing time of the algorithm.
+operations can be, we measured the time spent in such operations using the datasets that we will use in our experiments
+and present the results in \figref{fig:time_consumption}. The analysis shows that the disk and flock related operations
+can reach 99\% of the overall processing time of the algorithm.
 
 \begin{figure}[h!]
     \centering
@@ -101,7 +100,7 @@ the results in \figref{fig:time_consumption}. The analysis shows that the disk a
 \end{figure}
 
 Consider the \ac{bfe} algorithm running example depicted in \figref{fig:disks}, where we are looking for flock patterns
-having $\mu=4$ and $\delta=4$ as parameter values. As we can see, in time slot $t_0$ our dataset reported points
+having $\mu=4$ and $\delta=4$ as its parameter values. As we can see, in time slot $t_0$ our dataset reported points
 $p_1,p_2,p_3$ and $p_4$ and, due to the proximity between them, disk $d_0$ was created enclosing all four points.  In
 the subsequent time slot $t_1$ the same points were reported and again the \ac{bfe} algorithm was able to create another
 disk $d_1$. However, in time slot $t_2$, $p_3$ was not present and the disk $d_2$ only contained three points, which is
@@ -109,19 +108,51 @@ not enough to represent a flock pattern because of the number of trajectories be
 $d_2$ being invalid in $t_2$, we will need to discard disks $d_0$ and $d_1$ created in the previous time slots, since
 they cannot generate a flock pattern starting from $t_0$. Hence, we could avoid the creation of disks $d_0$ and $d_1$ if
 we would know in advance that $p_3$ was missing in $t_2$, saving \ac{cpu} cycles of disk comparisons in $t_0$ and $t_1$.
-We argue that when scaled to a dataset of millions of records, doing real-time analyses, such processing for checking
-disks subsets and flock extension, performed by regular algorithms (like \ac{bfe}), will lead to severe degradation in
-performance. With that in mind, we can say with high confidence that reducing the processing time spent with unnecessary
-disks that will not generate flock patterns, can dramatically reduce the overall processing time of a flock detection
-algorithm.
+We argue that when scaled to a dataset with millions of records, doing real-time analyses, such processing for checking
+disks subsets and flock extension, performed by regular algorithms (like \ac{bfe}), will lead to a severe degradation in
+performance. With that in mind, we can say with high confidence that reducing the volume of data that is processed by
+those flock and disk comparison tasks (by filtering out disks that will not generate flock patterns), can dramatically
+reduce the overall processing time of a flock detection algorithm.
 
 \section{BitDF}
 \label{sec:bitdf}
 
 Our solution consists on using \textbf{Bit}maps for \textbf{D}isk \textbf{F}iltering (\acsu{bitdf}\label{acro:bitdf}),
-based on the \ac{bfe} algorithm. \ac{bitdf} is basically a Data Listener and a Data Processor component, as those in the
+based on the \ac{bfe} algorithm. \ac{bitdf} is basically a \ac{dl} and a \ac{dp} components, as those in the
 architecture presented in \secref{sec:architecture}. We call them \ac{gsb} and \ac{fp} the \ac{dl} and \ac{dp}
-respectively, and will have each of them keep track of the history of every $O_{id}$ in time.
+respectively, and will have each of them keeping track of the history of every $O_{id}$ in time.
+
+\begin{table}[h!]
+    \renewcommand{\arraystretch}{1.3}
+    \caption{Bitmaps in \ac{gsb} after buffering four time slots}
+    \label{tab:bitmaps}
+    \centering
+    \begin{tabular}{c | c}
+        \toprule
+        $O_{id}$ &   Bitmap\\
+        \toprule
+        1        &   1111\\
+        \bottomrule
+        2        &   0111\\
+        \bottomrule
+        3        &   1011\\
+        \bottomrule
+        4        &   1111\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\algoref{alg:gpsb} shows a big picture of how \ac{gsb} will work once it receives spatio-temporal data records from a
+\ac{dd}. It will listen to the incoming \ac{gps} point stream in the procedure \textsc{ReceivePoints}, add each point to
+the \textit{pointBuffer} structure (which is a hash map of points by time slot) and record the presence in time of that
+$O_{id}$ in its bitmap structure (presence map) by calling \textsc{AddPointPresence}. When \ac{gsb} has buffered
+$\delta$ time slots (line 23) it will then send the points of $timeSlot - \delta$, along with the bitmaps, to \ac{fp}.
+After \ac{fp} is done with processing the points, \ac{gsb} will discard the first bit of the bitmaps (which corresponds
+to the points of $timeSlot - \delta$ sent to \ac{fp}), by calling \textsc{ShiftPresenceMaps}, and also discard the
+points collected in $timeSlot - \delta$, which were already processed by \ac{fp}. The flow continues indefinitely by
+buffering the points from the next time slot $t_i$ and send the points from $t_{i - \delta}$ and the bitmaps to \ac{fp}
+for processing.  It is worth noting that \textit{timeSlotSize}, referred in line 21, represents the time slot $\sigma$
+introduced in \secref{sec:tech_data}.
 
 \begin{algorithm}[h!]
 \caption{\ac{gps} Stream Buffer}
@@ -163,58 +194,11 @@ respectively, and will have each of them keep track of the history of every $O_{
 \end{algorithmic}
 \end{algorithm}
 
-\algoref{alg:gpsb} shows a big picture of how \ac{gsb} will work once it receives spatio-temporal data records from a
-\ac{dd}. It will listen to the incoming \ac{gps} point stream in the procedure \textsc{ReceivePoints}, add each point to
-the \textit{pointBuffer} structure (which is a hash map of points by time slot) and record the presence in time of that
-$O_{id}$ in its bitmap structure by calling \textsc{AddPointPresence}. When \ac{gsb} has buffered $\delta$ time slots
-(line 23) it will then send the points of $timeSlot - \delta$ to \ac{fp}. After \ac{fp} is done with processing the
-points, \ac{gsb} will discard the presence maps of $timeSlot - \delta$ (which corresponds to the points sent to
-\ac{fp}), by calling \textsc{ShiftPresenceMaps}, and also discard the points collected in $timeSlot - \delta$, which
-were already processed by \ac{fp}. The flow continues indefinitely by buffering the points from the next time slot $t_i$
-and send the points from $t_{i - \delta}$ to \ac{fp} for processing. It is worth noting that \textit{timeSlotSize},
-referred in line 21, represents the time slot $\sigma$ introduced in \secref{sec:tech_data}.
-
 Using \figref{fig:disks} as an example, we can see in \tabref{tab:bitmaps} the state of the \ac{gsb} bitmaps for each
 $O_{id}$ after receiving the points in $t_3$. With those bitmaps, we can easily look up for a specific point occurrence
 in time and check whether that point in that specific time slot can potentially form a flock pattern or not. We do that
 by checking if that $O_{id}$ appears for $\delta$ consecutive time slots in the dataset, i.e. it has $\delta$
-consecutive bits set to 1. The bitmaps in \ac{gsb} will always refer to the "future" of a specific $O_{id}$.
-
-\begin{table}[h!]
-    \renewcommand{\arraystretch}{1.3}
-    \caption{Bitmaps in \ac{gsb} after buffering four time slots}
-    \label{tab:bitmaps}
-    \centering
-    \begin{tabular}{c | c}
-        \toprule
-        $O_{id}$ &   Bitmap\\
-        \toprule
-        1        &   1111\\
-        \bottomrule
-        2        &   0111\\
-        \bottomrule
-        3        &   1011\\
-        \bottomrule
-        4        &   1111\\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-Our \ac{dp} is explained in more detail by \algoref{alg:fp_helpers} and \algoref{alg:fp} as follows. In
-\algoref{alg:fp_helpers} we start by first listing the procedures that will help the core procedure of \ac{fp} (the
-\textsc{Process} procedure, in \algoref{alg:fp}). It is also in \algoref{alg:fp_helpers} that we list the most important
-piece of this \ac{dp} that allows us to achieve such good optimizations, in both \ac{cpu} cycles and number of disks
-generated, which is the \textsc{IsPointEligible} procedure. Such procedure is responsible to put together what happened
-in the \textit{past} and what is going to happen in the \textit{future} for a given point $p$, in order to decide
-whether $p$ can be part of a potential flock pattern or not. It does that by concatenating, for a given $O_{id}$, the
-bitmap from \ac{fp} with the bitmap from \ac{gsb} (line 5 of \algoref{alg:fp_helpers}) and searching for a sequence of
-$\delta$ bits set to 1 (lines 6 to 15 of \algoref{alg:fp_helpers}). That search is performed by combining AND and XOR
-bitwise operations against the presence bitmap assembled in line 5 of \algoref{alg:fp_helpers}. If a sequence of
-$\delta$ bits set to 1 is found, we can state with confidence that such point $p$ can potentially be part of a flock
-pattern. Later on, if a potential flock is found in a time slot $t_i$ and $p$ is part of it, we need to update the
-\ac{fp}'s bitmap of that point so when we process points of time slot $t_{i+1}$ we have the correct bitmap
-representation of $p$ and that is where \textsc{MapPointFlock} (line 20) comes to play.  \textsc{MapPointFlock} does
-that by prepending 1 to $p$'s bitmap in \ac{fp} module by performing an OR bitwise operation.
+consecutive bits set to 1. The bitmaps in \ac{gsb} will always refer to the \textit{future} of a specific $O_{id}$.
 
 \begin{algorithm}[h!]
 \caption{Flock Processor Helper Procedures}
@@ -259,7 +243,7 @@ that by prepending 1 to $p$'s bitmap in \ac{fp} module by performing an OR bitwi
     \EndProcedure
 \end{algorithmic}
 \end{algorithm}
-\vfill
+
 \begin{algorithm}[h!]
 \caption{Flock Processor Process Procedure}
 \label{alg:fp}
@@ -301,6 +285,22 @@ that by prepending 1 to $p$'s bitmap in \ac{fp} module by performing an OR bitwi
     \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+Our \ac{dp} is explained in more detail by \algoref{alg:fp_helpers} and \algoref{alg:fp} as follows. In
+\algoref{alg:fp_helpers} we start by first listing the procedures that will help the core procedure of \ac{fp} (the
+\textsc{Process} procedure, in \algoref{alg:fp}). It is also in \algoref{alg:fp_helpers} that we list the most important
+piece of this \ac{dp} that allows us to achieve such good optimizations, in both \ac{cpu} cycles and number of disks
+generated, which is the \textsc{IsPointEligible} procedure. Such procedure is responsible to put together what happened
+in the \textit{past} and what is going to happen in the \textit{future} for a given point $p$, in order to decide
+whether $p$ can be part of a potential flock pattern or not. It does that by concatenating, for a given $O_{id}$, the
+bitmap from \ac{fp} with the bitmap from \ac{gsb} (line 5 of \algoref{alg:fp_helpers}) and searching for a sequence of
+$\delta$ bits set to 1 (lines 6 to 15 of \algoref{alg:fp_helpers}). That search is performed by combining AND and XOR
+bitwise operations against the presence bitmap assembled in line 5 of \algoref{alg:fp_helpers}. If a sequence of
+$\delta$ bits set to 1 is found, we can state with confidence that such point $p$ can potentially be part of a flock
+pattern. Later on, if a potential flock is found in a time slot $t_i$ and $p$ is part of it, we need to update the
+\ac{fp}'s bitmap of that point so when we process points of time slot $t_{i+1}$ we have the correct bitmap
+representation of $p$ and that is where \textsc{MapPointFlock} (line 20) comes to play.  \textsc{MapPointFlock} does
+that by prepending 1 to $p$'s bitmap in \ac{fp} module by performing an OR bitwise operation.
 
 \figref{fig:gsb_fp_flow} shows how \ac{gsb} (red) and \ac{fp} (gray) will interact in a scenario where $\mu = 3$ and
 $\delta = 3$. In the first column we can see \ac{gsb} receiving points $p_1$, $p_2$, $p_3$, $p_4$ and $p_5$ at time slot
@@ -369,7 +369,7 @@ superset of an existing disk. If $d$ is a subset, then it is not added to the se
 existing disk $d_2$, that disk $d_2$ is then removed from the set and $d$ is added instead (the superset check is done
 inside the procedure \textsc{AddDisk}). Thus, if we try to parallelize that disk check procedure we would need to have
 synchronizing primitives to protect the concurrent writing operations to the shared disk set, which could end up being
-slower than executing it sequentially. Even without being able to fully parallelize the disk check steps, we can still
+performance bottleneck in the system. Even without being able to fully parallelize the disk check steps, we can still
 take advantage of other techniques to gain some speed in processing, like using the divide and conquer approach. The
 idea would be to have multiple disk sets (one per independent worker thread processing \acp{egc}) and have each
 independent thread add disks (and thus check for subsets/supersets) to its own set. When each worker thread has finished
@@ -381,22 +381,22 @@ be performed by the global disk set.
 The multi-threaded idea described in \secref{sec:multithread} can be modeled as a Producer-Multiple Consumers problem,
 where we would have a single producer assembling the \ac{egc}s and multiple consumers taking a \ac{egc} from a shared
 queue and clustering the points in the disks that it might find for that specific \ac{egc}. On a step further, each
-consumer thread $c_t$ will also spawn another thread $d_t$ that will process disks that $c_t$ has found and will check
+consumer thread $t_c$ will also spawn another thread $t_d$ that will process disks that $t_c$ has found and will check
 for subsets and supersets in its own private disk set.
 
-\begin{figure}[h!]
+\figref{fig:multithread} illustrates how the \ac{fp} will be rearchitected in order to take advantage of parallel
+execution.  We can see that the main thread will collect the \ac{egc}s for each cell grid and enqueue them in a shared
+queue that will be accessed by $N$ consumers. Whenever a consumer ($t_c$ thread) dequeues an \ac{egc}, it will then try
+to find a pair of disks for each pair of points in the \ac{egc}, cluster the remaining points in those disks and then
+enqueue those disks in another shared queue. Such shared queue will only be shared with the disk thread $t_d$ belonging
+to the $t_c$ thread that created it. Then, each $t_d$ will be responsible to check for subsets and supersets in its own
+set of disks, saving a lot of processing time when those disks are merged (and also checked for subsets and supersets)
+with the global disk set in the \textsc{Process} procedure.
+
+\begin{figure}[t!]
     \centering
     \caption{Modeling the \ac{fp} in a Producer-Multiple Consumers architecture}
     \centerline{\includegraphics[width=\linewidth]{images/multithread.eps}}
     \footnotesize{Source: Made by the author.}
     \label{fig:multithread}
 \end{figure}
-
-\figref{fig:multithread} illustrates how the \ac{fp} will be rearchitected in order to take advantage of parallel
-execution.  We can see that the main thread will collect the \ac{egc} for each cell grid and enqueue it in a shared
-queue that will be accessed by $N$ consumers. Whenever a consumer ($c_t$ thread) dequeues an \ac{egc}, it will then try
-to find a pair of disks for each pair of points in the \ac{egc}, cluster the remaining points in those disks and then
-enqueue those disks in another shared queue. Such shared queue will only be shared with the disk thread $d_t$ belonging
-to the $c_t$ thread that created it. Then, each $d_t$ will be responsible to check for subsets and supersets in its own
-set of disks, saving a lot of processing time when those disks are merged (and also checked for subsets and supersets)
-with the global disk set in the \textsc{Process} procedure.
