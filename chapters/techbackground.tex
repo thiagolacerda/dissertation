@@ -46,18 +46,7 @@ point in the $\mathbb{R}^2$ system and execute the algorithm used by the \ac{who
 \ac{wgs84} to $\mathbb{R}^2$ on the fly \citep{latlogtoxy}. Please refer to \tabref{tbl:coordinates} for some examples
 of \ac{wgs84} coordinates being translated to $\mathbb{R}^2$, using the algorithm provided by \ac{whoi}.
 
-It is worth noting that real-world datasets do not guarantee that all points of all trajectories are sampled at the same
-rate. In a ideal world, a perfect spatio-temporal dataset would have its entries as described in
-\tabref{tbl:ideal_rate}, where one can see that each $O_{id}$ has its position sampled in intervals of a consistent $t$
-unit (1 in that example). However, \tabref{tbl:real_rate} presents how \acp{mo} in real-world datasets have their
-position sampled over time: no fixed rate interval due to transmission noises, precision issues and other problems that
-can make the sample rate varying a lot from one $O_{id}$ to another. Therefore, we need to have a way to be able to
-compare and group points belonging to the same logical time interval. With that in mind, we divided the time extent in
-buckets of size $\sigma$, where $\sigma$ should be chosen accordingly to the dataset being analyzed, based on the
-sampling rate of points. Hence, from this point forward, every time when we refer to any timestamp $t_i$ we are actually
-talking about the $i_{th}$ time bucket (or time slot) of size $\sigma$.
-
-\begin{table}
+\begin{table}[h!]
     \centering
     \begin{minipage}{0.5\textwidth}
         \centering
@@ -146,6 +135,17 @@ talking about the $i_{th}$ time bucket (or time slot) of size $\sigma$.
         \bottomrule
     \end{tabular}
 \end{table}
+
+It is worth noting that real-world datasets do not guarantee that all points of all trajectories are sampled at the same
+rate. In a ideal world, a perfect spatio-temporal dataset would have its entries as described in
+\tabref{tbl:ideal_rate}, where one can see that each $O_{id}$ has its position sampled in intervals of a consistent $t$
+unit (1 in that example). However, \tabref{tbl:real_rate} presents how \acp{mo} in real-world datasets have their
+position sampled over time: no fixed rate interval due to transmission noises, precision issues and other problems that
+can make the sample rate varying a lot from one $O_{id}$ to another. Therefore, we need to have a way to be able to
+compare and group points belonging to the same logical time interval. With that in mind, we divided the time extent in
+buckets of size $\sigma$, where $\sigma$ should be chosen accordingly to the dataset being analyzed, based on the
+sampling rate of points. Hence, from this point forward, every time when we refer to any timestamp $t_i$ we are actually
+talking about the $i_{th}$ time bucket (or time slot) of size $\sigma$.
 
 After dividing the time extent of the dataset presented by \tabref{tbl:real_rate} using $\sigma = 3$,
 \tabref{tbl:timeslot} shows in which time slot each $O_{id}$ entry will end up at. The assignment of the time slot is
@@ -254,15 +254,6 @@ in \figref{fig:disks_discovery}.
 \end{algorithmic}
 \end{algorithm}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Two disks with radius $\epsilon/2$ that are found based on points $p_1$ and $p_2$. $c_1$ and $c_2$ stand
-        for the disks centers and $m$ represents the midpoint between $p_1$ and $p_2$.}
-    \centerline{\includegraphics[width=0.7\textwidth]{images/disks_discovery.eps}}
-    \footnotesize{Source: Made by the author.}
-    \label{fig:disks_discovery}
-\end{figure}
-
 In order to avoid running \algoref{alg:disks} through all the points found in a time slot $t_i$, Vieira et al.
 \citep{vieira} proposed a grid structure to reduce the search space for the set of points. In that approach, all points
 that belong to time slot $t_i$ will be arranged into a grid with cells of size $\epsilon$. After that, we will go
@@ -280,6 +271,15 @@ as follows. For each point $p$ in the point set, we will \textit{bucketize} the 
 Once we have the division results, we will convert them to string and concatenate them, forming a cell index (line 8).
 With the cell index in hand, we only need to add the point to the corresponding cell (line 9). It is worth noting that
 this proposed approach will not create empty cells, saving memory and unnecessary cell traversing time.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Two disks with radius $\epsilon/2$ that are found based on points $p_1$ and $p_2$. $c_1$ and $c_2$ stand
+        for the disks centers and $m$ represents the midpoint between $p_1$ and $p_2$.}
+    \centerline{\includegraphics[width=0.7\textwidth]{images/disks_discovery.eps}}
+    \footnotesize{Source: Made by the author.}
+    \label{fig:disks_discovery}
+\end{figure}
 
 \begin{algorithm}[h!]
 \caption{Construct Grid}

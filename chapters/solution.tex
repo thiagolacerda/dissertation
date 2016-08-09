@@ -91,14 +91,6 @@ can reach 99\% of the overall processing time of the algorithm.
     \label{fig:time_consumption}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \caption{Sequence of disks in 4 consecutive time slots and the points that were clustered to them}
-    \centerline{\includegraphics[width=\linewidth]{images/disks.eps}}
-    \footnotesize{Source: Made by the author.}
-    \label{fig:disks}
-\end{figure}
-
 Consider the \ac{bfe} algorithm running example depicted in \figref{fig:disks}, where we are looking for flock patterns
 having $\mu=4$ and $\delta=4$ as its parameter values. As we can see, in time slot $t_0$ our dataset reported points
 $p_1,p_2,p_3$ and $p_4$ and, due to the proximity between them, disk $d_0$ was created enclosing all four points.  In
@@ -113,6 +105,14 @@ disks subsets and flock extension, performed by regular algorithms (like \ac{bfe
 performance. With that in mind, we can say with high confidence that reducing the volume of data that is processed by
 those flock and disk comparison tasks (by filtering out disks that will not generate flock patterns), can dramatically
 reduce the overall processing time of a flock detection algorithm.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Sequence of disks in 4 consecutive time slots and the points that were clustered to them}
+    \centerline{\includegraphics[width=\linewidth]{images/disks.eps}}
+    \footnotesize{Source: Made by the author.}
+    \label{fig:disks}
+\end{figure}
 
 \section{BitDF}
 \label{sec:bitdf}
