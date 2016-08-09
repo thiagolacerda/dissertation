@@ -4,7 +4,7 @@ Pattern mining in spatio-temporal datasets is a really relevant subject in the a
 to its wide applicability in helping to solve real-world problems. Many of them can be found in the context of Smart
 Cities, like Traffic Management, Surveillance and Security and City Planning, to name a few. Among the various
 spatio-temporal patterns that one can extract from a spatio-temporal dataset, the flock pattern is one that has gained a
-lot of attention. The reason for such attention it because of its collective behavior properties, which are very
+lot of attention. The reason for such attention it is because of its collective behavior properties, which are very
 applicable and are intrinsically related to the type of problems that we have just mentioned.
 
 Throughout this dissertation, we could show that a lot of work has been done in the academia, in order to provide
@@ -17,25 +17,26 @@ be of tremendous importance and the flock pattern can be a valueable ally on tha
 Given the importance of efficiently discovering flock patterns, in order to enable decision makers to act fast, we
 proposed a simple, and modular system architecture that can fit in the flock pattern detection problem and possibly be
 used in other pattern mining scenarios as well. We then used that architecture to implement a novel flock pattern
-detection algorithm that was able to outperform the state-of-the-art solutions in more than 99\%. Such impressive
-results were possible due to the filtering heuristic based on bitmaps that we proposed, which was able to reduce the
-generation of cluster disks in more than 96\%, directly reducing the amount of data that needed to be processed by the
-algorithm. Despite the great results achieved with our solution, we realized that there was still more room for
-improvements, given the large availability of multi-core processors in today's computers. With that in mind, we
-remodeled our proposed solution to perform some critical and time consuming tasks in parallel, taking full advantage of
-the multi-core paradigm. Our performance benchmarks showed that we could outperform our own single threaded solution by
-96\% in some cases. Moreover, to put our comparison againts the state-of-the-art techniques in number, we were able to
-reduce a running time of 15 thousand seconds (state-of-the-art techniques) to only 13 seconds (\ac{bitdf} \ac{mt}). It
-is also important to mention that our experiments were performed using various datasets, both synthetic generated and
-collected from real-world experiments and all of them having a considerable number of entries.
+detection algorithm that was able to outperform the state-of-the-art solutions in more than 99\%, with absolutely no
+impact in accuracy. Such impressive results were possible due to the filtering heuristic based on bitmaps that we
+proposed, which was able to reduce the generation of cluster disks in more than 96\%, directly reducing the amount of
+data that needed to be processed by the algorithm. Despite the great results achieved with our solution, we realized
+that there was still more room for improvements, given the large availability of multi-core processors in today's
+computers. With that in mind, we remodeled our proposed solution to perform some critical and time consuming tasks in
+parallel, taking full advantage of the multi-core paradigm. Our performance benchmarks showed that we could outperform
+our own single threaded solution by 96\% in some cases. Moreover, if we were to show our performance gains in numbers of
+seconds spent to analyze a large dataset, we were able to reduce a running time of 15,000 seconds (state-of-the-art
+techniques) to only 13 seconds (\ac{bitdf} \ac{mt}). It is also important to mention that our experiments were performed
+using various datasets, both synthetic generated and collected from real-world experiments and all of them having a
+considerable number of entries.
 
 \section{Future Work}
-Even though we ere able to present great contributions in this field, there are still some gaps that can be filled and
+Even though we were able to present great contributions in this field, there are still some gaps that can be filled and
 points that need more work and can lead to important results as well. Here is a list with some of them:
 
 \begin{enumerate}
     \item The disk superset and duplicate check is very expensive and would need further investigation in order to make
-        our proposed architecture even more efficient. Additionally, because it modifies the same disk set it is really
+        our proposed architecture even more efficient. Additionally, because it modifies the same disk set, it is really
         hard to parallelize it without causing performance degradation.
     \item When investigating a grid cell, its extended grid might have cells that were previously processed by other
         extended grids. Thus, we could avoid paring the same points and generating the same disks again if we could keep
@@ -60,14 +61,14 @@ Finally, some other data handling techniques can be used to help in the clusteri
 Diagrams used in conjuntion with Delaunay Triangulation and data structures like K-D-Tress.
 
 \subsection{Deployment Challenges in Real World Scenarios}
-In order to be ready to be deployed and used as data mining solution, some work is still needed. In our experiments, we
-noticed that, due to the nature of real-world datasets, one big challenge is still the time synchronization of the data
-stream, i.e. the discovery of the correct time slot size. As we said in \chapref{chp:techbackground}, we cannot assume
-that the data entries in a spatio-temporal dataset are sampled in a fixed time rate, so there is still an effort needed
-in order to synchronize and group the entries in buckets of a pre-defined size, as we did with our $\sigma$ parameter.
-Therefore, for online analysis, there is a need for an automatic process to detect the best value of that $\sigma$
-parameter according to the dataset being analyzed and also recalibrate it if the data behavior changes. Additionally,
-such automatic process should be smart enough to deal with abnormalities, such as outliers.
+In order to be ready to be deployed and used as a data mining solution, some work is still needed. In our experiments,
+we noticed that, due to the nature of real-world datasets, one big challenge is still the time synchronization of the
+data stream, i.e. the discovery of the correct time slot size. As we said in \chapref{chp:techbackground}, we cannot
+assume that the data entries in a spatio-temporal dataset are sampled in a fixed time rate, so there is still an effort
+needed in order to synchronize and group the entries in buckets of a pre-defined size, as we did with our $\sigma$
+parameter. Therefore, for online analysis, there is a need for an automatic process to detect the best value of that
+$\sigma$ parameter according to the dataset being analyzed and also being able recalibrate it if the data behavior
+changes. Additionally, such automatic process should be smart enough to deal with abnormalities, such as outliers.
 
 Another scenario that needs to be evaluated is when we have a high speed online stream of data. With high speed incoming
 data, we can face some data drop, because of a \ac{dsc} component being busy processing the data or forwarding the data
