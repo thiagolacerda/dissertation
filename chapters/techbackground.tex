@@ -8,11 +8,11 @@ We now present some technical background that will be required to understand the
 
 Spatio-temporal datasets usually come in the form of a set of tuples $\{O_{id}, \phi, \lambda, t\}$. Where: $O_{id}$
 uniquely identifies a \ac{mo}; $t$ corresponds to the timestamp that the \ac{gps} position was extracted; $\phi$ and
-$\lambda$ correspond to the latitude and longitude of the \ac{mo} respectively, at a given timestamp $t$. Each \ac{mo}
-represented by a $O_{id}$ has a trajectory $T_{id}$ associated with it, being a trajectory defined as follows.
+$\lambda$ correspond to the latitude and longitude of the \ac{mo} respectively, at the given timestamp $t$. Each \ac{mo}
+represented by an $O_{id}$ has a trajectory $T_{id}$ associated with it, being a trajectory defined as follows.
 
 \begin{Def}
-Given an $O_{id}$, an trajectory $T_{id}$ consists of a sequence of 3-D points, belonging to $O_{id}$ in the form of
+Given an $O_{id}$, a trajectory $T_{id}$ consists of a sequence of 3-D points, belonging to $O_{id}$ in the form of
 $<(\phi_0, \lambda_0, t_0), (\phi_1, \lambda_1, t_1), ..., (\phi_n, \lambda_n, t_n)>$, with $n \in \mathbb{N}$ and $t_0
 < t_1 < ... < t_n$.
 \end{Def}
@@ -41,21 +41,21 @@ $<(\phi_0, \lambda_0, t_0), (\phi_1, \lambda_1, t_1), ..., (\phi_n, \lambda_n, t
 \ac{gps} coordinates are often represented using the \ac{wgs84} \citep{wgs84}, which can make some mathematical
 operations needed by the algorithm proposed in this dissertation (e.g. vectorial operations) harder to be performed.
 Given that limitation, once the coordinates are read from a dataset, transformations from \ac{wgs84} to the
-$\mathbb{R}^2$ system are made. We use $0^\circ$ as both latitude and longitude coordinates for our origin point in the
-$\mathbb{R}^2$ system and execute the algorithm used by the \ac{whoi} to perform the conversion from \ac{wgs84} to
-$\mathbb{R}^2$ on the fly \citep{latlogtoxy}. Please refer to \tabref{tbl:coordinates} for some examples of \ac{wgs84}
-coordinates being translated to $\mathbb{R}^2$, using the algorithm provided by \ac{whoi}.
+$\mathbb{R}^2$ system are made. We use $0^\circ$ as both latitude and longitude coordinates for our equivalent origin
+point in the $\mathbb{R}^2$ system and execute the algorithm used by the \ac{whoi} to perform the conversion from
+\ac{wgs84} to $\mathbb{R}^2$ on the fly \citep{latlogtoxy}. Please refer to \tabref{tbl:coordinates} for some examples
+of \ac{wgs84} coordinates being translated to $\mathbb{R}^2$, using the algorithm provided by \ac{whoi}.
 
-It is worth noting that real world datasets do not guarantee that all points of all trajectories are sampled in the same
-rate. In a ideal world, a perfect spatio-temporal dataset would have entries as described in \tabref{tbl:ideal_rate},
-where one can see that each $O_{id}$ has its position sampled in intervals of 1 $t$ unit. However,
-\tabref{tbl:real_rate}presents how \acp{mo} in real-world datasets have their position sampled over time: no fixed rate
-interval due to transmission noises, precision issues and other problems that can make the sample rate varying a lot
-from one $O_{id}$ to another. Therefore, we need to have a way to be able to compare and group points belonging to the
-same logical time interval. With that in mind, we divided the time extent in buckets of size $\sigma$, where $\sigma$
-should be chosen accordingly to the dataset being analyzed, based on the sampling rate of points. Hence, from this point
-forward, every time when we refer to any timestamp $t_i$ we are actually talking about the $i_{th}$ time bucket (or time
-slot) of size $\sigma$.
+It is worth noting that real-world datasets do not guarantee that all points of all trajectories are sampled at the same
+rate. In a ideal world, a perfect spatio-temporal dataset would have its entries as described in
+\tabref{tbl:ideal_rate}, where one can see that each $O_{id}$ has its position sampled in intervals of a consistent $t$
+unit (1 in that example). However, \tabref{tbl:real_rate} presents how \acp{mo} in real-world datasets have their
+position sampled over time: no fixed rate interval due to transmission noises, precision issues and other problems that
+can make the sample rate varying a lot from one $O_{id}$ to another. Therefore, we need to have a way to be able to
+compare and group points belonging to the same logical time interval. With that in mind, we divided the time extent in
+buckets of size $\sigma$, where $\sigma$ should be chosen accordingly to the dataset being analyzed, based on the
+sampling rate of points. Hence, from this point forward, every time when we refer to any timestamp $t_i$ we are actually
+talking about the $i_{th}$ time bucket (or time slot) of size $\sigma$.
 
 \begin{table}
     \centering
@@ -194,35 +194,33 @@ three key parameters:
     \item $\delta$: the minimum number of time slot units that the trajectories need to stay together
 \end{enumerate}
 
-This definition is well depicted in \figref{fig:flock2}, where you can see for each time slot $t_i$ it exists a disk of
-diameter $\epsilon = d$ enclosing the points of trajectories $T_1$, $T_2$ and $T_3$. Thus, if we have set our flock
+That definition is well depicted in \figref{fig:flock2}, where you can see that for each time slot $t_i$ there is a disk
+of diameter $\epsilon = d$ enclosing the points of trajectories $T_1$, $T_2$ and $T_3$. Thus, if we have set our flock
 parameters to $\mu = 3$, $\epsilon = d$ and $\delta = 3$, we would have found the flock pattern $f = \{T_1, T_2, T_3\}$
 shown in \figref{fig:flock2}. It is worth noting that trajectory $T_4$ could not be part of the flock pattern because it
-was not possible to find a disk of diameter $d$ that would enclose 2 more trajectories with $T_4$ in each time slot
-$t_i$.
+was not possible to find a disk of diameter $d$ that would enclose 2 more trajectories along with $T_4$ in each time
+slot $t_i$.
 
 \subsection{Disk discovery}
 \label{subsec:disk_discovery}
 
-One of the most important part that enables the flock pattern identification is how to efficiently discover the disks
+One of the most important part, that enables the flock pattern identification, is how to efficiently discover the disks
 that can enclose potential flock patterns. Since the disk does not need to have its center matching any of the points in
-the dataset, there can be infinite places to look for disk in the dataset space. Vieira et al. \citep{vieira} proposed a
+the dataset, there can be infinite places to look for them in the dataset space. Vieira et al. \citep{vieira} proposed a
 way to reduce that search space to a finite number of locations, which we will explain in the remaining of this section
-and will be used in the algorithm proposed in this dissertation.
+and will be used in the algorithm proposed by this dissertation.
 
-We can easily find two circles that intersect two points using some vectorial operations as shown in
-\algoref{alg:disks} below.
-
-Given two \ac{gps} points $p_1$ and $p_2$, we get the values of $x1$ and $y1$, which will correspond to the longitude
-and latitude in meters (such conversion is mentioned in \secref{sec:tech_data}) of $p_1$, and $x2$ and $y2$ being the
-equivalent of $p_2$ (lines 1 to 4). We know that the centers of the two disks $c_1$ and $c_2$ that can be generated by
-those two points, lie in the line that is orthogonal to points $p_1$ and $p_2$ and passes through the midpoint $p_m$ of
+\algoref{alg:disks} shows how we can find two circles that intersect two points, using some vectorial operations. Given
+two \ac{gps} points $p_1$ and $p_2$, we get the values of $x1$ and $y1$, which will correspond to the longitude and
+latitude in meters (such conversion is mentioned in \secref{sec:tech_data}) of $p_1$, and $x2$ and $y2$ being the
+equivalent of $p_2$ (lines 1 to 4). We know that the centers of the two disks $c_1$ and $c_2$ (that can be generated by
+those two points), lie in the line that is orthogonal to points $p_1$ and $p_2$ and passes through the midpoint $p_m$ of
 those same points. After calculating $p_m$ (lines 6 and 7) we convert those same points into a vector $v$ (lines 9 and
 10) and calculate its length (line 12), which will be used later to normalize $v$. Line 13 calculates the distance $c_d$
-that the centers are from $p_m$ whereas lines 15 and 16 calculate the orthogonal vector $o$ for $v$, which will guide
-the direction for the disks centers. The algorithm ends by finding the center $c_1$ by adding $p_m$ to the product of
-$o$ and $c_d$, and $c_2$ by subtracting $p_m$ from the product of $o$ and $c_d$. The disks that we could find are
-depicted in \figref{fig:disks_discovery}.
+from the centers tom $p_m$ whereas lines 15 and 16 calculate the orthogonal vector $o$ of $v$, which will guide the
+direction for the disks centers. The algorithm ends by finding the center $c_1$ by adding $p_m$ to the product of $o$
+and $c_d$, and $c_2$ by subtracting $p_m$ from the product of $o$ and $c_d$. The disks that we could find are depicted
+in \figref{fig:disks_discovery}.
 
 \begin{algorithm}[h!]
 \caption{Disks Discovery}
@@ -268,11 +266,11 @@ depicted in \figref{fig:disks_discovery}.
 In order to avoid running \algoref{alg:disks} through all the points found in a time slot $t_i$, Vieira et al.
 \citep{vieira} proposed a grid structure to reduce the search space for the set of points. In that approach, all points
 that belong to time slot $t_i$ will be arranged into a grid with cells of size $\epsilon$. After that, we will go
-through each cell $g_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each
-other. That search can be restricted to the cells $g_{i - 1, j - 1} ... g_{i + 1, j + 1}$, as depicted in
+through each cell $c_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each
+other. That search can be restricted to the cells $c_{i - 1, j - 1} ... c_{i + 1, j + 1}$, as depicted in
 \figref{fig:grid}, because all cells have $\epsilon$ as their sizes. It is important to note that the size of $\epsilon$
 directly impacts in the number of cells and the number of points in each cell. For example, for a very small $\epsilon$
-more cells will be created and less points will be present in each cell.  O the other hand, large $\epsilon$ will create
+more cells will be created and less points will be present in each cell. On the other hand, large $\epsilon$ will create
 less but more populated cells.
 
 \algoref{alg:grid} shows how we will construct the grid structure for a set of points from a specific time slot $t_i$.
@@ -300,7 +298,12 @@ this proposed approach will not create empty cells, saving memory and unnecessar
 \end{algorithmic}
 \end{algorithm}
 
-\begin{figure}[t!]
+Another important concept to keep in mind is that we are only interested in the maximum disks. Once we have found the
+disks with the points that belong to them, we will check if any disk $d_i$ is a subset of another disk $d_j$. By saying
+that $d_i$ is a subset of $d_j$ we mean that $d_j$ has all the points that $d_i$ has. This was identified as being a
+tremendous processing bottleneck for an algorithm that aims at finding flock patterns.
+
+\begin{figure}[h!]
     \centering
     \caption{Cell grid for time slot $t_i$. The dark grey is the cell that is currently being processed and the light
         gray cells around are the grids that will be in the search space of the dark cell. Each small circle inside the
@@ -309,8 +312,3 @@ this proposed approach will not create empty cells, saving memory and unnecessar
     \footnotesize{Source: Made by the author.}
     \label{fig:grid}
 \end{figure}
-
-Another important concept to keep in mind is that we are only interested in the maximum disks. Once we have found the
-disks with the points that belong to them, we will check if any disk $d_i$ is a subset of another disk $d_j$. By saying
-that $d_i$ is a subset of $d_j$ we mean that $d_j$ has all the points that $d_i$ has. This was identified as being a
-tremendous processing bottleneck for an algorithm that aims at finding flock patterns.
