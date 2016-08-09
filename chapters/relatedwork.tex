@@ -10,8 +10,8 @@ addressed by this dissertation.
 
 \section{General trajectory data and pattern mining}
 \label{sec:rel_general}
-Here we present the broader scope of trajectory data pattern mining that were useful to gather some understanding in the
-field and insightful ideas for this dissertation.
+Here we present the broader scope of trajectory data and pattern mining that were useful to gather some understanding in
+the field and insightful ideas for this dissertation.
 
 Laube et al. \citep{remo} proposed the \ac{remo} concept, which analyzes motion attributes (speed, azimuth and location)
 of entities and relate to the motion of other entities that are close to them. They also introduced some moving
@@ -25,9 +25,9 @@ a \ac{mo} to a line, where the distance of each trajectory point of that \ac{mo}
 pre-defined threshold. After that, bounding boxes were created based on those approximated lines and then lines that
 belong to the same box were declared as similar sequential patterns.
 
-Algorithms aiming at finding moving clusters, with \acp{mo} coming in and out of the cluster, are presented by Kalnis et
-al. \citep{movingclusters}. In that research paper, the authors consider a moving cluster as a moving region despite the
-identity of the objects that are part of it, but for each timestamp the intersection of points between subsequent
+Algorithms aiming at finding moving clusters, with \acp{mo} coming in and out of the cluster, were presented by Kalnis
+et al. \citep{movingclusters}. In that research paper, the authors consider a moving cluster as a moving region despite
+the identity of the objects that are part of it, but for each timestamp the intersection of points between subsequent
 clusters needs to be above a certain threshold $\theta$. In \figref{fig:clusters} one can see a moving cluster composed
 by clusters $S_0$, $S_1$ and $S_2$, having $\theta=0.5$, meaning that $\dfrac{|c_i \cap c_{i+1}|}{|c_i \cup c_{i+1}|}
 \geq 0.5$. They presented three different approaches to find moving clusters (with one of them being an approximation
@@ -35,12 +35,12 @@ method), being supported by a density function. They claim that their proposal i
 datasets, but that large dataset that they analyzed had only 50K entries. Yet on clusters, Jensen et al.
 \citep{clusters3} added velocity as a parameter in order to help finding moving clusters (using dissimilarity
 functions), achieving some improvements in processing time. An approach using a trajectory similarity measure based on
-the Hausdorff distance is proposed by Atev et al. \citep{clusters2}, where the sequential order of trajectories is
-preserved over time. The authors also present a method aiming at clustering trajectories taking advantage of some
-spectral clustering methods. A more recent research \citep{clusters1} proposes a novel type of cluster classification:
-\ac{ibmc}. The author states that an \ac{ibmc} consists in a set of moving clusters where each \ac{mo}, in each cluster,
-influences at least another \ac{mo} in the next immediate cluster. It is shown that the space for discovering \ac{ibmc}
-is very extensive and an algorithm for finding the maximal answer is proposed.
+the Hausdorff distance was proposed by Atev et al. \citep{clusters2}, where the sequential order of trajectories was
+preserved over time. The authors also presented a method aiming at clustering trajectories, taking advantage of some
+spectral clustering methods. A more recent research by Patel \citep{clusters1} proposed a novel type of cluster
+classification: \ac{ibmc}. The author stated that an \ac{ibmc} consists in a set of moving clusters where each \ac{mo},
+in each cluster, influences at least another \ac{mo} in the next immediate cluster. It was shown that the space for
+discovering \ac{ibmc} was very extensive and an algorithm for finding the maximal answer was proposed.
 
 \begin{figure}
     \centering
@@ -50,15 +50,16 @@ is very extensive and an algorithm for finding the maximal answer is proposed.
     \label{fig:clusters}
 \end{figure}
 
-Jeung et al. proposes the convoy pattern \citep{convoy2}\citep{convoy}. They first point out the key difference between
-flock and convoy patterns: flock pattern relies on all trajectories being present in a disk of pre-defined radius, while
-convoy does not rely on any kind of shape to cluster its trajectories. That difference is depicted in
+Jeung et al. proposed the convoy pattern \citep{convoy2}\citep{convoy}. They first pointed out the key difference
+between flock and convoy patterns: flock pattern relies on all trajectories being present in a disk of pre-defined
+radius, while convoy does not rely on any kind of shape to cluster its trajectories. That difference is depicted in
 \figref{fig:convoy_pattern}, where the second disk is of different size of the other disks and not all trajectories are
-present in the consecutive clusters (another difference from the flock pattern). The authors propose three density based
-algorithms to find convoy patterns using line simplification techniques. Their work is inspired by the algorithms
+present in the consecutive clusters (another difference from the flock pattern). The authors proposed three density
+based algorithms to find convoy patterns using line simplification techniques. Their work was inspired by the algorithms
 already proposed by Kalnis et al. \citep{movingclusters} and \textit{\ac{dbscan}} \citep{dbscan}. More work on convoy
-patterns can be found with Aung et al. \citep{convoy3}, where they divide convoy patterns in two different groups,
-namely \textit{\acp{dc}} and \textit{\acp{ec}}. To this end, they present three algorithms to identify \ac{ec} patterns.
+patterns can be found with Aung et al. \citep{convoy3}, where they divided convoy patterns in two different groups,
+namely \textit{\acp{dc}} and \textit{\acp{ec}}. To this end, they presented three algorithms to identify \ac{ec}
+patterns.
 
 \begin{figure}
     \centering
@@ -68,40 +69,43 @@ namely \textit{\acp{dc}} and \textit{\acp{ec}}. To this end, they present three 
     \label{fig:convoy_pattern}
 \end{figure}
 
-Gathering is another moving pattern that was analyzed by the academia. Zheng et al. \citep{gathering} state that a
+Gathering is another moving pattern that was analyzed by the academia. Zheng et al. \citep{gathering} stated that a
 gathering pattern consists in various grouped incidents such as celebrations, parades, protests, traffic jams, etc. They
-first formalize and model the gathering pattern and then propose algorithms to find the such pattern. Effectiveness and
-efficiency evaluations are presented, showing an overall good result, however only one dataset is analyzed. Instead of
-looking for patterns that happen exactly at the same time (e.g. clusters and flocks), Li et al. \citep{swarm} propose
-the swarm pattern. Such pattern tries to group \acp{mo} that may actually diverge temporarily and congregate at certain
-timestamps, it is not required also that a trajectory stays all the time with the same swarm cluster. The authors in
-that work formalize the swarm concept and present algorithms to find the pattern. The effectiveness of the algorithms
-is compared against convoy pattern algorithms and it is shown that, for some datasets, the swarm pattern is better
-suited.
+first formalized and modeled the gathering pattern and then proposed algorithms to find the such pattern. Effectiveness
+and efficiency evaluations were presented, showing an overall good result, however only one dataset was analyzed.
+Instead of looking for patterns that happen exactly at the same time (e.g. clusters and flocks), Li et al. \citep{swarm}
+proposed the swarm pattern. Such pattern tries to group \acp{mo} that may actually diverge temporarily and congregate at
+certain timestamps, it is not required also that a trajectory stays all the time with the same swarm cluster. The
+authors in that work formalized the swarm concept and presented algorithms to find the pattern. The effectiveness of the
+algorithms was compared against convoy pattern algorithms and it was shown that, for some datasets, the swarm pattern
+was better suited.
 
 An algorithm to find patterns in Origin-Destination databases, meaning that only the origin and destination points of a
-trajectory are recorded in the analyzed dataset, is presented by Guo et al. \citep{discovering_orig_dest}. They proposed
-a way to model points of interest, since \acp{mo} going to the same place (e.g. airport) will report different \ac{gps}
-coordinates. The proposed algorithm has a preprocessing phase that makes a Delaunay Triangulation of the points and then
-clusters those points based on two parameters: ($k$) the number of points to build a cluster and ($\theta$) the minimum
-number of points (or weight) of a cluster. After building the clusters, they derive some mobility measures, in order to
-extract spatial and temporal mobility patterns, presenting an useful way of understanding traffic loads in a city.
+trajectory are recorded in the analyzed dataset, was presented by Guo et al. \citep{discovering_orig_dest}. They
+proposed a way to model points of interest, since \acp{mo} going to the same place (e.g. airport) will report different
+\ac{gps} coordinates. The proposed algorithm has a preprocessing phase that makes a Delaunay Triangulation of the points
+and then clusters those points based on two parameters: ($k$) the number of points to build a cluster and ($\theta$) the
+minimum number of points (or weight) of a cluster. After building the clusters, they derive some mobility measures, in
+order to extract spatial and temporal mobility patterns, presenting an useful way of understanding traffic loads in a
+city.
 
-Baratchi et al. proposed a way to find frequently visited paths between two points of interests. The authors presented
-an algorithm that deals with trajectory uncertainty and uses cluster based techniques to map uncertain trajectories to
-actual paths in a map that were most likely to be followed by the \ac{mo}. First they gathered points of interests
-(those where the \ac{mo} stayed for at least 30 minutes with its speed close to 0) and grouped all subtrajectories that
-had the same start and end points of interest. They then applied their algorithm, which consists in dividing the space
-in grids and assigning each point to a grid, and partitioned those subtrajectories in even small subtrajectories based
-on breakpoints.  After that partition step they used a score mechanism to decide which set of subtrajctories are more
-likely to be a frequent path. Their algorithm is mainly targeted for offline analyses and uses a map matching algorithm
-in order to match \ac{gps} points to actual map segments. They did not present the dataset used for evaluation nor the
-numbers of such dataset. Their evaluation was somewhat shallow and did not present any take away results.
+Baratchi et al. \citep{uncertain2} proposed a way to find frequently visited paths between two points of interests. The
+authors presented an algorithm that deals with trajectory uncertainty and uses cluster based techniques to map uncertain
+trajectories to actual paths in a map that were most likely to be followed by the \ac{mo}. First they gathered points of
+interests (those where the \ac{mo} stayed for at least 30 minutes with its speed close to 0) and grouped all
+subtrajectories that had the same start and end points of interest. They then applied their algorithm, which consists in
+dividing the space in grids and assigning each point to a grid, and partitioned those subtrajectories in even small
+subtrajectories based on breakpoints.  After that partition step they used a score mechanism to decide which set of
+subtrajctories are more likely to be a frequent path. Their algorithm was mainly targeted to offline analyses and used a
+map matching algorithm in order to match \ac{gps} points to actual map segments. They did not present the dataset used
+for evaluation nor the numbers of such dataset. Their evaluation was somewhat shallow and did not present any take away
+results.
 
-A comprehensive state-of-the-art review in trajectory data mining is presented by Zheng \citep{survey}. He covered
+A comprehensive state-of-the-art review in trajectory data mining was presented by Zheng \citep{survey}. He covered
 relevant research topics, such as trajectory data preprocessing, trajectory data management, uncertainty of
 trajectories, trajectory pattern mining, and trajectory classification. He pointed out some public trajectory datasets
-that can be used to evaluate pattern detection algorithms, like the dataset in \citep{tdrive} used in this dissertation.
+that can be used to evaluate pattern detection algorithms, like the dataset TDrive \citep{tdrive} used in this
+dissertation.
 
 \section{Flock pattern mining}
 \label{sec:rel_flocks}
@@ -111,7 +115,7 @@ $R$, enclosing all trajectories, in each time step. They proposed approximation 
 detection, but no performance evaluations were made and only theoretical analyses were presented, which does not show if
 the algorithms are efficient or not. Later on, the same authors \citep{gudlongest} extended the flock pattern definition
 by adding the temporal length variable: the entities must stay together during some time interval $\delta$ to be claimed
-as a flock. To this end, they presented some approximation algorithms what work on approximating the radius $R$ of the
+as a flock. To this end, they presented some approximation algorithms that work on approximating the radius $R$ of the
 disk used to cluster the flock, based on a defined $\epsilon$. The evaluations performed \citep{gudlongest} varied only
 the $\delta$ parameter leaving all other parameters variation out of the experiments. Additionally, the performance
 results were not good, having scenarios where the algorithms took more than 1500 seconds to analyze a dataset containing
@@ -121,14 +125,14 @@ flock pattern, thus having a degradation in performance.
 Vieira et al. \citep{vieira} proposed a polynomial algorithm to find flock patterns of fixed duration, based in three
 parameters: minimum number of trajectories $\mu$, the disk radius $\epsilon$ and a minimum time length $\delta$.  In
 order to discover the centers of the cluster disks for each time step, they paired the points that had distance less or
-equal to $2*\epsilon$, created two disks based in that pair and tried to cluster other points into those disks. Their
+equal to $2*\epsilon$, created two disks based on that pair and tried to cluster other points into those disks. Their
 algorithm assumed that each point is sampled in a fixed time interval, assumption that does not reflect real-world
 datasets. Additionally, their algorithm suffered from wasting \ac{cpu} cycles by processing disk candidates that were
 not real potential flock candidates. The authors also proposed some filtering heuristics to optimize the processing
 time, but the optimizations did not present good results, and our local tests showed that the optimizations affected the
 final number of flocks found by the algorithm.
 
-An algorithm that mixed together \ac{bfe} \citep{vieira} with a "Frequent Pattern Mining" heuristic is proposed by
+An algorithm that mixed together \ac{bfe} \citep{vieira} with a "Frequent Pattern Mining" heuristic was proposed by
 Turdukulov et al. \citep{visual}. They made some performance comparison against \ac{bfe} and were able to show some
 improvement in the processing time when varying the radius $R$ of the disk. However, despite the improvements, their
 results did not propose a fair comparison: (1) \ac{bfe} is an on-line algorithm and their implementation imposed an
@@ -136,7 +140,7 @@ offline implementation; (2) they filtered out some trajectories based on random 
 than 10 minutes or 20 minutes, which might benefit their algorithm and cut out possible flocks of that length; (3) they
 only showed results varying the disk radius and not the other parameters used by \ac{bfe}.
 
-The problem of \ac{mfp} is addressed by the work of Geng et al. \citep{enumeration}, which proposed algorithms to
+The problem of \ac{mfp} was addressed by the work of Geng et al. \citep{enumeration}, which proposed algorithms to
 enumerate all \ac{mfp} in a trajectory dataset. \ac{mfp}, in other words, means that the flock cannot be extended
 without increasing the disk radius $R$. They proposed a set of algorithms for finding \ac{mfp} and proved that they
 could indeed enumerate all \ac{mfp} from a trajectory dataset. They also compared their algorithms with \ac{bfe} from
@@ -185,7 +189,7 @@ patterns, can help and be applied to. We can have flock pattern detection helpin
         the habits of the population and provide resources to enhance life quality of those involved.
 \end{enumerate}
 
-In \secref{sec:architecture} we will propose an elegant, modular and simple system architecture that will be able
+In \secref{sec:architecture} we will propose an elegant, modular and simple system architecture that will be able to
 address flock pattern detection problems. Such architecture will be divided in logic modules and components, each one
 with a very specific and self-contained goal, making then reusable and good candidates to address other data analysis
 problems. We will also show that by modifying a single component in that architecture will enable the usage of a
@@ -196,12 +200,12 @@ generate any pattern, like the flock disks that contain points that are not pres
 such unnecessary processing can boost the running time of a flock pattern detection algorithm and then provide
 information in a real-time fashion for decision takers. With that in mind, we will present an efficient algorithm, based
 on bitmaps, that will only be concerned with data that can really generate flock patterns, saving a considerable amount
-of time. Moreover, our algorithm will be able to provide information, about the datasets being analyzed, way faster than
-other algorithms. We will prove such efficiency by showing benchmarks comparing the running time of our solution against
-the state-of-the-art algorithm and also show how that our implementation generates way less unimportant data than the
-comparison target algorithm, which dramatically affects the running time of the latter. Last, but not least, we will
-provide a multi-core aware implementation of our algorithm, taking advantage of the proposed system architecture
+of time in processing. Moreover, our algorithm will be able to provide information, about the datasets being analyzed,
+way faster than other algorithms. We will prove such efficiency by showing benchmarks comparing the running time of our
+solution against the state-of-the-art algorithm and also show how that our implementation generates way less unimportant
+data than the compared target algorithm, which dramatically affects the running time of the latter. Last, but not least,
+we will provide a multi-core aware implementation of our algorithm, taking advantage of the proposed system architecture
 mentioned in the previous paragraph, which will achieve even more savings in running time, without affecting the number
 of flocks that are found.  Aiming at showing that our solution is ready for multiple types of data, we will perform
 experiments with 4 different datasets, being them real and synthetic generated and with a large amount of data entries,
-with some of them having more then 50 million records.
+with some of them having more than 50 million records.
