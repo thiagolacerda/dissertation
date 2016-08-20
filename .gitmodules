@@ -1,0 +1,3 @@
+[submodule "risethesis"]
+	path = risethesis
+	url = https://github.com/thiagolacerda/risethesis.git
