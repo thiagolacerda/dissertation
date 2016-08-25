@@ -58,7 +58,7 @@ the forth. We can have a \ac{dp} that detects flock patterns, another one that d
 another \ac{dp} that provides traffic information in real-time, to name a few. Also, following the pattern of the
 aforementioned modules, each \ac{dp} can only register itself to a single \ac{dl}, but a \ac{dl} can have multiple
 \acp{dp} registered to it. Fitting in the scope of this dissertation, we will implement and show a novel \ac{dp} that
-can detect flock patterns, based on the \ac{bfe} algorithm proposed by Vieira et al. \citep{vieira}.
+can detect flock patterns, based on the \ac{bfe} algorithm proposed by \citeonline{vieira}.
 
 Researchers and data analysts, working with flock pattern detection, can leverage from the proposed architecture in
 order to have some infrastructure to help on their spartio-temporal problems.
@@ -70,7 +70,7 @@ that most of the \ac{cpu} cycles were spent in analyzing disks that will not gen
 not being present in $\delta$ consecutive time slots. In all algorithms, disks generated in time slot $t_{i+1}$ are
 compared with the potential flocks found in $t_{i}$ in order to check if an extension to a potential flock pattern is
 found. This operation has $O(nm)$ complexity, with $n$ being the number of disks and $m$ the number of potential flocks
-from previous time slots.  Additionally, for each comparison between a disk and a potential flock, an intersection
+from previous time slots. Additionally, for each comparison between a disk and a potential flock, an intersection
 operation between them needs to be made.
 
 Things get even worse in algorithms like \ac{bfe}, where a new created disk $d_j$ is checked if it is either subset or a
@@ -93,7 +93,7 @@ can reach 99\% of the overall processing time of the algorithm.
 
 Consider the \ac{bfe} algorithm running example depicted in \figref{fig:disks}, where we are looking for flock patterns
 having $\mu=4$ and $\delta=4$ as its parameter values. As we can see, in time slot $t_0$ our dataset reported points
-$p_1,p_2,p_3$ and $p_4$ and, due to the proximity between them, disk $d_0$ was created enclosing all four points.  In
+$p_1,p_2,p_3$ and $p_4$ and, due to the proximity between them, disk $d_0$ was created enclosing all four points. In
 the subsequent time slot $t_1$ the same points were reported and again the \ac{bfe} algorithm was able to create another
 disk $d_1$. However, in time slot $t_2$, $p_3$ was not present and the disk $d_2$ only contained three points, which is
 not enough to represent a flock pattern because of the number of trajectories being less than $\mu = 4$. With the disk
@@ -151,7 +151,7 @@ After \ac{fp} is done with processing the points, \ac{gsb} will discard the firs
 to the points of $timeSlot - \delta$ sent to \ac{fp}), by calling \textsc{ShiftPresenceMaps}, and also discard the
 points collected in $timeSlot - \delta$, which were already processed by \ac{fp}. The flow continues indefinitely by
 buffering the points from the next time slot $t_i$ and send the points from $t_{i - \delta}$ and the bitmaps to \ac{fp}
-for processing.  It is worth noting that \textit{timeSlotSize}, referred in line 21, represents the time slot $\sigma$
+for processing. It is worth noting that \textit{timeSlotSize}, referred in line 21, represents the time slot $\sigma$
 introduced in \secref{sec:tech_data}.
 
 \begin{algorithm}[h!]
@@ -299,7 +299,7 @@ bitwise operations against the presence bitmap assembled in line 5 of \algoref{a
 $\delta$ bits set to 1 is found, we can state with confidence that such point $p$ can potentially be part of a flock
 pattern. Later on, if a potential flock is found in a time slot $t_i$ and $p$ is part of it, we need to update the
 \ac{fp}'s bitmap of that point so when we process points of time slot $t_{i+1}$ we have the correct bitmap
-representation of $p$ and that is where \textsc{MapPointFlock} (line 20) comes to play.  \textsc{MapPointFlock} does
+representation of $p$ and that is where \textsc{MapPointFlock} (line 20) comes to play. \textsc{MapPointFlock} does
 that by prepending 1 to $p$'s bitmap in \ac{fp} module by performing an OR bitwise operation.
 
 \figref{fig:gsb_fp_flow} shows how \ac{gsb} (red) and \ac{fp} (gray) will interact in a scenario where $\mu = 3$ and
@@ -385,7 +385,7 @@ consumer thread $t_c$ will also spawn another thread $t_d$ that will process dis
 for subsets and supersets in its own private disk set.
 
 \figref{fig:multithread} illustrates how the \ac{fp} will be rearchitected in order to take advantage of parallel
-execution.  We can see that the main thread will collect the \ac{egc}s for each cell grid and enqueue them in a shared
+execution. We can see that the main thread will collect the \ac{egc}s for each cell grid and enqueue them in a shared
 queue that will be accessed by $N$ consumers. Whenever a consumer ($t_c$ thread) dequeues an \ac{egc}, it will then try
 to find a pair of disks for each pair of points in the \ac{egc}, cluster the remaining points in those disks and then
 enqueue those disks in another shared queue. Such shared queue will only be shared with the disk thread $t_d$ belonging

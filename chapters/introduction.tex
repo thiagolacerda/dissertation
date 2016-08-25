@@ -4,32 +4,32 @@ The advances of positioning technologies are enabling lot of different objects p
 vehicles, smartphones and wearable devices) to be shipped with location tracking systems. Those devices are able to
 collect and report mobility information of people, animals and natural phenomena (e.g. hurricanes), to name a few. That
 technological advance is enabling the generation of massive volumes of spatio-temporal data that can contain information
-ranging from the daily routine of residents of a city \citep{whatdidyoudo} to the behavior of wild animals in a specific
-region \citep{trajclustering}\citep{miningperiodic}. It is notorious the interest of both industry and academia in such
+ranging from the daily routine of residents of a city \cite{whatdidyoudo} to the behavior of wild animals in a specific
+region \cite{trajclustering, miningperiodic}. It is notorious the interest of both industry and academia in such
 subject, specially with the rising of Smart Cities, in which spatio-temporal datasets can provide important insights in
-the context of problems like traffic management and urban planning \citep{gissmartcities}\citep{parallelsmartcities}.
-Those datasets can be used to help solving a variety of issues and answer some questions, such as:
+the context of problems like traffic management and urban planning \cite{gissmartcities, parallelsmartcities}. Those
+datasets can be used to help solving a variety of issues and answer some questions, such as:
 
 \begin{enumerate}
     \item \textbf{What are the busiest times and locations (such as traffic jams locations) in a city?}
-        \citep{visualtrafficjam}
+        \cite{visualtrafficjam}
     \item \textbf{What are the movement patterns of the citizens of a city during work hours?}
     \item \textbf{What is the migration pattern of inhabitants of a specific area?}
-    \item \textbf{What is the movement behavior of wild animals in their habitat?} \citep{movemine}
+    \item \textbf{What is the movement behavior of wild animals in their habitat?} \cite{movemine}
     \item \textbf{Is there any suspicious movement of groups of objects during some specific time window?}
 \end{enumerate}
 
 That list can grow indefinitely, as the scenarios and applications of spatio-temporal data analyses are vast. Some of
 the questions listed above are in the context of Smart Cities, which can take advantage of spatio-temporal data analysis
 as an aid to a broad set of applications, like urban planning, public security, and public health and commerce
-\citep{ieeesmartcities}. Additionally, understanding the data in question and being able to take actions fast according
+\cite{ieeesmartcities}. Additionally, understanding the data in question and being able to take actions fast according
 to the conclusions extracted from such data is crucial to create and evolve a Smart City. However, due to the huge
 volume of data that is produced on a daily basis and the need analyze them to in order to help those applications and
 answer those questions, the main problem is still the same: how to be able to analyze massive data volumes fast and
 efficiently so we can empower decision takers to act quickly?
 
 In the aforementioned questions and applications, some of the queries are intrinsically related to collaborative or
-group patterns, such as flock \citep{gudefficient}, convoy \citep{convoy}, swarm \citep{swarm}, and the like. Those
+group patterns, such as flock \cite{gudefficient}, convoy \cite{convoy}, swarm \cite{swarm}, and the like. Those
 patterns contain moving objects that have a strong relationship by being close to each other, within a certain distance
 range and during some minimum time interval. Because we extract information about groups of people interacting, instead
 of just dealing with tracking of individuals alone, such patterns can be applied to a wide range of scenarios of Smart
@@ -52,24 +52,24 @@ analyses and on the fly decision-making is still an open challenge.
 Among those collaborative patterns, the flock pattern is one that has gained a lot of attention in the research
 community, since it can address all the scenarios and questions that were mentioned in this chapter and represents a
 very familiar behavior that is frequently seen in our daily routines. A seminal formal definition of that pattern was
-proposed by Laube et al. \citep{remo} and Gudmundsson et al. \citep{gudefficient} and since then, a lot of other studies
-has follow suit (we refer the reader to \chapref{chp:relatedwork} for some of them), mainly due to the interests in
-developing mechanisms to solve real-world problems in the scope of \ac{iot} \citep{iot} and Smart Cities
-\citep{smartcities}. According to Gudmundsson et al. \citep{gudefficient}, a flock pattern consists of a minimum number
-of entities that are within a disk of radius \textit{r} at a given time. However, this definition only applies to one
-single time step and does not help on extracting some useful collective behavior information. Such initial definition
-was then extended by Benkert et al. \citep{gudreportingflock}, introducing the minimum time interval $\delta$ that the
-entities should stay together in order to characterize a flock pattern, as depicted in \figref{fig:flocks}. That figure
-shows a flock pattern that lasts three time steps and is formed by the orange, green and blue trajectories. It is worth
-mentioning that the remaining trajectories (yellow and pink) are not part of a flock pattern because there are no disks
-enclosing them in all three time steps.
+proposed by \citeonline{remo} and \citeonline{gudefficient} and since then, a lot of other studies has follow suit (we
+refer the reader to \chapref{chp:relatedwork} for some of them), mainly due to the interests in developing mechanisms to
+solve real-world problems in the scope of \ac{iot} \cite{iot} and Smart Cities \cite{smartcities}. According to
+\citeonline{gudefficient}, a flock pattern consists of a minimum number of entities that are within a disk of radius
+\textit{r} at a given time. However, this definition only applies to one single time step and does not help on
+extracting some useful collective behavior information. Such initial definition was then extended by
+\citeonline{gudreportingflock}, introducing the minimum time interval $\delta$ that the entities should stay together in
+order to characterize a flock pattern, as depicted in \figref{fig:flocks}. That figure shows a flock pattern that lasts
+three time steps and is formed by the orange, green and blue trajectories. It is worth mentioning that the remaining
+trajectories (yellow and pink) are not part of a flock pattern because there are no disks enclosing them in all three
+time steps.
 
 When it comes to flock pattern detection efficiency and speed, one major problem on doing that is to find the disks that
 enclose the trajectories in each time step. Since the disks centers do not need to match any point in the dataset, there
-can be infinite possible disks. Vieira et al. \citep{vieira} proposed a way to limit the number of disks to generate and
-analyze, so a finite number of disks are in place to cluster the trajectories into them. They also proposed an algorithm
-to find the flock pattern, namely \ac{bfe}. Even though \ac{bfe} can find flock patterns in spatio-temporal datasets, it
-does suffer from some severe performance limitations, meaning that it is not able to scale properly when the dataset is
+can be infinite possible disks. \citeonline{vieira} proposed a way to limit the number of disks to generate and analyze,
+so a finite number of disks are in place to cluster the trajectories into them. They also proposed an algorithm to find
+the flock pattern, namely \ac{bfe}. Even though \ac{bfe} can find flock patterns in spatio-temporal datasets, it does
+suffer from some severe performance limitations, meaning that it is not able to scale properly when the dataset is
 really large. The main reason that we identified that makes it perform so inefficiently is that \ac{bfe} is not smart
 enough to predict what portions of the data can really generate flock patterns, then it ends up wasting \ac{cpu} cycles
 by processing data that is not relevant.
@@ -85,16 +85,16 @@ to aid the development and evolution of Smart Cities, since they are not able to
 data that are generated by them. With that in mind, this dissertation proposes an efficient flock detection algorithm
 aiming at achieving considerable gains in execution time, without compromising accuracy, thus targeting real-time
 deployment and on-line processing. With that algorithm, we could address Smart Cities scenarios, where decisions need to
-be made on the fly and rapidly enough in order to keep up with their development pace
-\citep{ieeesmartcities}\citep{springersmartcities}. Such gains were made possible by creating a filtering heuristic,
-based on bitmaps, in order to save processing time. Our proposal focuses on identifying \acp{mo} that can actually form
-a flock, resulting in a huge reduction in the number of disks generated and thus resulting in less data to be processed.
-Our results indicate that our proposal outperforms the current state-of-the-art techniques, by achieving 99\% \ac{cpu}
-time improvement and 96\% disks generation reduction in some relevant scenarios. Going even further, we also remodeled
-our proposed algorithm to take advantage of multi-core architectures, having some components executing in parallel
-resulting in impressive speed gains. With our \ac{mt} model, we were able to reduce the processing time of our proposed
-algorithm by 96\% in some cases. It is worth mentioning that the gains achieved with the \ac{mt} model are over the
-gains that we had already obtained over the state-of-the-art techniques.
+be made on the fly and rapidly enough in order to keep up with their development pace \cite{ieeesmartcities,
+springersmartcities}. Such gains were made possible by creating a filtering heuristic, based on bitmaps, in order to
+save processing time. Our proposal focuses on identifying \acp{mo} that can actually form a flock, resulting in a huge
+reduction in the number of disks generated and thus resulting in less data to be processed. Our results indicate that
+our proposal outperforms the current state-of-the-art techniques, by achieving 99\% \ac{cpu} time improvement and 96\%
+disks generation reduction in some relevant scenarios. Going even further, we also remodeled our proposed algorithm to
+take advantage of multi-core architectures, having some components executing in parallel resulting in impressive speed
+gains. With our \ac{mt} model, we were able to reduce the processing time of our proposed algorithm by 96\% in some
+cases. It is worth mentioning that the gains achieved with the \ac{mt} model are over the gains that we had already
+obtained over the state-of-the-art techniques.
 
 Last, but not least, we also propose a modular system architecture, aiming at helping to find flock patterns in
 spatio-temporal datasets. We validate our architecture by implementing our algorithm and our \ac{mt} model using it as
@@ -104,7 +104,8 @@ the building blocks. To summarize, the contribution of this dissertation is thre
     \item \textbf{An efficient flock pattern detection algorithm}
     \item \textbf{A remodeled algorithm able to take advantage of multi-core architectures and rapidly find flock
         patterns}
-    \item \textbf{A simple and modular system architecture to aid solving spatio-temporal flock pattern detection problems}
+    \item \textbf{A simple and modular system architecture to aid solving spatio-temporal flock pattern detection
+        problems}
 \end{enumerate}
 
 The remainder of this dissertation is organized as follows. \chapref{chp:relatedwork} highlights the related work in

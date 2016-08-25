@@ -38,13 +38,13 @@ $<(\phi_0, \lambda_0, t_0), (\phi_1, \lambda_1, t_1), ..., (\phi_n, \lambda_n, t
     \end{tabular}
 \end{table}
 
-\ac{gps} coordinates are often represented using the \ac{wgs84} \citep{wgs84}, which can make some mathematical
+\ac{gps} coordinates are often represented using the \ac{wgs84} \cite{wgs84}, which can make some mathematical
 operations needed by the algorithm proposed in this dissertation (e.g. vectorial operations) harder to be performed.
 Given that limitation, once the coordinates are read from a dataset, transformations from \ac{wgs84} to the
 $\mathbb{R}^2$ system are made. We use $0^\circ$ as both latitude and longitude coordinates for our equivalent origin
 point in the $\mathbb{R}^2$ system and execute the algorithm used by the \ac{whoi} to perform the conversion from
-\ac{wgs84} to $\mathbb{R}^2$ on the fly \citep{latlogtoxy}. Please refer to \tabref{tbl:coordinates} for some examples
-of \ac{wgs84} coordinates being translated to $\mathbb{R}^2$, using the algorithm provided by \ac{whoi}.
+\ac{wgs84} to $\mathbb{R}^2$ on the fly \cite{latlogtoxy}. Please refer to \tabref{tbl:coordinates} for some examples of
+\ac{wgs84} coordinates being translated to $\mathbb{R}^2$, using the algorithm provided by \ac{whoi}.
 
 \begin{table}[h!]
     \centering
@@ -159,7 +159,7 @@ made by dividing the timestamp value by the bucket size $\sigma$ and then perfor
 
 \section{Flock pattern}
 \label{sec:tech_flock}
-We use the same definition of flock from Vieira et al. \citep{vieira}:
+We use the same definition of flock from \citeonline{vieira}:
 
 \begin{Def}
 \label{def:flock}
@@ -184,7 +184,7 @@ d(p_j^{t_i},c_k^{t_i}) \le \epsilon/2$.
 
 In other words, what \defref{def:flock} states is that a flock pattern basically consists in a set of at least $\mu$
 trajectories (where each trajectory $T_{id}$ belongs to the \ac{mo} represented by $O_{id}$) that stay together for a
-minimum time extent $\delta$.  Additionally, in order to be considered a flock, there must exist a disk, with radius
+minimum time extent $\delta$. Additionally, in order to be considered a flock, there must exist a disk, with radius
 $\epsilon/2$, that encloses all points of all trajectories for each time slot. Hence, we have a flock pattern relying on
 three key parameters:
 
@@ -206,9 +206,9 @@ slot $t_i$.
 
 One of the most important part, that enables the flock pattern identification, is how to efficiently discover the disks
 that can enclose potential flock patterns. Since the disk does not need to have its center matching any of the points in
-the dataset, there can be infinite places to look for them in the dataset space. Vieira et al. \citep{vieira} proposed a
-way to reduce that search space to a finite number of locations, which we will explain in the remaining of this section
-and will be used in the algorithm proposed by this dissertation.
+the dataset, there can be infinite places to look for them in the dataset space. \citeonline{vieira} proposed a way to
+reduce that search space to a finite number of locations, which we will explain in the remaining of this section and
+will be used in the algorithm proposed by this dissertation.
 
 \algoref{alg:disks} shows how we can find two circles that intersect two points, using some vectorial operations. Given
 two \ac{gps} points $p_1$ and $p_2$, we get the values of $x1$ and $y1$, which will correspond to the longitude and
@@ -254,15 +254,14 @@ in \figref{fig:disks_discovery}.
 \end{algorithmic}
 \end{algorithm}
 
-In order to avoid running \algoref{alg:disks} through all the points found in a time slot $t_i$, Vieira et al.
-\citep{vieira} proposed a grid structure to reduce the search space for the set of points. In that approach, all points
-that belong to time slot $t_i$ will be arranged into a grid with cells of size $\epsilon$. After that, we will go
-through each cell $c_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each
-other. That search can be restricted to the cells $c_{i - 1, j - 1} ... c_{i + 1, j + 1}$, as depicted in
-\figref{fig:grid}, because all cells have $\epsilon$ as their sizes. It is important to note that the size of $\epsilon$
-directly impacts in the number of cells and the number of points in each cell. For example, for a very small $\epsilon$
-more cells will be created and less points will be present in each cell. On the other hand, large $\epsilon$ will create
-less but more populated cells.
+In order to avoid running \algoref{alg:disks} through all the points found in a time slot $t_i$, \citeonline{vieira}
+proposed a grid structure to reduce the search space for the set of points. In that approach, all points that belong to
+time slot $t_i$ will be arranged into a grid with cells of size $\epsilon$. After that, we will go through each cell
+$c_{i,j}$ in the grid and perform a search for points that are at most $\epsilon$ distant from each other. That search
+can be restricted to the cells $c_{i - 1, j - 1} ... c_{i + 1, j + 1}$, as depicted in \figref{fig:grid}, because all
+cells have $\epsilon$ as their sizes. It is important to note that the size of $\epsilon$ directly impacts in the number
+of cells and the number of points in each cell. For example, for a very small $\epsilon$ more cells will be created and
+less points will be present in each cell. On the other hand, large $\epsilon$ will create less but more populated cells.
 
 \algoref{alg:grid} shows how we will construct the grid structure for a set of points from a specific time slot $t_i$.
 In order to represent a grid structure, we will use a map of indexes to a list of points, which will then be populated
