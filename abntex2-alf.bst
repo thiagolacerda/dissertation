@@ -297,17 +297,17 @@ FUNCTION {bbl.volume} { iso.abbreviation {"vol."} {"v."} if$ }
 
 
 MACRO {jan} {"jan."}
-MACRO {feb} {"fev."}
+MACRO {feb} {"feb."}
 MACRO {mar} {"mar."}
-MACRO {apr} {"abr."}
-MACRO {may} {"maio"}
+MACRO {apr} {"apr."}
+MACRO {may} {"may"}
 MACRO {jun} {"jun."}
 MACRO {jul} {"jul."}
-MACRO {aug} {"ago."}
-MACRO {sep} {"set."}
-MACRO {oct} {"out."}
+MACRO {aug} {"aug."}
+MACRO {sep} {"sep."}
+MACRO {oct} {"oct."}
 MACRO {nov} {"nov."}
-MACRO {dec} {"dez."}
+MACRO {dec} {"dec."}
 
 
 FUNCTION {is.num}
