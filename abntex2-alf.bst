@@ -296,7 +296,7 @@ FUNCTION {bbl.techrep} { "Rel. Tec." }
 FUNCTION {bbl.url.accessdate}
   {iso.abbreviation { "Cited "} {"Acesso em: "} if$}
 FUNCTION {bbl.url.available}
-{ iso.abbreviation {"Available from Internet: "} {"Available from Internet: "} if$}
+{ iso.abbreviation {"Available In: "} {"Available In: "} if$}
 FUNCTION {bbl.void} {""}
 FUNCTION {bbl.volume} { iso.abbreviation {"vol."} {"v."} if$ }
 
@@ -1804,8 +1804,8 @@ FUNCTION {manual}
   format.bvolume.if.no.series output
   format.book.pages output new.sentence
   format.volume.number.series output new.sentence
-  format.note output new.sentence
   format.url
+  format.note output new.sentence
   fin.entry
 }
 
@@ -1827,6 +1827,28 @@ FUNCTION {misc}
   format.volume.number.series output new.sentence
   format.note output  new.block
   format.url
+  fin.entry
+  empty.misc.check
+}
+
+FUNCTION {online}
+{ output.bibitem
+  format.author.or.editor.or.organization new.sentence
+  iso.year.label
+  format.type output
+  format.btitle output new.sentence
+  format.furtherresp new.sentence
+  format.publisher.address.relax output
+  %format.date output  new.block
+  iso.date.place {abnt.alf 'skip$ {format.year output new.sentence} if$}
+                 {format.year output new.sentence} if$
+  format.book.pages output new.sentence
+  format.illustrated
+  format.dimensions  new.sentence
+  format.howpublished output  new.block
+  format.volume.number.series output new.sentence
+  format.url
+  format.note output  new.block
   fin.entry
   empty.misc.check
 }
