@@ -773,7 +773,7 @@ FUNCTION {format.btitle}
 {author empty$ editor empty$ and organization empty$ and
     {title format.title.as.author "title" bibinfo.check duplicate$ empty$ 'skip$ {} if$
     subtitle  empty$ 'skip$ {subtitle ": " swap$ * "t" change.case$ *} if$}
-    {title "title" bibinfo.check emphasize duplicate$ empty$ 'skip$ {} if$
+    {title "title" bibinfo.check duplicate$ empty$ 'skip$ {} if$
     subtitle  empty$ 'skip$ {subtitle ": " swap$ * "t" change.case$ *} if$}
 if$
 apply.title.command
