@@ -37,7 +37,7 @@ ENTRY
     volume year year-presented
     abnt-and-type
     abnt-doi abnt-dont-use-etal
-    abnt-etal-cite abnt-etal-list abnt-etal-text abnt-emphasize abnt-experimental
+    abnt-etal-cite abnt-etal-list abnt-etal-text abnt-emphasize abnt-bold abnt-experimental
     abnt-full-initials
     abnt-last-names abnt-ldots-type
     abnt-missing-year abnt-cite-style abnt-no-etal-label abnt-note
@@ -55,7 +55,7 @@ STRINGS { abnt.bst.revision }
 STRINGS { r s t }
 
 %variables needed to implement the various abnt options
-STRINGS {abnt.etal.text abnt.emphasize previous.author previous.title}
+STRINGS {abnt.etal.text abnt.emphasize abnt.bold previous.author previous.title}
 INTEGERS {abnt.alf  abnt.cite.style abnt.doi
           abnt.experimental abnt.etal.cite abnt.etal.list
           abnt.full.initials
@@ -226,7 +226,12 @@ FUNCTION {emphasize}
     { abnt.emphasize "{"  *  swap$ * "}" * }
   if$
 }
-
+FUNCTION {bold}
+{ duplicate$ empty$
+    { pop$ "" }
+    { abnt.bold "{"  *  swap$ * "}" * }
+  if$
+}
 
 FUNCTION {tie.or.space.prefix} %if text length less than 3 chars. uses a tie
 { duplicate$ text.length$ #5 <
@@ -409,6 +414,7 @@ FUNCTION {write.entry.verbatim3}
    "volume" 		volume 			write.field.verbatim
    "year" 		year 			write.field.verbatim
    "abnt-emphasize" 	abnt-emphasize 		write.field.verbatim
+   "abnt-bold" 	abnt-bold 		write.field.verbatim
    "abnt-experimental" 	abnt-experimental 	write.field.verbatim
    "abnt-doi" 		abnt-doi	 	write.field.verbatim
    "abnt-dont-use-etal" abnt-dont-use-etal 	write.field.verbatim
@@ -1038,7 +1044,7 @@ FUNCTION {format.booktitle}
     {booktitle format.title.as.author "booktitle" bibinfo.check duplicate$ empty$ 'skip$ {} if$
     booksubtitle  empty$ 'skip$ {booksubtitle ": " swap$ * "t" change.case$ *
     apply.title.command} if$}
-    {booktitle "booktitle" bibinfo.check emphasize duplicate$ empty$ 'skip$ {} if$
+    {booktitle "booktitle" bibinfo.check bold duplicate$ empty$ 'skip$ {} if$
     booksubtitle  empty$ 'skip$ {booksubtitle ": " swap$ * "t" change.case$ *
     apply.title.command} if$}
 if$
@@ -2034,6 +2040,7 @@ FUNCTION {set.default.abnt.variables}
   "$Revision: v-1.9.5 $" extract.cvs.key 'abnt.bst.revision :=
   #0 'abnt.and.type     :=     % #0 "e"; #1 "&"
   "\emph" 'abnt.emphasize :=
+  "\textbf" 'abnt.bold :=
   #0 'abnt.cite.style :=       %default norm version for NBR10520
                                %#0 \cite=(AUTHOR, YEAR)
 			       %#1 \cite=(Author, YEAR)
