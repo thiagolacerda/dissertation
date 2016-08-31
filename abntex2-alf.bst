@@ -1214,7 +1214,7 @@ FUNCTION {format.reprint}
 FUNCTION {format.journal}
 {
   format.reprint
-  journal emphasize *
+  journal bold *
 }
 
 
